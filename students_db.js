@@ -1,4 +1,4 @@
-[
+const STUDENTS_DB = [
   {
     "num": 1,
     "grade": "5° Grado \"A\"",
@@ -551,4 +551,4 @@
     "username": "luana.zayas",
     "password": "25jfbk"
   }
-]
+];

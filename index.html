@@ -27,6 +27,7 @@
       <span class="topbar-school">Colegio Paulo Freire</span>
     </div>
     <div class="topbar-actions">
+      <div id="userAuthStatus" class="user-auth-slot"></div>
       <button class="topbar-btn btn-sound" id="soundToggleBtn" onclick="toggleSound()" title="Efecto de sonido de página activado (clic para silenciar)">
         🔊 <span class="sound-label">Sonido</span>
       </button>
@@ -294,83 +295,11 @@
         <!-- Fila 1: Datos del Alumno y Criatura -->
         <div class="form-grid-2">
           <div class="form-group">
-            <label class="form-label" for="nsStudentName">👤 Nombre del Alumno/a (5° y 6° Grado):</label>
-            <input type="text" id="nsStudentName" class="form-input" list="studentsList5to6to" placeholder="Seleccioná o escribí tu nombre..." required />
-            <datalist id="studentsList5to6to">
-              <!-- 5° A -->
-              <option value="Bautista Olid (5° A)"></option>
-              <option value="Camilo Trabaglia (5° A)"></option>
-              <option value="Clara Aldabe (5° A)"></option>
-              <option value="Emilia González (5° A)"></option>
-              <option value="Emiliano Gil (5° A)"></option>
-              <option value="Eva Souza (5° A)"></option>
-              <option value="Federica Barrios (5° A)"></option>
-              <option value="Francesca Parietti (5° A)"></option>
-              <option value="Guillermina Ferraro (5° A)"></option>
-              <option value="Josefina Valdez (5° A)"></option>
-              <option value="Julieta Gómez (5° A)"></option>
-              <option value="Lara Da Silva (5° A)"></option>
-              <option value="Lucio Silva (5° A)"></option>
-              <option value="Mauro Bailón (5° A)"></option>
-              <option value="Paloma Da Silveira (5° A)"></option>
-              <option value="Pía Sáenz (5° A)"></option>
-              <option value="Santino Bandera (5° A)"></option>
-              <option value="Sofía Perini (5° A)"></option>
-              <option value="Valentina Vera (5° A)"></option>
-              <option value="Valentina Vilizio (5° A)"></option>
-              <!-- 5° B -->
-              <option value="Adrián Gerstenbluth (5° B)"></option>
-              <option value="Agustín Bengoa (5° B)"></option>
-              <option value="Alfonsina Barrios (5° B)"></option>
-              <option value="Bautista Greco (5° B)"></option>
-              <option value="Benjamín Suárez (5° B)"></option>
-              <option value="Guillermo Curbelo (5° B)"></option>
-              <option value="Guillermo Silveira (5° B)"></option>
-              <option value="Joaquina Fontán (5° B)"></option>
-              <option value="Juan Bautista Burgos (5° B)"></option>
-              <option value="Juan Martín Nogués (5° B)"></option>
-              <option value="Magalí Sodano (5° B)"></option>
-              <option value="Manuela García (5° B)"></option>
-              <option value="Martina Sagaría (5° B)"></option>
-              <option value="Milagros Neira (5° B)"></option>
-              <option value="Morena Blois (5° B)"></option>
-              <option value="Morena Scarone (5° B)"></option>
-              <option value="Olivia Monza (5° B)"></option>
-              <option value="Renzo Sanguinetti (5° B)"></option>
-              <option value="Santino Wolf (5° B)"></option>
-              <option value="Tomás Recalde (5° B)"></option>
-              <option value="Valentina Rodríguez (5° B)"></option>
-              <option value="Dereck Hampala (5° B)"></option>
-              <!-- 6° A -->
-              <option value="Augusto Ocaño (6° A)"></option>
-              <option value="Emilia Silva (6° A)"></option>
-              <option value="Emma Machado (6° A)"></option>
-              <option value="Federica Estiben (6° A)"></option>
-              <option value="Felipe Viera (6° A)"></option>
-              <option value="Florencia Erosa (6° A)"></option>
-              <option value="Joaquín Barboza (6° A)"></option>
-              <option value="Juan Manuel Linkimer (6° A)"></option>
-              <option value="Julieta Belora (6° A)"></option>
-              <option value="Julieta Sagaría (6° A)"></option>
-              <option value="Nahiara Bouissa (6° A)"></option>
-              <option value="Thiago Rodríguez (6° A)"></option>
-              <option value="Vicente Ceriliano (6° A)"></option>
-              <option value="Tomás Mato (6° A)"></option>
-              <!-- 6° B -->
-              <option value="Agustina Correa (6° B)"></option>
-              <option value="Agustina Umpierre (6° B)"></option>
-              <option value="Anahí Mora (6° B)"></option>
-              <option value="Bautista Clavería (6° B)"></option>
-              <option value="Delfina Araújo (6° B)"></option>
-              <option value="Isabel Moura (6° B)"></option>
-              <option value="María Belén Celentano (6° B)"></option>
-              <option value="Mateo González (6° B)"></option>
-              <option value="Rocío Castillo (6° B)"></option>
-              <option value="Santiago Moreira (6° B)"></option>
-              <option value="Teo Raggio (6° B)"></option>
-              <option value="Tomás Genta (6° B)"></option>
-              <option value="Luana Zayas (6° B)"></option>
-            </datalist>
+            <label class="form-label" for="nsStudentName">
+              👤 Alumno/a Autor/a:
+              <span id="nsStudentLockedBadge" class="locked-badge" style="display:none;"></span>
+            </label>
+            <input type="text" id="nsStudentName" class="form-input input-locked" placeholder="Iniciá sesión para forjar tu hechizo..." readonly required />
           </div>
 
           <div class="form-group">
@@ -630,6 +559,54 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════════════════
+       MODAL DE INICIO DE SESIÓN DE ALUMNO (5° Y 6°)
+  ══════════════════════════════════════════════════════ -->
+  <div
+    id="studentLoginModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="loginTitle"
+    onclick="closeStudentLoginModal(event)"
+    style="z-index: 3000;"
+  >
+    <div class="modal-box login-modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeStudentLoginModal()" aria-label="Cerrar modal">✕</button>
+
+      <div class="modal-header">
+        <div class="modal-badge">✦ ACCESO OFICIAL · 5° Y 6° GRADO ✦</div>
+        <span class="modal-icon-large">🔐</span>
+        <h2 class="modal-title" id="loginTitle">Identificación de Alumno/a</h2>
+        <div class="modal-subtitle-latin">Ingresá con tu usuario y contraseña única para forjar hechizos</div>
+      </div>
+
+      <form id="studentLoginForm" class="modal-body login-modal-body" onsubmit="handleStudentLogin(event)">
+        
+        <div class="form-group">
+          <label class="form-label" for="loginUsername">👤 Usuario escolar (nombre.apellido):</label>
+          <input type="text" id="loginUsername" class="form-input" placeholder="Ej: bautista.olid" required autocomplete="username" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">🔑 Contraseña aleatoria secreta:</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="Ingresá tu código de 6 caracteres" required autocomplete="current-password" />
+          <small class="login-hint-text">
+            Consultá la tarjeta individual entregada por el profesor. ¡Nadie más conoce tu clave!
+          </small>
+        </div>
+
+        <div id="loginErrorMsg" class="login-error-alert" style="display:none;"></div>
+
+        <button type="submit" class="btn-submit-login">
+          ✨ Validar Identidad y Continuar
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="students_db.js"></script>
   <script src="spells.js"></script>
 </body>
 </html>

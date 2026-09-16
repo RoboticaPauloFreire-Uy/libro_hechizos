@@ -324,6 +324,7 @@ function rebuildSpreads() {
 document.addEventListener('DOMContentLoaded', () => {
   createParticles();
   initSoundPreference();
+  updateAuthUI();
   loadLocalCustomSpells();
   initCloudSync();
   renderSpread(currentSpread);
@@ -1122,6 +1123,7 @@ document.addEventListener('keydown', e => {
     closeSyncModal();
     closeNewSpellModal();
     closePromptResultModal();
+    closeStudentLoginModal();
     return;
   }
 
@@ -1299,15 +1301,145 @@ function openSpellById(id) {
 }
 
 // ══════════════════════════════════════════════════════════
+//  AUTENTICACIÓN DE ALUMNOS (5° Y 6° GRADO)
+// ══════════════════════════════════════════════════════════
+function getLoggedStudent() {
+  try {
+    const raw = localStorage.getItem('grimorio_logged_student');
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function setLoggedStudent(student) {
+  if (student) {
+    localStorage.setItem('grimorio_logged_student', JSON.stringify(student));
+  } else {
+    localStorage.removeItem('grimorio_logged_student');
+  }
+  updateAuthUI();
+}
+
+function updateAuthUI() {
+  const container = document.getElementById('userAuthStatus');
+  if (!container) return;
+  const student = getLoggedStudent();
+  if (student) {
+    container.innerHTML = `
+      <div class="logged-user-badge" title="Alumno/a verificado/a">
+        <span class="user-badge-icon">🧙</span>
+        <span class="user-badge-name">${student.name} <small class="user-badge-grade">(${student.gradeCode})</small></span>
+        <button type="button" class="btn-logout" onclick="logoutStudent()" title="Cerrar sesión de ${student.name}">✕</button>
+      </div>
+    `;
+  } else {
+    container.innerHTML = `
+      <button type="button" class="topbar-btn btn-login" onclick="openStudentLoginModal(false)" title="Iniciar sesión con usuario y contraseña única de alumno">
+        🔑 Ingreso Alumnos
+      </button>
+    `;
+  }
+}
+
+function openStudentLoginModal(redirectAfterLogin = false) {
+  const modal = document.getElementById('studentLoginModal');
+  if (!modal) return;
+  modal.dataset.redirect = redirectAfterLogin ? 'true' : 'false';
+  const err = document.getElementById('loginErrorMsg');
+  if (err) err.style.display = 'none';
+  const u = document.getElementById('loginUsername');
+  const p = document.getElementById('loginPassword');
+  if (u) u.value = '';
+  if (p) p.value = '';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => { if (u) u.focus(); }, 150);
+}
+
+function closeStudentLoginModal(e) {
+  if (e && e.target !== document.getElementById('studentLoginModal')) return;
+  const modal = document.getElementById('studentLoginModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+function handleStudentLogin(e) {
+  e.preventDefault();
+  const uInput = (document.getElementById('loginUsername')?.value || '').trim().toLowerCase();
+  const pInput = (document.getElementById('loginPassword')?.value || '').trim();
+  const err = document.getElementById('loginErrorMsg');
+
+  const db = (typeof STUDENTS_DB !== 'undefined') ? STUDENTS_DB : [];
+  const student = db.find(s => 
+    s.username.toLowerCase() === uInput && s.password.toLowerCase() === pInput.toLowerCase()
+  );
+
+  if (!student) {
+    if (err) {
+      err.style.display = 'block';
+      err.textContent = '❌ Usuario o contraseña incorrecta. Revisá la tarjeta única que te entregó el profesor.';
+    }
+    return;
+  }
+
+  if (err) err.style.display = 'none';
+  setLoggedStudent(student);
+  const modal = document.getElementById('studentLoginModal');
+  const redirect = modal && modal.dataset.redirect === 'true';
+  closeStudentLoginModal();
+
+  alert(`✨ ¡Bienvenido/a al Grimorio, ${student.name} (${student.gradeCode})! Sesión iniciada correctamente.`);
+
+  if (redirect) {
+    openNewSpellModal();
+  }
+}
+
+function logoutStudent() {
+  const cur = getLoggedStudent();
+  if (cur && confirm(`¿Cerrar sesión de ${cur.name}?`)) {
+    setLoggedStudent(null);
+    const modal = document.getElementById('newSpellModal');
+    if (modal && modal.classList.contains('active')) {
+      closeNewSpellModal();
+    }
+  }
+}
+
+// ══════════════════════════════════════════════════════════
 //  CREADOR DE NUEVO HECHIZO POR EQUIPOS (LAS 5 CAPAS)
 // ══════════════════════════════════════════════════════════
 let newSpellImageData = null;
 
 function openNewSpellModal() {
+  const logged = getLoggedStudent();
+  if (!logged) {
+    openStudentLoginModal(true);
+    return;
+  }
+
   const modal = document.getElementById('newSpellModal');
   if (modal) {
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // ASIGNAR Y BLOQUEAR EL NOMBRE CON EL ALUMNO AUTENTICADO
+    const nameInput = document.getElementById('nsStudentName');
+    if (nameInput) {
+      nameInput.value = `${logged.name} (${logged.gradeCode})`;
+      nameInput.readOnly = true;
+      nameInput.classList.add('input-locked');
+      nameInput.title = 'Identidad bloqueada por inicio de sesión. No se puede modificar.';
+    }
+    const lockedBadge = document.getElementById('nsStudentLockedBadge');
+    if (lockedBadge) {
+      lockedBadge.style.display = 'inline-flex';
+      lockedBadge.innerHTML = `🔒 Alumno verificado: <strong>${logged.name}</strong> (${logged.gradeCode})`;
+    }
+
     updatePromptLivePreview();
   }
 }
@@ -1383,7 +1515,8 @@ function generateAndShowPromptModal() {
     return;
   }
 
-  const student = (document.getElementById('nsStudentName')?.value || 'Alumno/a').trim();
+  const logged = getLoggedStudent();
+  const student = logged ? `${logged.name} (${logged.gradeCode})` : (document.getElementById('nsStudentName')?.value || 'Alumno/a').trim();
   const monster = (document.getElementById('nsMonsterName')?.value || 'Monstruo').trim();
 
   const modal = document.getElementById('promptResultModal');
@@ -1473,12 +1606,19 @@ function handleImageSelected(event) {
 
 function handleCreateSpell(event) {
   event.preventDefault();
+  const logged = getLoggedStudent();
+  if (!logged) {
+    alert('Debes iniciar sesión con tu usuario y contraseña de alumno para guardar tu hechizo en el libro.');
+    openStudentLoginModal(true);
+    return;
+  }
+
   if (!newSpellImageData) {
     alert('Por favor, subí la imagen del resultado que generó el equipo.');
     return;
   }
 
-  const student = (document.getElementById('nsStudentName')?.value || document.getElementById('nsTeamName')?.value || 'Alumno').trim();
+  const student = `${logged.name} (${logged.gradeCode})`;
   const monster = document.getElementById('nsMonsterName').value.trim();
   const icon = document.getElementById('nsIcon').value.trim() || '✨';
   const color = document.getElementById('nsColor').value || '#8e44ad';

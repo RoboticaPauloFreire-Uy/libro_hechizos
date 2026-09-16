@@ -257,13 +257,14 @@
 
     .cell-pass {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: #8e44ad;
       background: #fbf6fd;
-      padding: 2px 6px;
+      padding: 2px 8px;
       border-radius: 4px;
       border: 1px solid #e8daef;
+      letter-spacing: 0.08em;
       display: inline-block;
     }
 
@@ -346,9 +347,14 @@
 
     .sc-item-val {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       color: #1a5276;
+    }
+
+    .sc-item-val.pass {
+      color: #8e44ad;
+      letter-spacing: 0.08em;
     }
 
     /* ESTILOS DE IMPRESIÓN */
@@ -403,7 +409,7 @@
     <!-- BARRA DE ACCIONES (SOLO PANTALLA) -->
     <div class="toolbar no-print">
       <div class="toolbar-title">
-        <span>📋 Listado de Accesos Escolares (5° y 6°)</span>
+        <span>📋 Listado de Accesos con Contraseñas Aleatorias (5° y 6°)</span>
       </div>
       <div class="toolbar-actions">
         <button class="btn btn-print" onclick="window.print()">🖨️ Imprimir Listado</button>
@@ -418,12 +424,12 @@
         <img src="img/logo-colegio.png" alt="Colegio Paulo Freire" />
         <div class="header-text">
           <h1>Colegio Paulo Freire</h1>
-          <p>Credenciales de Acceso — 5° y 6° Grado (Ciclo Lectivo 2026)</p>
+          <p>Credenciales de Acceso Individuales — 5° y 6° Grado (Ciclo Lectivo 2026)</p>
         </div>
       </div>
       <div class="meta-badge">
         <strong>Grimorio Mágico & Robótica</strong>
-        <span>Formato: nombre.apellido</span>
+        <span style="color:#27ae60;font-weight:600;">🔒 Contraseñas Aleatorias Impredecibles</span>
       </div>
     </header>
 
@@ -464,7 +470,7 @@
               <th class="center" style="width: 40px;">#</th>
               <th>Nombre y Apellido</th>
               <th>Usuario (nombre.apellido)</th>
-              <th>Contraseña Asignada</th>
+              <th>Contraseña Aleatoria</th>
               <th class="center" style="width: 120px;">Firma / Entrega</th>
             </tr>
           </thead>
@@ -474,7 +480,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">1</td>
               <td class="cell-name">Bautista Olid</td>
               <td><span class="cell-code">bautista.olid</span></td>
-              <td><span class="cell-pass">Bautista.5A26</span></td>
+              <td><span class="cell-pass">net5wq</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -482,7 +488,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">2</td>
               <td class="cell-name">Camilo Trabaglia</td>
               <td><span class="cell-code">camilo.trabaglia</span></td>
-              <td><span class="cell-pass">Camilo.5A26</span></td>
+              <td><span class="cell-pass">v4nmqc</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -490,7 +496,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">3</td>
               <td class="cell-name">Clara Aldabe</td>
               <td><span class="cell-code">clara.aldabe</span></td>
-              <td><span class="cell-pass">Clara.5A26</span></td>
+              <td><span class="cell-pass">feabc8</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -498,7 +504,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">4</td>
               <td class="cell-name">Emilia González</td>
               <td><span class="cell-code">emilia.gonzalez</span></td>
-              <td><span class="cell-pass">Emilia.5A26</span></td>
+              <td><span class="cell-pass">dex9ze</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -506,7 +512,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">5</td>
               <td class="cell-name">Emiliano Gil</td>
               <td><span class="cell-code">emiliano.gil</span></td>
-              <td><span class="cell-pass">Emiliano.5A26</span></td>
+              <td><span class="cell-pass">289w52</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -514,7 +520,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">6</td>
               <td class="cell-name">Eva Souza</td>
               <td><span class="cell-code">eva.souza</span></td>
-              <td><span class="cell-pass">Eva.5A26</span></td>
+              <td><span class="cell-pass">mrd9za</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -522,7 +528,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">7</td>
               <td class="cell-name">Federica Barrios</td>
               <td><span class="cell-code">federica.barrios</span></td>
-              <td><span class="cell-pass">Federica.5A26</span></td>
+              <td><span class="cell-pass">4udn8b</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -530,7 +536,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">8</td>
               <td class="cell-name">Francesca Parietti</td>
               <td><span class="cell-code">francesca.parietti</span></td>
-              <td><span class="cell-pass">Francesca.5A26</span></td>
+              <td><span class="cell-pass">yvbk9s</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -538,7 +544,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">9</td>
               <td class="cell-name">Guillermina Ferraro</td>
               <td><span class="cell-code">guillermina.ferraro</span></td>
-              <td><span class="cell-pass">Guillermina.5A26</span></td>
+              <td><span class="cell-pass">c3pxgu</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -546,7 +552,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">10</td>
               <td class="cell-name">Josefina Valdez</td>
               <td><span class="cell-code">josefina.valdez</span></td>
-              <td><span class="cell-pass">Josefina.5A26</span></td>
+              <td><span class="cell-pass">bngxg2</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -554,7 +560,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">11</td>
               <td class="cell-name">Julieta Gómez</td>
               <td><span class="cell-code">julieta.gomez</span></td>
-              <td><span class="cell-pass">Julieta.5A26</span></td>
+              <td><span class="cell-pass">bjb25c</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -562,7 +568,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">12</td>
               <td class="cell-name">Lara Da Silva</td>
               <td><span class="cell-code">lara.dasilva</span></td>
-              <td><span class="cell-pass">Lara.5A26</span></td>
+              <td><span class="cell-pass">ce4aqc</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -570,7 +576,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">13</td>
               <td class="cell-name">Lucio Silva</td>
               <td><span class="cell-code">lucio.silva</span></td>
-              <td><span class="cell-pass">Lucio.5A26</span></td>
+              <td><span class="cell-pass">tb2bk3</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -578,7 +584,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">14</td>
               <td class="cell-name">Mauro Bailón</td>
               <td><span class="cell-code">mauro.bailon</span></td>
-              <td><span class="cell-pass">Mauro.5A26</span></td>
+              <td><span class="cell-pass">xek8dy</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -586,7 +592,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">15</td>
               <td class="cell-name">Paloma Da Silveira</td>
               <td><span class="cell-code">paloma.dasilveira</span></td>
-              <td><span class="cell-pass">Paloma.5A26</span></td>
+              <td><span class="cell-pass">ynj2yt</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -594,7 +600,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">16</td>
               <td class="cell-name">Pía Sáenz</td>
               <td><span class="cell-code">pia.saenz</span></td>
-              <td><span class="cell-pass">Pia.5A26</span></td>
+              <td><span class="cell-pass">9ngusq</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -602,7 +608,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">17</td>
               <td class="cell-name">Santino Bandera</td>
               <td><span class="cell-code">santino.bandera</span></td>
-              <td><span class="cell-pass">Santino.5A26</span></td>
+              <td><span class="cell-pass">47jjjf</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -610,7 +616,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">18</td>
               <td class="cell-name">Sofía Perini</td>
               <td><span class="cell-code">sofia.perini</span></td>
-              <td><span class="cell-pass">Sofia.5A26</span></td>
+              <td><span class="cell-pass">xcu5ur</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -618,7 +624,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">19</td>
               <td class="cell-name">Valentina Vera</td>
               <td><span class="cell-code">valentina.vera</span></td>
-              <td><span class="cell-pass">Valentina.5A26</span></td>
+              <td><span class="cell-pass">796gpm</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -626,7 +632,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">20</td>
               <td class="cell-name">Valentina Vilizio</td>
               <td><span class="cell-code">valentina.vilizio</span></td>
-              <td><span class="cell-pass">Valentina.5A26</span></td>
+              <td><span class="cell-pass">dedn6b</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -648,7 +654,7 @@
               <th class="center" style="width: 40px;">#</th>
               <th>Nombre y Apellido</th>
               <th>Usuario (nombre.apellido)</th>
-              <th>Contraseña Asignada</th>
+              <th>Contraseña Aleatoria</th>
               <th class="center" style="width: 120px;">Firma / Entrega</th>
             </tr>
           </thead>
@@ -658,7 +664,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">1</td>
               <td class="cell-name">Adrián Gerstenbluth</td>
               <td><span class="cell-code">adrian.gerstenbluth</span></td>
-              <td><span class="cell-pass">Adrian.5B26</span></td>
+              <td><span class="cell-pass">27xfmr</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -666,7 +672,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">2</td>
               <td class="cell-name">Agustín Bengoa</td>
               <td><span class="cell-code">agustin.bengoa</span></td>
-              <td><span class="cell-pass">Agustin.5B26</span></td>
+              <td><span class="cell-pass">dsv27b</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -674,7 +680,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">3</td>
               <td class="cell-name">Alfonsina Barrios</td>
               <td><span class="cell-code">alfonsina.barrios</span></td>
-              <td><span class="cell-pass">Alfonsina.5B26</span></td>
+              <td><span class="cell-pass">tbkw5a</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -682,7 +688,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">4</td>
               <td class="cell-name">Bautista Greco</td>
               <td><span class="cell-code">bautista.greco</span></td>
-              <td><span class="cell-pass">Bautista.5B26</span></td>
+              <td><span class="cell-pass">3w353n</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -690,7 +696,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">5</td>
               <td class="cell-name">Benjamín Suárez</td>
               <td><span class="cell-code">benjamin.suarez</span></td>
-              <td><span class="cell-pass">Benjamin.5B26</span></td>
+              <td><span class="cell-pass">d492ca</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -698,7 +704,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">6</td>
               <td class="cell-name">Guillermo Curbelo</td>
               <td><span class="cell-code">guillermo.curbelo</span></td>
-              <td><span class="cell-pass">Guillermo.5B26</span></td>
+              <td><span class="cell-pass">d8umbt</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -706,7 +712,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">7</td>
               <td class="cell-name">Guillermo Silveira</td>
               <td><span class="cell-code">guillermo.silveira</span></td>
-              <td><span class="cell-pass">Guillermo.5B26</span></td>
+              <td><span class="cell-pass">yb2qtj</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -714,7 +720,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">8</td>
               <td class="cell-name">Joaquina Fontán</td>
               <td><span class="cell-code">joaquina.fontan</span></td>
-              <td><span class="cell-pass">Joaquina.5B26</span></td>
+              <td><span class="cell-pass">f56r5c</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -722,7 +728,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">9</td>
               <td class="cell-name">Juan Bautista Burgos</td>
               <td><span class="cell-code">juan.burgos</span></td>
-              <td><span class="cell-pass">Juan.5B26</span></td>
+              <td><span class="cell-pass">tyg936</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -730,7 +736,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">10</td>
               <td class="cell-name">Juan Martín Nogués</td>
               <td><span class="cell-code">juan.nogues</span></td>
-              <td><span class="cell-pass">Juan.5B26</span></td>
+              <td><span class="cell-pass">9zwb9h</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -738,7 +744,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">11</td>
               <td class="cell-name">Magalí Sodano</td>
               <td><span class="cell-code">magali.sodano</span></td>
-              <td><span class="cell-pass">Magali.5B26</span></td>
+              <td><span class="cell-pass">9fmsfd</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -746,7 +752,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">12</td>
               <td class="cell-name">Manuela García</td>
               <td><span class="cell-code">manuela.garcia</span></td>
-              <td><span class="cell-pass">Manuela.5B26</span></td>
+              <td><span class="cell-pass">mxmns6</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -754,7 +760,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">13</td>
               <td class="cell-name">Martina Sagaría</td>
               <td><span class="cell-code">martina.sagaria</span></td>
-              <td><span class="cell-pass">Martina.5B26</span></td>
+              <td><span class="cell-pass">7mv42v</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -762,7 +768,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">14</td>
               <td class="cell-name">Milagros Neira</td>
               <td><span class="cell-code">milagros.neira</span></td>
-              <td><span class="cell-pass">Milagros.5B26</span></td>
+              <td><span class="cell-pass">yzr33y</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -770,7 +776,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">15</td>
               <td class="cell-name">Morena Blois</td>
               <td><span class="cell-code">morena.blois</span></td>
-              <td><span class="cell-pass">Morena.5B26</span></td>
+              <td><span class="cell-pass">5ew53t</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -778,7 +784,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">16</td>
               <td class="cell-name">Morena Scarone</td>
               <td><span class="cell-code">morena.scarone</span></td>
-              <td><span class="cell-pass">Morena.5B26</span></td>
+              <td><span class="cell-pass">p32rpf</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -786,7 +792,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">17</td>
               <td class="cell-name">Olivia Monza</td>
               <td><span class="cell-code">olivia.monza</span></td>
-              <td><span class="cell-pass">Olivia.5B26</span></td>
+              <td><span class="cell-pass">hbwp3g</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -794,7 +800,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">18</td>
               <td class="cell-name">Renzo Sanguinetti</td>
               <td><span class="cell-code">renzo.sanguinetti</span></td>
-              <td><span class="cell-pass">Renzo.5B26</span></td>
+              <td><span class="cell-pass">ycy2aw</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -802,7 +808,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">19</td>
               <td class="cell-name">Santino Wolf</td>
               <td><span class="cell-code">santino.wolf</span></td>
-              <td><span class="cell-pass">Santino.5B26</span></td>
+              <td><span class="cell-pass">2chtrf</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -810,7 +816,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">20</td>
               <td class="cell-name">Tomás Recalde</td>
               <td><span class="cell-code">tomas.recalde</span></td>
-              <td><span class="cell-pass">Tomas.5B26</span></td>
+              <td><span class="cell-pass">3dfwb7</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -818,7 +824,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">21</td>
               <td class="cell-name">Valentina Rodríguez</td>
               <td><span class="cell-code">valentina.rodriguez</span></td>
-              <td><span class="cell-pass">Valentina.5B26</span></td>
+              <td><span class="cell-pass">s6dt2q</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -826,7 +832,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">22</td>
               <td class="cell-name">Dereck Hampala</td>
               <td><span class="cell-code">dereck.hampala</span></td>
-              <td><span class="cell-pass">Dereck.5B26</span></td>
+              <td><span class="cell-pass">sa5bp7</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -848,7 +854,7 @@
               <th class="center" style="width: 40px;">#</th>
               <th>Nombre y Apellido</th>
               <th>Usuario (nombre.apellido)</th>
-              <th>Contraseña Asignada</th>
+              <th>Contraseña Aleatoria</th>
               <th class="center" style="width: 120px;">Firma / Entrega</th>
             </tr>
           </thead>
@@ -858,7 +864,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">1</td>
               <td class="cell-name">Augusto Ocaño</td>
               <td><span class="cell-code">augusto.ocano</span></td>
-              <td><span class="cell-pass">Augusto.6A26</span></td>
+              <td><span class="cell-pass">9dcxjs</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -866,7 +872,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">2</td>
               <td class="cell-name">Emilia Silva</td>
               <td><span class="cell-code">emilia.silva</span></td>
-              <td><span class="cell-pass">Emilia.6A26</span></td>
+              <td><span class="cell-pass">b4puqg</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -874,7 +880,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">3</td>
               <td class="cell-name">Emma Machado</td>
               <td><span class="cell-code">emma.machado</span></td>
-              <td><span class="cell-pass">Emma.6A26</span></td>
+              <td><span class="cell-pass">vt4nt7</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -882,7 +888,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">4</td>
               <td class="cell-name">Federica Estiben</td>
               <td><span class="cell-code">federica.estiben</span></td>
-              <td><span class="cell-pass">Federica.6A26</span></td>
+              <td><span class="cell-pass">g4q4bj</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -890,7 +896,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">5</td>
               <td class="cell-name">Felipe Viera</td>
               <td><span class="cell-code">felipe.viera</span></td>
-              <td><span class="cell-pass">Felipe.6A26</span></td>
+              <td><span class="cell-pass">9jhuj6</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -898,7 +904,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">6</td>
               <td class="cell-name">Florencia Erosa</td>
               <td><span class="cell-code">florencia.erosa</span></td>
-              <td><span class="cell-pass">Florencia.6A26</span></td>
+              <td><span class="cell-pass">ryh782</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -906,7 +912,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">7</td>
               <td class="cell-name">Joaquín Barboza</td>
               <td><span class="cell-code">joaquin.barboza</span></td>
-              <td><span class="cell-pass">Joaquin.6A26</span></td>
+              <td><span class="cell-pass">nehk3k</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -914,7 +920,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">8</td>
               <td class="cell-name">Juan Manuel Linkimer</td>
               <td><span class="cell-code">juan.linkimer</span></td>
-              <td><span class="cell-pass">Juan.6A26</span></td>
+              <td><span class="cell-pass">q56vb5</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -922,7 +928,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">9</td>
               <td class="cell-name">Julieta Belora</td>
               <td><span class="cell-code">julieta.belora</span></td>
-              <td><span class="cell-pass">Julieta.6A26</span></td>
+              <td><span class="cell-pass">rtqd7h</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -930,7 +936,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">10</td>
               <td class="cell-name">Julieta Sagaría</td>
               <td><span class="cell-code">julieta.sagaria</span></td>
-              <td><span class="cell-pass">Julieta.6A26</span></td>
+              <td><span class="cell-pass">n4fxkg</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -938,7 +944,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">11</td>
               <td class="cell-name">Nahiara Bouissa</td>
               <td><span class="cell-code">nahiara.bouissa</span></td>
-              <td><span class="cell-pass">Nahiara.6A26</span></td>
+              <td><span class="cell-pass">mrsa8r</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -946,7 +952,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">12</td>
               <td class="cell-name">Thiago Rodríguez</td>
               <td><span class="cell-code">thiago.rodriguez</span></td>
-              <td><span class="cell-pass">Thiago.6A26</span></td>
+              <td><span class="cell-pass">cy7zn2</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -954,7 +960,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">13</td>
               <td class="cell-name">Vicente Ceriliano</td>
               <td><span class="cell-code">vicente.ceriliano</span></td>
-              <td><span class="cell-pass">Vicente.6A26</span></td>
+              <td><span class="cell-pass">wsrf44</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -962,7 +968,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">14</td>
               <td class="cell-name">Tomás Mato</td>
               <td><span class="cell-code">tomas.mato</span></td>
-              <td><span class="cell-pass">Tomas.6A26</span></td>
+              <td><span class="cell-pass">bzz36q</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -984,7 +990,7 @@
               <th class="center" style="width: 40px;">#</th>
               <th>Nombre y Apellido</th>
               <th>Usuario (nombre.apellido)</th>
-              <th>Contraseña Asignada</th>
+              <th>Contraseña Aleatoria</th>
               <th class="center" style="width: 120px;">Firma / Entrega</th>
             </tr>
           </thead>
@@ -994,7 +1000,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">1</td>
               <td class="cell-name">Agustina Correa</td>
               <td><span class="cell-code">agustina.correa</span></td>
-              <td><span class="cell-pass">Agustina.6B26</span></td>
+              <td><span class="cell-pass">c9a3xj</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1002,7 +1008,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">2</td>
               <td class="cell-name">Agustina Umpierre</td>
               <td><span class="cell-code">agustina.umpierre</span></td>
-              <td><span class="cell-pass">Agustina.6B26</span></td>
+              <td><span class="cell-pass">7gksqj</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1010,7 +1016,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">3</td>
               <td class="cell-name">Anahí Mora</td>
               <td><span class="cell-code">anahi.mora</span></td>
-              <td><span class="cell-pass">Anahi.6B26</span></td>
+              <td><span class="cell-pass">wknqn5</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1018,7 +1024,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">4</td>
               <td class="cell-name">Bautista Clavería</td>
               <td><span class="cell-code">bautista.claveria</span></td>
-              <td><span class="cell-pass">Bautista.6B26</span></td>
+              <td><span class="cell-pass">7dmdan</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1026,7 +1032,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">5</td>
               <td class="cell-name">Delfina Araújo</td>
               <td><span class="cell-code">delfina.araujo</span></td>
-              <td><span class="cell-pass">Delfina.6B26</span></td>
+              <td><span class="cell-pass">5wj557</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1034,7 +1040,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">6</td>
               <td class="cell-name">Isabel Moura</td>
               <td><span class="cell-code">isabel.moura</span></td>
-              <td><span class="cell-pass">Isabel.6B26</span></td>
+              <td><span class="cell-pass">b5cy65</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1042,7 +1048,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">7</td>
               <td class="cell-name">María Belén Celentano</td>
               <td><span class="cell-code">maria.celentano</span></td>
-              <td><span class="cell-pass">Maria.6B26</span></td>
+              <td><span class="cell-pass">5qd6va</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1050,7 +1056,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">8</td>
               <td class="cell-name">Mateo González</td>
               <td><span class="cell-code">mateo.gonzalez</span></td>
-              <td><span class="cell-pass">Mateo.6B26</span></td>
+              <td><span class="cell-pass">xe5bau</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1058,7 +1064,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">9</td>
               <td class="cell-name">Rocío Castillo</td>
               <td><span class="cell-code">rocio.castillo</span></td>
-              <td><span class="cell-pass">Rocio.6B26</span></td>
+              <td><span class="cell-pass">bcntb2</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1066,7 +1072,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">10</td>
               <td class="cell-name">Santiago Moreira</td>
               <td><span class="cell-code">santiago.moreira</span></td>
-              <td><span class="cell-pass">Santiago.6B26</span></td>
+              <td><span class="cell-pass">2a3esr</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1074,7 +1080,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">11</td>
               <td class="cell-name">Teo Raggio</td>
               <td><span class="cell-code">teo.raggio</span></td>
-              <td><span class="cell-pass">Teo.6B26</span></td>
+              <td><span class="cell-pass">yjt2d3</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1082,7 +1088,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">12</td>
               <td class="cell-name">Tomás Genta</td>
               <td><span class="cell-code">tomas.genta</span></td>
-              <td><span class="cell-pass">Tomas.6B26</span></td>
+              <td><span class="cell-pass">3pfpjb</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1090,7 +1096,7 @@
               <td class="center" style="color: #7f8c8d; font-weight: 600;">13</td>
               <td class="cell-name">Luana Zayas</td>
               <td><span class="cell-code">luana.zayas</span></td>
-              <td><span class="cell-pass">Luana.6B26</span></td>
+              <td><span class="cell-pass">25jfbk</span></td>
               <td class="cell-sign"></td>
             </tr>
     
@@ -1103,7 +1109,7 @@
     <!-- VISTA 2: TARJETAS INDIVIDUALES PARA RECORTAR -->
     <div id="cardsView">
       <div style="margin-bottom: 16px; font-size: 0.85rem; color: #555; background: #eaf2f8; padding: 10px 14px; border-radius: 6px;" class="no-print">
-        ✂️ <strong>Modo Tarjetas de Escritorio:</strong> Podés imprimir esta vista y cortar las tarjetas por la línea punteada para entregar una credencial individual a cada alumno.
+        ✂️ <strong>Modo Tarjetas de Escritorio:</strong> Podés imprimir esta vista y cortar las tarjetas por la línea punteada para entregar una credencial individual a cada alumno. ¡Nadie podrá adivinar la clave de otro compañero!
       </div>
       <div class="cards-grid">
 
@@ -1120,7 +1126,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Bautista.5A26</span>
+              <span class="sc-item-val pass">net5wq</span>
             </div>
           </div>
         </div>
@@ -1138,7 +1144,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Camilo.5A26</span>
+              <span class="sc-item-val pass">v4nmqc</span>
             </div>
           </div>
         </div>
@@ -1156,7 +1162,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Clara.5A26</span>
+              <span class="sc-item-val pass">feabc8</span>
             </div>
           </div>
         </div>
@@ -1174,7 +1180,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Emilia.5A26</span>
+              <span class="sc-item-val pass">dex9ze</span>
             </div>
           </div>
         </div>
@@ -1192,7 +1198,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Emiliano.5A26</span>
+              <span class="sc-item-val pass">289w52</span>
             </div>
           </div>
         </div>
@@ -1210,7 +1216,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Eva.5A26</span>
+              <span class="sc-item-val pass">mrd9za</span>
             </div>
           </div>
         </div>
@@ -1228,7 +1234,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Federica.5A26</span>
+              <span class="sc-item-val pass">4udn8b</span>
             </div>
           </div>
         </div>
@@ -1246,7 +1252,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Francesca.5A26</span>
+              <span class="sc-item-val pass">yvbk9s</span>
             </div>
           </div>
         </div>
@@ -1264,7 +1270,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Guillermina.5A26</span>
+              <span class="sc-item-val pass">c3pxgu</span>
             </div>
           </div>
         </div>
@@ -1282,7 +1288,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Josefina.5A26</span>
+              <span class="sc-item-val pass">bngxg2</span>
             </div>
           </div>
         </div>
@@ -1300,7 +1306,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Julieta.5A26</span>
+              <span class="sc-item-val pass">bjb25c</span>
             </div>
           </div>
         </div>
@@ -1318,7 +1324,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Lara.5A26</span>
+              <span class="sc-item-val pass">ce4aqc</span>
             </div>
           </div>
         </div>
@@ -1336,7 +1342,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Lucio.5A26</span>
+              <span class="sc-item-val pass">tb2bk3</span>
             </div>
           </div>
         </div>
@@ -1354,7 +1360,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Mauro.5A26</span>
+              <span class="sc-item-val pass">xek8dy</span>
             </div>
           </div>
         </div>
@@ -1372,7 +1378,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Paloma.5A26</span>
+              <span class="sc-item-val pass">ynj2yt</span>
             </div>
           </div>
         </div>
@@ -1390,7 +1396,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Pia.5A26</span>
+              <span class="sc-item-val pass">9ngusq</span>
             </div>
           </div>
         </div>
@@ -1408,7 +1414,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Santino.5A26</span>
+              <span class="sc-item-val pass">47jjjf</span>
             </div>
           </div>
         </div>
@@ -1426,7 +1432,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Sofia.5A26</span>
+              <span class="sc-item-val pass">xcu5ur</span>
             </div>
           </div>
         </div>
@@ -1444,7 +1450,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Valentina.5A26</span>
+              <span class="sc-item-val pass">796gpm</span>
             </div>
           </div>
         </div>
@@ -1462,7 +1468,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Valentina.5A26</span>
+              <span class="sc-item-val pass">dedn6b</span>
             </div>
           </div>
         </div>
@@ -1480,7 +1486,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Adrian.5B26</span>
+              <span class="sc-item-val pass">27xfmr</span>
             </div>
           </div>
         </div>
@@ -1498,7 +1504,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Agustin.5B26</span>
+              <span class="sc-item-val pass">dsv27b</span>
             </div>
           </div>
         </div>
@@ -1516,7 +1522,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Alfonsina.5B26</span>
+              <span class="sc-item-val pass">tbkw5a</span>
             </div>
           </div>
         </div>
@@ -1534,7 +1540,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Bautista.5B26</span>
+              <span class="sc-item-val pass">3w353n</span>
             </div>
           </div>
         </div>
@@ -1552,7 +1558,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Benjamin.5B26</span>
+              <span class="sc-item-val pass">d492ca</span>
             </div>
           </div>
         </div>
@@ -1570,7 +1576,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Guillermo.5B26</span>
+              <span class="sc-item-val pass">d8umbt</span>
             </div>
           </div>
         </div>
@@ -1588,7 +1594,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Guillermo.5B26</span>
+              <span class="sc-item-val pass">yb2qtj</span>
             </div>
           </div>
         </div>
@@ -1606,7 +1612,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Joaquina.5B26</span>
+              <span class="sc-item-val pass">f56r5c</span>
             </div>
           </div>
         </div>
@@ -1624,7 +1630,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Juan.5B26</span>
+              <span class="sc-item-val pass">tyg936</span>
             </div>
           </div>
         </div>
@@ -1642,7 +1648,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Juan.5B26</span>
+              <span class="sc-item-val pass">9zwb9h</span>
             </div>
           </div>
         </div>
@@ -1660,7 +1666,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Magali.5B26</span>
+              <span class="sc-item-val pass">9fmsfd</span>
             </div>
           </div>
         </div>
@@ -1678,7 +1684,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Manuela.5B26</span>
+              <span class="sc-item-val pass">mxmns6</span>
             </div>
           </div>
         </div>
@@ -1696,7 +1702,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Martina.5B26</span>
+              <span class="sc-item-val pass">7mv42v</span>
             </div>
           </div>
         </div>
@@ -1714,7 +1720,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Milagros.5B26</span>
+              <span class="sc-item-val pass">yzr33y</span>
             </div>
           </div>
         </div>
@@ -1732,7 +1738,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Morena.5B26</span>
+              <span class="sc-item-val pass">5ew53t</span>
             </div>
           </div>
         </div>
@@ -1750,7 +1756,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Morena.5B26</span>
+              <span class="sc-item-val pass">p32rpf</span>
             </div>
           </div>
         </div>
@@ -1768,7 +1774,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Olivia.5B26</span>
+              <span class="sc-item-val pass">hbwp3g</span>
             </div>
           </div>
         </div>
@@ -1786,7 +1792,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Renzo.5B26</span>
+              <span class="sc-item-val pass">ycy2aw</span>
             </div>
           </div>
         </div>
@@ -1804,7 +1810,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Santino.5B26</span>
+              <span class="sc-item-val pass">2chtrf</span>
             </div>
           </div>
         </div>
@@ -1822,7 +1828,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Tomas.5B26</span>
+              <span class="sc-item-val pass">3dfwb7</span>
             </div>
           </div>
         </div>
@@ -1840,7 +1846,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Valentina.5B26</span>
+              <span class="sc-item-val pass">s6dt2q</span>
             </div>
           </div>
         </div>
@@ -1858,7 +1864,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Dereck.5B26</span>
+              <span class="sc-item-val pass">sa5bp7</span>
             </div>
           </div>
         </div>
@@ -1876,7 +1882,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Augusto.6A26</span>
+              <span class="sc-item-val pass">9dcxjs</span>
             </div>
           </div>
         </div>
@@ -1894,7 +1900,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Emilia.6A26</span>
+              <span class="sc-item-val pass">b4puqg</span>
             </div>
           </div>
         </div>
@@ -1912,7 +1918,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Emma.6A26</span>
+              <span class="sc-item-val pass">vt4nt7</span>
             </div>
           </div>
         </div>
@@ -1930,7 +1936,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Federica.6A26</span>
+              <span class="sc-item-val pass">g4q4bj</span>
             </div>
           </div>
         </div>
@@ -1948,7 +1954,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Felipe.6A26</span>
+              <span class="sc-item-val pass">9jhuj6</span>
             </div>
           </div>
         </div>
@@ -1966,7 +1972,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Florencia.6A26</span>
+              <span class="sc-item-val pass">ryh782</span>
             </div>
           </div>
         </div>
@@ -1984,7 +1990,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Joaquin.6A26</span>
+              <span class="sc-item-val pass">nehk3k</span>
             </div>
           </div>
         </div>
@@ -2002,7 +2008,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Juan.6A26</span>
+              <span class="sc-item-val pass">q56vb5</span>
             </div>
           </div>
         </div>
@@ -2020,7 +2026,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Julieta.6A26</span>
+              <span class="sc-item-val pass">rtqd7h</span>
             </div>
           </div>
         </div>
@@ -2038,7 +2044,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Julieta.6A26</span>
+              <span class="sc-item-val pass">n4fxkg</span>
             </div>
           </div>
         </div>
@@ -2056,7 +2062,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Nahiara.6A26</span>
+              <span class="sc-item-val pass">mrsa8r</span>
             </div>
           </div>
         </div>
@@ -2074,7 +2080,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Thiago.6A26</span>
+              <span class="sc-item-val pass">cy7zn2</span>
             </div>
           </div>
         </div>
@@ -2092,7 +2098,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Vicente.6A26</span>
+              <span class="sc-item-val pass">wsrf44</span>
             </div>
           </div>
         </div>
@@ -2110,7 +2116,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Tomas.6A26</span>
+              <span class="sc-item-val pass">bzz36q</span>
             </div>
           </div>
         </div>
@@ -2128,7 +2134,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Agustina.6B26</span>
+              <span class="sc-item-val pass">c9a3xj</span>
             </div>
           </div>
         </div>
@@ -2146,7 +2152,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Agustina.6B26</span>
+              <span class="sc-item-val pass">7gksqj</span>
             </div>
           </div>
         </div>
@@ -2164,7 +2170,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Anahi.6B26</span>
+              <span class="sc-item-val pass">wknqn5</span>
             </div>
           </div>
         </div>
@@ -2182,7 +2188,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Bautista.6B26</span>
+              <span class="sc-item-val pass">7dmdan</span>
             </div>
           </div>
         </div>
@@ -2200,7 +2206,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Delfina.6B26</span>
+              <span class="sc-item-val pass">5wj557</span>
             </div>
           </div>
         </div>
@@ -2218,7 +2224,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Isabel.6B26</span>
+              <span class="sc-item-val pass">b5cy65</span>
             </div>
           </div>
         </div>
@@ -2236,7 +2242,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Maria.6B26</span>
+              <span class="sc-item-val pass">5qd6va</span>
             </div>
           </div>
         </div>
@@ -2254,7 +2260,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Mateo.6B26</span>
+              <span class="sc-item-val pass">xe5bau</span>
             </div>
           </div>
         </div>
@@ -2272,7 +2278,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Rocio.6B26</span>
+              <span class="sc-item-val pass">bcntb2</span>
             </div>
           </div>
         </div>
@@ -2290,7 +2296,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Santiago.6B26</span>
+              <span class="sc-item-val pass">2a3esr</span>
             </div>
           </div>
         </div>
@@ -2308,7 +2314,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Teo.6B26</span>
+              <span class="sc-item-val pass">yjt2d3</span>
             </div>
           </div>
         </div>
@@ -2326,7 +2332,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Tomas.6B26</span>
+              <span class="sc-item-val pass">3pfpjb</span>
             </div>
           </div>
         </div>
@@ -2344,7 +2350,7 @@
             </div>
             <div>
               <span class="sc-item-label">Contraseña</span>
-              <span class="sc-item-val">Luana.6B26</span>
+              <span class="sc-item-val pass">25jfbk</span>
             </div>
           </div>
         </div>
