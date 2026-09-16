@@ -370,6 +370,11 @@ function acceptPact() {
 // ══════════════════════════════════════════════════════════
 function renderSpread(index) {
   const spread = SPREADS[index];
+  const bookEl = document.getElementById('book');
+  if (bookEl) {
+    bookEl.classList.remove('book-opening', 'book-closing');
+    bookEl.classList.toggle('book-cover-mode', index === 0);
+  }
 
   const { leftHTML, rightHTML, pageL, pageR } = buildSpread(spread, index);
 
@@ -385,7 +390,7 @@ function buildSpread(spread, index) {
 
     case 'cover':
       return {
-        leftHTML:  buildBackCover(),
+        leftHTML:  '',
         rightHTML: buildCover(),
         pageL: '', pageR: '',
       };
@@ -451,6 +456,13 @@ function buildCover() {
       <div class="cover-icon-big">🔮</div>
       <div class="cover-subtitle">✦ Grimorio de Transformaciones ✦</div>
       <div class="cover-edition">Proyecto de Arte Digital · ${SPELLS.length} Hechizos</div>
+
+      <!-- Indicador para invitar a abrir -->
+      <div class="cover-open-prompt" title="Abrir grimorio">
+        <span class="cop-sparkle">✨</span>
+        <span class="cop-text">Toca aquí o la esquina para abrir</span>
+        <span class="cop-arrow">➔</span>
+      </div>
     </div>`;
 }
 
@@ -947,6 +959,14 @@ function nextPage() {
   isAnimating = true;
 
   const nextIndex = currentSpread + 1;
+  const isOpeningCover = (currentSpread === 0);
+  const bookEl = document.getElementById('book');
+
+  if (isOpeningCover && bookEl) {
+    bookEl.classList.remove('book-cover-mode');
+    bookEl.classList.add('book-opening');
+  }
+
   const { leftHTML: nextLeft, rightHTML: nextRight,
           pageL: nextPageL, pageR: nextPageR } = buildSpread(SPREADS[nextIndex], nextIndex);
 
@@ -956,7 +976,7 @@ function nextPage() {
   const pageLeft  = document.getElementById('pageLeft');
   const pageRight = document.getElementById('pageRight');
 
-  // Frente del flip = página derecha actual (la que se va)
+  // Frente del flip = página derecha actual (la portada si abre)
   flipFront.innerHTML = pageRight.innerHTML;
   // Espalda del flip = próxima página izquierda (la que llega)
   flipBack.innerHTML  = nextLeft;
@@ -974,6 +994,9 @@ function nextPage() {
     pageLeft.innerHTML = nextLeft;
     document.getElementById('pageNumL').textContent = nextPageL;
     flipLayer.classList.remove('active', 'flip-forward');
+    if (bookEl) {
+      bookEl.classList.remove('book-opening');
+    }
     updateNav();
     isAnimating = false;
   }, { once: true });
@@ -985,6 +1008,13 @@ function prevPage() {
   isAnimating = true;
 
   const prevIndex = currentSpread - 1;
+  const isClosingCover = (prevIndex === 0);
+  const bookEl = document.getElementById('book');
+
+  if (isClosingCover && bookEl) {
+    bookEl.classList.add('book-closing');
+  }
+
   const { leftHTML: prevLeft, rightHTML: prevRight,
           pageL: prevPageL, pageR: prevPageR } = buildSpread(SPREADS[prevIndex], prevIndex);
 
@@ -994,7 +1024,7 @@ function prevPage() {
   const pageLeft  = document.getElementById('pageLeft');
   const pageRight = document.getElementById('pageRight');
 
-  // Frente = página derecha anterior (la que vuelve)
+  // Frente = página derecha anterior (la portada si cierra)
   flipFront.innerHTML = prevRight;
   // Espalda = página izquierda actual (la que se va)
   flipBack.innerHTML  = pageLeft.innerHTML;
@@ -1012,6 +1042,10 @@ function prevPage() {
     pageRight.innerHTML = prevRight;
     document.getElementById('pageNumR').textContent = prevPageR;
     flipLayer.classList.remove('active', 'flip-backward');
+    if (bookEl) {
+      bookEl.classList.remove('book-closing');
+      bookEl.classList.add('book-cover-mode');
+    }
     updateNav();
     isAnimating = false;
   }, { once: true });
@@ -1035,7 +1069,16 @@ function updateNav() {
   const cprev = document.getElementById('cornerPrev');
   const cnext = document.getElementById('cornerNext');
   if (cprev) { cprev.style.opacity = currentSpread === 0 ? '0' : '1'; cprev.style.pointerEvents = currentSpread === 0 ? 'none' : ''; }
-  if (cnext) { cnext.style.opacity = currentSpread === TOTAL_SPREADS-1 ? '0' : '1'; cnext.style.pointerEvents = currentSpread === TOTAL_SPREADS-1 ? 'none' : ''; }
+  if (cnext) {
+    cnext.style.opacity = currentSpread === TOTAL_SPREADS-1 ? '0' : '1';
+    cnext.style.pointerEvents = currentSpread === TOTAL_SPREADS-1 ? 'none' : '';
+    cnext.title = currentSpread === 0 ? 'Abrir grimorio' : 'Siguiente página';
+  }
+
+  const pageRightEl = document.querySelector('.right-page');
+  if (pageRightEl) {
+    pageRightEl.title = currentSpread === 0 ? 'Haz clic para abrir el grimorio' : 'Página siguiente';
+  }
 }
 
 function jumpToSpread(target) {
