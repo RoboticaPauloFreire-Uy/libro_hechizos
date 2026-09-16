@@ -995,7 +995,7 @@ function nextPage() {
     document.getElementById('pageNumL').textContent = nextPageL;
     flipLayer.classList.remove('active', 'flip-forward');
     if (bookEl) {
-      bookEl.classList.remove('book-opening');
+      bookEl.classList.remove('book-opening', 'book-cover-mode');
     }
     updateNav();
     isAnimating = false;
@@ -1044,7 +1044,11 @@ function prevPage() {
     flipLayer.classList.remove('active', 'flip-backward');
     if (bookEl) {
       bookEl.classList.remove('book-closing');
-      bookEl.classList.add('book-cover-mode');
+      if (isClosingCover) {
+        bookEl.classList.add('book-cover-mode');
+      } else {
+        bookEl.classList.remove('book-cover-mode');
+      }
     }
     updateNav();
     isAnimating = false;
