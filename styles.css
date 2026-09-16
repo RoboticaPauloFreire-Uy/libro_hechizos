@@ -2134,6 +2134,17 @@ body {
   color: #fff;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(41, 128, 185, 0.4);
+.btn-download-pdf {
+  background: rgba(230, 126, 34, 0.2);
+  color: #f39c12;
+  border-color: rgba(230, 126, 34, 0.5);
+  text-decoration: none;
+}
+.btn-download-pdf:hover {
+  background: rgba(230, 126, 34, 0.45);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
 }
 
 .btn-new-spell {
