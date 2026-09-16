@@ -2057,6 +2057,19 @@ body {
   background: rgba(0, 0, 0, 0.2);
 }
 
+.btn-print-list {
+  background: rgba(39, 174, 96, 0.18);
+  color: #58d68d;
+  border-color: rgba(39, 174, 96, 0.45);
+  text-decoration: none;
+}
+.btn-print-list:hover {
+  background: rgba(39, 174, 96, 0.35);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(39, 174, 96, 0.3);
+}
+
 .btn-sync {
   display: none !important;
 }

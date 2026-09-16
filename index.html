@@ -30,6 +30,9 @@
       <button class="topbar-btn btn-sound" id="soundToggleBtn" onclick="toggleSound()" title="Efecto de sonido de página activado (clic para silenciar)">
         🔊 <span class="sound-label">Sonido</span>
       </button>
+      <a href="listado_alumnos_5to_y_6to.html" target="_blank" class="topbar-btn btn-print-list" title="Abrir e imprimir listado de usuarios y contraseñas de 5° y 6°">
+        📋 Listas Alumnos (5° y 6°)
+      </a>
       <button class="topbar-btn btn-download-profe" onclick="downloadBasePhoto()" title="Descargar la foto original del profesor para usar en Bing Image, Gemini o ChatGPT">
         📥 Descargar Foto Profe
       </button>
@@ -291,8 +294,83 @@
         <!-- Fila 1: Datos del Alumno y Criatura -->
         <div class="form-grid-2">
           <div class="form-group">
-            <label class="form-label" for="nsStudentName">👤 Nombre del Alumno/a:</label>
-            <input type="text" id="nsStudentName" class="form-input" placeholder="Ej: Juan Pérez (o Juan y Sofía)" required />
+            <label class="form-label" for="nsStudentName">👤 Nombre del Alumno/a (5° y 6° Grado):</label>
+            <input type="text" id="nsStudentName" class="form-input" list="studentsList5to6to" placeholder="Seleccioná o escribí tu nombre..." required />
+            <datalist id="studentsList5to6to">
+              <!-- 5° A -->
+              <option value="Bautista Olid (5° A)"></option>
+              <option value="Camilo Trabaglia (5° A)"></option>
+              <option value="Clara Aldabe (5° A)"></option>
+              <option value="Emilia González (5° A)"></option>
+              <option value="Emiliano Gil (5° A)"></option>
+              <option value="Eva Souza (5° A)"></option>
+              <option value="Federica Barrios (5° A)"></option>
+              <option value="Francesca Parietti (5° A)"></option>
+              <option value="Guillermina Ferraro (5° A)"></option>
+              <option value="Josefina Valdez (5° A)"></option>
+              <option value="Julieta Gómez (5° A)"></option>
+              <option value="Lara Da Silva (5° A)"></option>
+              <option value="Lucio Silva (5° A)"></option>
+              <option value="Mauro Bailón (5° A)"></option>
+              <option value="Paloma Da Silveira (5° A)"></option>
+              <option value="Pía Sáenz (5° A)"></option>
+              <option value="Santino Bandera (5° A)"></option>
+              <option value="Sofía Perini (5° A)"></option>
+              <option value="Valentina Vera (5° A)"></option>
+              <option value="Valentina Vilizio (5° A)"></option>
+              <!-- 5° B -->
+              <option value="Adrián Gerstenbluth (5° B)"></option>
+              <option value="Agustín Bengoa (5° B)"></option>
+              <option value="Alfonsina Barrios (5° B)"></option>
+              <option value="Bautista Greco (5° B)"></option>
+              <option value="Benjamín Suárez (5° B)"></option>
+              <option value="Guillermo Curbelo (5° B)"></option>
+              <option value="Guillermo Silveira (5° B)"></option>
+              <option value="Joaquina Fontán (5° B)"></option>
+              <option value="Juan Bautista Burgos (5° B)"></option>
+              <option value="Juan Martín Nogués (5° B)"></option>
+              <option value="Magalí Sodano (5° B)"></option>
+              <option value="Manuela García (5° B)"></option>
+              <option value="Martina Sagaría (5° B)"></option>
+              <option value="Milagros Neira (5° B)"></option>
+              <option value="Morena Blois (5° B)"></option>
+              <option value="Morena Scarone (5° B)"></option>
+              <option value="Olivia Monza (5° B)"></option>
+              <option value="Renzo Sanguinetti (5° B)"></option>
+              <option value="Santino Wolf (5° B)"></option>
+              <option value="Tomás Recalde (5° B)"></option>
+              <option value="Valentina Rodríguez (5° B)"></option>
+              <option value="Dereck Hampala (5° B)"></option>
+              <!-- 6° A -->
+              <option value="Augusto Ocaño (6° A)"></option>
+              <option value="Emilia Silva (6° A)"></option>
+              <option value="Emma Machado (6° A)"></option>
+              <option value="Federica Estiben (6° A)"></option>
+              <option value="Felipe Viera (6° A)"></option>
+              <option value="Florencia Erosa (6° A)"></option>
+              <option value="Joaquín Barboza (6° A)"></option>
+              <option value="Juan Manuel Linkimer (6° A)"></option>
+              <option value="Julieta Belora (6° A)"></option>
+              <option value="Julieta Sagaría (6° A)"></option>
+              <option value="Nahiara Bouissa (6° A)"></option>
+              <option value="Thiago Rodríguez (6° A)"></option>
+              <option value="Vicente Ceriliano (6° A)"></option>
+              <option value="Tomás Mato (6° A)"></option>
+              <!-- 6° B -->
+              <option value="Agustina Correa (6° B)"></option>
+              <option value="Agustina Umpierre (6° B)"></option>
+              <option value="Anahí Mora (6° B)"></option>
+              <option value="Bautista Clavería (6° B)"></option>
+              <option value="Delfina Araújo (6° B)"></option>
+              <option value="Isabel Moura (6° B)"></option>
+              <option value="María Belén Celentano (6° B)"></option>
+              <option value="Mateo González (6° B)"></option>
+              <option value="Rocío Castillo (6° B)"></option>
+              <option value="Santiago Moreira (6° B)"></option>
+              <option value="Teo Raggio (6° B)"></option>
+              <option value="Tomás Genta (6° B)"></option>
+              <option value="Luana Zayas (6° B)"></option>
+            </datalist>
           </div>
 
           <div class="form-group">

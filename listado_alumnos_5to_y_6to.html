@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Accesos 5° y 6° — Colegio Paulo Freire</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
+    :root {
+      --primary: #1a5276;
+      --text: #2c3e50;
+      --border: #d5dbdb;
+      --bg-alt: #f8f9f9;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 24px;
+      color: var(--text);
+      background: #eaeded;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 36px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    /* BARRA DE HERRAMIENTAS SUPERIOR (NO SE IMPRIME) */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #2c3e50;
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .toolbar-title {
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .btn-print {
+      background: #27ae60;
+      color: #fff;
+    }
+    .btn-print:hover { background: #219150; }
+
+    .btn-toggle {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .btn-toggle:hover { background: rgba(255,255,255,0.25); }
+
+    .btn-csv {
+      background: #2980b9;
+      color: #fff;
+    }
+    .btn-csv:hover { background: #1f618d; }
+
+    /* ENCABEZADO ESCOLAR */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px double #bdc3c7;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .header-logo img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
+    .header-text h1 {
+      margin: 0;
+      font-size: 1.4rem;
+      font-family: 'Cinzel', serif;
+      color: #1a5276;
+      letter-spacing: 0.04em;
+    }
+
+    .header-text p {
+      margin: 4px 0 0;
+      font-size: 0.85rem;
+      color: #7f8c8d;
+      font-weight: 500;
+    }
+
+    .meta-badge {
+      text-align: right;
+      font-size: 0.8rem;
+      color: #566573;
+    }
+
+    .meta-badge strong {
+      display: block;
+      font-size: 0.95rem;
+      color: #2c3e50;
+    }
+
+    /* RESUMEN ESTADÍSTICO */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--bg-alt);
+      border: 1px solid #eaeded;
+      border-left: 4px solid var(--primary);
+      padding: 10px 14px;
+      border-radius: 6px;
+    }
+
+    .stat-card .num {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+
+    .stat-card .lbl {
+      font-size: 0.72rem;
+      color: #7f8c8d;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* SECCIÓN DE GRUPO */
+    .group-section {
+      margin-bottom: 36px;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .group-section:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+
+    .group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--group-bg, #f2f4f4);
+      border-left: 5px solid var(--group-color, #1a5276);
+      padding: 8px 14px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .group-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--group-color, #1a5276);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .group-count {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #566573;
+    }
+
+    /* TABLA */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+    }
+
+    th {
+      background: #34495e;
+      color: #fff;
+      text-align: left;
+      padding: 8px 12px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    th.center, td.center { text-align: center; }
+
+    td {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border);
+      color: #2c3e50;
+    }
+
+    tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    .cell-name {
+      font-weight: 600;
+      color: #1a252f;
+    }
+
+    .cell-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      background: #eef2f7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #d5dbdb;
+      display: inline-block;
+    }
+
+    .cell-pass {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #8e44ad;
+      background: #fbf6fd;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #e8daef;
+      display: inline-block;
+    }
+
+    .cell-sign {
+      width: 110px;
+      border-bottom: 1px dashed #bdc3c7;
+    }
+
+    /* VISTA TARJETAS RECORTABLES */
+    #cardsView {
+      display: none;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .student-card {
+      border: 1.5px dashed #7f8c8d;
+      border-radius: 8px;
+      padding: 12px 14px;
+      background: #fff;
+      position: relative;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .student-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eaeded;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .student-card-school {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #1a5276;
+      text-transform: uppercase;
+    }
+
+    .student-card-grade {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #ebf5fb;
+      color: #2980b9;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .student-card-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .student-card-credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      background: #f8f9f9;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+    }
+
+    .sc-item-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      color: #7f8c8d;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 1px;
+    }
+
+    .sc-item-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1a5276;
+    }
+
+    /* ESTILOS DE IMPRESIÓN */
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+        color: #000;
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .toolbar, .no-print {
+        display: none !important;
+      }
+
+      .group-section {
+        page-break-after: always;
+        break-after: page;
+        margin-bottom: 0;
+        padding-top: 10px;
+      }
+
+      th {
+        background: #2c3e50 !important;
+        color: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .cell-code, .cell-pass {
+        border: none;
+        background: none;
+      }
+
+      .student-card {
+        border: 1px dashed #444;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- BARRA DE ACCIONES (SOLO PANTALLA) -->
+    <div class="toolbar no-print">
+      <div class="toolbar-title">
+        <span>📋 Listado de Accesos Escolares (5° y 6°)</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="btn btn-print" onclick="window.print()">🖨️ Imprimir Listado</button>
+        <button class="btn btn-toggle" id="viewToggleBtn" onclick="toggleView()">✂️ Ver Tarjetas para Recortar</button>
+        <a href="alumnos_5to_6to.csv" download="alumnos_5to_6to.csv" class="btn btn-csv">📥 Descargar Excel / CSV</a>
+      </div>
+    </div>
+
+    <!-- ENCABEZADO OFICIAL -->
+    <header class="header">
+      <div class="header-logo">
+        <img src="img/logo-colegio.png" alt="Colegio Paulo Freire" />
+        <div class="header-text">
+          <h1>Colegio Paulo Freire</h1>
+          <p>Credenciales de Acceso — 5° y 6° Grado (Ciclo Lectivo 2026)</p>
+        </div>
+      </div>
+      <div class="meta-badge">
+        <strong>Grimorio Mágico & Robótica</strong>
+        <span>Formato: nombre.apellido</span>
+      </div>
+    </header>
+
+    <!-- RESUMEN -->
+    <div class="stats-bar no-print">
+      <div class="stat-card" style="border-left-color: #1a5276;">
+        <div class="num">20</div>
+        <div class="lbl">5° Grado "A"</div>
+      </div>
+      <div class="stat-card" style="border-left-color: #196f3d;">
+        <div class="num">22</div>
+        <div class="lbl">5° Grado "B"</div>
+      </div>
+      <div class="stat-card" style="border-left-color: #7d3c98;">
+        <div class="num">14</div>
+        <div class="lbl">6° Grado "A"</div>
+      </div>
+      <div class="stat-card" style="border-left-color: #b9770e;">
+        <div class="num">13</div>
+        <div class="lbl">6° Grado "B"</div>
+      </div>
+    </div>
+
+    <!-- VISTA 1: TABLAS POR GRUPO -->
+    <div id="tablesView">
+
+      <section class="group-section" style="--group-color: #1a5276; --group-bg: #ebf5fb;">
+        <div class="group-header">
+          <div class="group-title">
+            <span>🏫 5° Grado "A"</span>
+          </div>
+          <div class="group-count">Total: 20 alumnos</div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="center" style="width: 40px;">#</th>
+              <th>Nombre y Apellido</th>
+              <th>Usuario (nombre.apellido)</th>
+              <th>Contraseña Asignada</th>
+              <th class="center" style="width: 120px;">Firma / Entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">1</td>
+              <td class="cell-name">Bautista Olid</td>
+              <td><span class="cell-code">bautista.olid</span></td>
+              <td><span class="cell-pass">Bautista.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">2</td>
+              <td class="cell-name">Camilo Trabaglia</td>
+              <td><span class="cell-code">camilo.trabaglia</span></td>
+              <td><span class="cell-pass">Camilo.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">3</td>
+              <td class="cell-name">Clara Aldabe</td>
+              <td><span class="cell-code">clara.aldabe</span></td>
+              <td><span class="cell-pass">Clara.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">4</td>
+              <td class="cell-name">Emilia González</td>
+              <td><span class="cell-code">emilia.gonzalez</span></td>
+              <td><span class="cell-pass">Emilia.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">5</td>
+              <td class="cell-name">Emiliano Gil</td>
+              <td><span class="cell-code">emiliano.gil</span></td>
+              <td><span class="cell-pass">Emiliano.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">6</td>
+              <td class="cell-name">Eva Souza</td>
+              <td><span class="cell-code">eva.souza</span></td>
+              <td><span class="cell-pass">Eva.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">7</td>
+              <td class="cell-name">Federica Barrios</td>
+              <td><span class="cell-code">federica.barrios</span></td>
+              <td><span class="cell-pass">Federica.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">8</td>
+              <td class="cell-name">Francesca Parietti</td>
+              <td><span class="cell-code">francesca.parietti</span></td>
+              <td><span class="cell-pass">Francesca.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">9</td>
+              <td class="cell-name">Guillermina Ferraro</td>
+              <td><span class="cell-code">guillermina.ferraro</span></td>
+              <td><span class="cell-pass">Guillermina.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">10</td>
+              <td class="cell-name">Josefina Valdez</td>
+              <td><span class="cell-code">josefina.valdez</span></td>
+              <td><span class="cell-pass">Josefina.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">11</td>
+              <td class="cell-name">Julieta Gómez</td>
+              <td><span class="cell-code">julieta.gomez</span></td>
+              <td><span class="cell-pass">Julieta.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">12</td>
+              <td class="cell-name">Lara Da Silva</td>
+              <td><span class="cell-code">lara.dasilva</span></td>
+              <td><span class="cell-pass">Lara.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">13</td>
+              <td class="cell-name">Lucio Silva</td>
+              <td><span class="cell-code">lucio.silva</span></td>
+              <td><span class="cell-pass">Lucio.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">14</td>
+              <td class="cell-name">Mauro Bailón</td>
+              <td><span class="cell-code">mauro.bailon</span></td>
+              <td><span class="cell-pass">Mauro.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">15</td>
+              <td class="cell-name">Paloma Da Silveira</td>
+              <td><span class="cell-code">paloma.dasilveira</span></td>
+              <td><span class="cell-pass">Paloma.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">16</td>
+              <td class="cell-name">Pía Sáenz</td>
+              <td><span class="cell-code">pia.saenz</span></td>
+              <td><span class="cell-pass">Pia.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">17</td>
+              <td class="cell-name">Santino Bandera</td>
+              <td><span class="cell-code">santino.bandera</span></td>
+              <td><span class="cell-pass">Santino.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">18</td>
+              <td class="cell-name">Sofía Perini</td>
+              <td><span class="cell-code">sofia.perini</span></td>
+              <td><span class="cell-pass">Sofia.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">19</td>
+              <td class="cell-name">Valentina Vera</td>
+              <td><span class="cell-code">valentina.vera</span></td>
+              <td><span class="cell-pass">Valentina.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">20</td>
+              <td class="cell-name">Valentina Vilizio</td>
+              <td><span class="cell-code">valentina.vilizio</span></td>
+              <td><span class="cell-pass">Valentina.5A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+          </tbody>
+        </table>
+      </section>
+  
+      <section class="group-section" style="--group-color: #196f3d; --group-bg: #eafaf1;">
+        <div class="group-header">
+          <div class="group-title">
+            <span>🏫 5° Grado "B"</span>
+          </div>
+          <div class="group-count">Total: 22 alumnos</div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="center" style="width: 40px;">#</th>
+              <th>Nombre y Apellido</th>
+              <th>Usuario (nombre.apellido)</th>
+              <th>Contraseña Asignada</th>
+              <th class="center" style="width: 120px;">Firma / Entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">1</td>
+              <td class="cell-name">Adrián Gerstenbluth</td>
+              <td><span class="cell-code">adrian.gerstenbluth</span></td>
+              <td><span class="cell-pass">Adrian.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">2</td>
+              <td class="cell-name">Agustín Bengoa</td>
+              <td><span class="cell-code">agustin.bengoa</span></td>
+              <td><span class="cell-pass">Agustin.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">3</td>
+              <td class="cell-name">Alfonsina Barrios</td>
+              <td><span class="cell-code">alfonsina.barrios</span></td>
+              <td><span class="cell-pass">Alfonsina.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">4</td>
+              <td class="cell-name">Bautista Greco</td>
+              <td><span class="cell-code">bautista.greco</span></td>
+              <td><span class="cell-pass">Bautista.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">5</td>
+              <td class="cell-name">Benjamín Suárez</td>
+              <td><span class="cell-code">benjamin.suarez</span></td>
+              <td><span class="cell-pass">Benjamin.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">6</td>
+              <td class="cell-name">Guillermo Curbelo</td>
+              <td><span class="cell-code">guillermo.curbelo</span></td>
+              <td><span class="cell-pass">Guillermo.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">7</td>
+              <td class="cell-name">Guillermo Silveira</td>
+              <td><span class="cell-code">guillermo.silveira</span></td>
+              <td><span class="cell-pass">Guillermo.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">8</td>
+              <td class="cell-name">Joaquina Fontán</td>
+              <td><span class="cell-code">joaquina.fontan</span></td>
+              <td><span class="cell-pass">Joaquina.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">9</td>
+              <td class="cell-name">Juan Bautista Burgos</td>
+              <td><span class="cell-code">juan.burgos</span></td>
+              <td><span class="cell-pass">Juan.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">10</td>
+              <td class="cell-name">Juan Martín Nogués</td>
+              <td><span class="cell-code">juan.nogues</span></td>
+              <td><span class="cell-pass">Juan.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">11</td>
+              <td class="cell-name">Magalí Sodano</td>
+              <td><span class="cell-code">magali.sodano</span></td>
+              <td><span class="cell-pass">Magali.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">12</td>
+              <td class="cell-name">Manuela García</td>
+              <td><span class="cell-code">manuela.garcia</span></td>
+              <td><span class="cell-pass">Manuela.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">13</td>
+              <td class="cell-name">Martina Sagaría</td>
+              <td><span class="cell-code">martina.sagaria</span></td>
+              <td><span class="cell-pass">Martina.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">14</td>
+              <td class="cell-name">Milagros Neira</td>
+              <td><span class="cell-code">milagros.neira</span></td>
+              <td><span class="cell-pass">Milagros.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">15</td>
+              <td class="cell-name">Morena Blois</td>
+              <td><span class="cell-code">morena.blois</span></td>
+              <td><span class="cell-pass">Morena.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">16</td>
+              <td class="cell-name">Morena Scarone</td>
+              <td><span class="cell-code">morena.scarone</span></td>
+              <td><span class="cell-pass">Morena.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">17</td>
+              <td class="cell-name">Olivia Monza</td>
+              <td><span class="cell-code">olivia.monza</span></td>
+              <td><span class="cell-pass">Olivia.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">18</td>
+              <td class="cell-name">Renzo Sanguinetti</td>
+              <td><span class="cell-code">renzo.sanguinetti</span></td>
+              <td><span class="cell-pass">Renzo.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">19</td>
+              <td class="cell-name">Santino Wolf</td>
+              <td><span class="cell-code">santino.wolf</span></td>
+              <td><span class="cell-pass">Santino.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">20</td>
+              <td class="cell-name">Tomás Recalde</td>
+              <td><span class="cell-code">tomas.recalde</span></td>
+              <td><span class="cell-pass">Tomas.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">21</td>
+              <td class="cell-name">Valentina Rodríguez</td>
+              <td><span class="cell-code">valentina.rodriguez</span></td>
+              <td><span class="cell-pass">Valentina.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">22</td>
+              <td class="cell-name">Dereck Hampala</td>
+              <td><span class="cell-code">dereck.hampala</span></td>
+              <td><span class="cell-pass">Dereck.5B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+          </tbody>
+        </table>
+      </section>
+  
+      <section class="group-section" style="--group-color: #7d3c98; --group-bg: #f4ecf7;">
+        <div class="group-header">
+          <div class="group-title">
+            <span>🏫 6° Grado "A"</span>
+          </div>
+          <div class="group-count">Total: 14 alumnos</div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="center" style="width: 40px;">#</th>
+              <th>Nombre y Apellido</th>
+              <th>Usuario (nombre.apellido)</th>
+              <th>Contraseña Asignada</th>
+              <th class="center" style="width: 120px;">Firma / Entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">1</td>
+              <td class="cell-name">Augusto Ocaño</td>
+              <td><span class="cell-code">augusto.ocano</span></td>
+              <td><span class="cell-pass">Augusto.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">2</td>
+              <td class="cell-name">Emilia Silva</td>
+              <td><span class="cell-code">emilia.silva</span></td>
+              <td><span class="cell-pass">Emilia.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">3</td>
+              <td class="cell-name">Emma Machado</td>
+              <td><span class="cell-code">emma.machado</span></td>
+              <td><span class="cell-pass">Emma.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">4</td>
+              <td class="cell-name">Federica Estiben</td>
+              <td><span class="cell-code">federica.estiben</span></td>
+              <td><span class="cell-pass">Federica.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">5</td>
+              <td class="cell-name">Felipe Viera</td>
+              <td><span class="cell-code">felipe.viera</span></td>
+              <td><span class="cell-pass">Felipe.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">6</td>
+              <td class="cell-name">Florencia Erosa</td>
+              <td><span class="cell-code">florencia.erosa</span></td>
+              <td><span class="cell-pass">Florencia.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">7</td>
+              <td class="cell-name">Joaquín Barboza</td>
+              <td><span class="cell-code">joaquin.barboza</span></td>
+              <td><span class="cell-pass">Joaquin.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">8</td>
+              <td class="cell-name">Juan Manuel Linkimer</td>
+              <td><span class="cell-code">juan.linkimer</span></td>
+              <td><span class="cell-pass">Juan.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">9</td>
+              <td class="cell-name">Julieta Belora</td>
+              <td><span class="cell-code">julieta.belora</span></td>
+              <td><span class="cell-pass">Julieta.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">10</td>
+              <td class="cell-name">Julieta Sagaría</td>
+              <td><span class="cell-code">julieta.sagaria</span></td>
+              <td><span class="cell-pass">Julieta.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">11</td>
+              <td class="cell-name">Nahiara Bouissa</td>
+              <td><span class="cell-code">nahiara.bouissa</span></td>
+              <td><span class="cell-pass">Nahiara.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">12</td>
+              <td class="cell-name">Thiago Rodríguez</td>
+              <td><span class="cell-code">thiago.rodriguez</span></td>
+              <td><span class="cell-pass">Thiago.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">13</td>
+              <td class="cell-name">Vicente Ceriliano</td>
+              <td><span class="cell-code">vicente.ceriliano</span></td>
+              <td><span class="cell-pass">Vicente.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">14</td>
+              <td class="cell-name">Tomás Mato</td>
+              <td><span class="cell-code">tomas.mato</span></td>
+              <td><span class="cell-pass">Tomas.6A26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+          </tbody>
+        </table>
+      </section>
+  
+      <section class="group-section" style="--group-color: #b9770e; --group-bg: #fef9e7;">
+        <div class="group-header">
+          <div class="group-title">
+            <span>🏫 6° Grado "B"</span>
+          </div>
+          <div class="group-count">Total: 13 alumnos</div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th class="center" style="width: 40px;">#</th>
+              <th>Nombre y Apellido</th>
+              <th>Usuario (nombre.apellido)</th>
+              <th>Contraseña Asignada</th>
+              <th class="center" style="width: 120px;">Firma / Entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">1</td>
+              <td class="cell-name">Agustina Correa</td>
+              <td><span class="cell-code">agustina.correa</span></td>
+              <td><span class="cell-pass">Agustina.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">2</td>
+              <td class="cell-name">Agustina Umpierre</td>
+              <td><span class="cell-code">agustina.umpierre</span></td>
+              <td><span class="cell-pass">Agustina.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">3</td>
+              <td class="cell-name">Anahí Mora</td>
+              <td><span class="cell-code">anahi.mora</span></td>
+              <td><span class="cell-pass">Anahi.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">4</td>
+              <td class="cell-name">Bautista Clavería</td>
+              <td><span class="cell-code">bautista.claveria</span></td>
+              <td><span class="cell-pass">Bautista.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">5</td>
+              <td class="cell-name">Delfina Araújo</td>
+              <td><span class="cell-code">delfina.araujo</span></td>
+              <td><span class="cell-pass">Delfina.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">6</td>
+              <td class="cell-name">Isabel Moura</td>
+              <td><span class="cell-code">isabel.moura</span></td>
+              <td><span class="cell-pass">Isabel.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">7</td>
+              <td class="cell-name">María Belén Celentano</td>
+              <td><span class="cell-code">maria.celentano</span></td>
+              <td><span class="cell-pass">Maria.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">8</td>
+              <td class="cell-name">Mateo González</td>
+              <td><span class="cell-code">mateo.gonzalez</span></td>
+              <td><span class="cell-pass">Mateo.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">9</td>
+              <td class="cell-name">Rocío Castillo</td>
+              <td><span class="cell-code">rocio.castillo</span></td>
+              <td><span class="cell-pass">Rocio.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">10</td>
+              <td class="cell-name">Santiago Moreira</td>
+              <td><span class="cell-code">santiago.moreira</span></td>
+              <td><span class="cell-pass">Santiago.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">11</td>
+              <td class="cell-name">Teo Raggio</td>
+              <td><span class="cell-code">teo.raggio</span></td>
+              <td><span class="cell-pass">Teo.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">12</td>
+              <td class="cell-name">Tomás Genta</td>
+              <td><span class="cell-code">tomas.genta</span></td>
+              <td><span class="cell-pass">Tomas.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+            <tr>
+              <td class="center" style="color: #7f8c8d; font-weight: 600;">13</td>
+              <td class="cell-name">Luana Zayas</td>
+              <td><span class="cell-code">luana.zayas</span></td>
+              <td><span class="cell-pass">Luana.6B26</span></td>
+              <td class="cell-sign"></td>
+            </tr>
+    
+          </tbody>
+        </table>
+      </section>
+  
+    </div><!-- /#tablesView -->
+
+    <!-- VISTA 2: TARJETAS INDIVIDUALES PARA RECORTAR -->
+    <div id="cardsView">
+      <div style="margin-bottom: 16px; font-size: 0.85rem; color: #555; background: #eaf2f8; padding: 10px 14px; border-radius: 6px;" class="no-print">
+        ✂️ <strong>Modo Tarjetas de Escritorio:</strong> Podés imprimir esta vista y cortar las tarjetas por la línea punteada para entregar una credencial individual a cada alumno.
+      </div>
+      <div class="cards-grid">
+
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Bautista Olid</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">bautista.olid</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Bautista.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Camilo Trabaglia</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">camilo.trabaglia</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Camilo.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Clara Aldabe</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">clara.aldabe</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Clara.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Emilia González</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">emilia.gonzalez</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Emilia.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Emiliano Gil</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">emiliano.gil</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Emiliano.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Eva Souza</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">eva.souza</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Eva.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Federica Barrios</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">federica.barrios</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Federica.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Francesca Parietti</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">francesca.parietti</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Francesca.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Guillermina Ferraro</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">guillermina.ferraro</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Guillermina.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Josefina Valdez</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">josefina.valdez</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Josefina.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Julieta Gómez</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">julieta.gomez</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Julieta.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Lara Da Silva</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">lara.dasilva</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Lara.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Lucio Silva</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">lucio.silva</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Lucio.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Mauro Bailón</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">mauro.bailon</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Mauro.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Paloma Da Silveira</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">paloma.dasilveira</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Paloma.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Pía Sáenz</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">pia.saenz</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Pia.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Santino Bandera</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">santino.bandera</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Santino.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Sofía Perini</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">sofia.perini</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Sofia.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Valentina Vera</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">valentina.vera</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Valentina.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Valentina Vilizio</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">valentina.vilizio</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Valentina.5A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Adrián Gerstenbluth</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">adrian.gerstenbluth</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Adrian.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Agustín Bengoa</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">agustin.bengoa</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Agustin.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Alfonsina Barrios</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">alfonsina.barrios</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Alfonsina.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Bautista Greco</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">bautista.greco</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Bautista.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Benjamín Suárez</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">benjamin.suarez</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Benjamin.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Guillermo Curbelo</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">guillermo.curbelo</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Guillermo.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Guillermo Silveira</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">guillermo.silveira</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Guillermo.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Joaquina Fontán</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">joaquina.fontan</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Joaquina.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Juan Bautista Burgos</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">juan.burgos</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Juan.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Juan Martín Nogués</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">juan.nogues</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Juan.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Magalí Sodano</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">magali.sodano</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Magali.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Manuela García</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">manuela.garcia</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Manuela.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Martina Sagaría</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">martina.sagaria</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Martina.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Milagros Neira</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">milagros.neira</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Milagros.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Morena Blois</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">morena.blois</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Morena.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Morena Scarone</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">morena.scarone</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Morena.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Olivia Monza</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">olivia.monza</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Olivia.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Renzo Sanguinetti</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">renzo.sanguinetti</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Renzo.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Santino Wolf</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">santino.wolf</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Santino.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Tomás Recalde</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">tomas.recalde</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Tomas.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Valentina Rodríguez</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">valentina.rodriguez</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Valentina.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">5° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Dereck Hampala</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">dereck.hampala</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Dereck.5B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Augusto Ocaño</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">augusto.ocano</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Augusto.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Emilia Silva</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">emilia.silva</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Emilia.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Emma Machado</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">emma.machado</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Emma.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Federica Estiben</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">federica.estiben</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Federica.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Felipe Viera</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">felipe.viera</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Felipe.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Florencia Erosa</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">florencia.erosa</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Florencia.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Joaquín Barboza</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">joaquin.barboza</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Joaquin.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Juan Manuel Linkimer</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">juan.linkimer</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Juan.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Julieta Belora</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">julieta.belora</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Julieta.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Julieta Sagaría</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">julieta.sagaria</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Julieta.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Nahiara Bouissa</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">nahiara.bouissa</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Nahiara.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Thiago Rodríguez</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">thiago.rodriguez</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Thiago.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Vicente Ceriliano</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">vicente.ceriliano</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Vicente.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "A"</span>
+          </div>
+          <div class="student-card-name">👤 Tomás Mato</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">tomas.mato</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Tomas.6A26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Agustina Correa</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">agustina.correa</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Agustina.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Agustina Umpierre</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">agustina.umpierre</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Agustina.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Anahí Mora</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">anahi.mora</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Anahi.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Bautista Clavería</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">bautista.claveria</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Bautista.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Delfina Araújo</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">delfina.araujo</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Delfina.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Isabel Moura</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">isabel.moura</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Isabel.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 María Belén Celentano</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">maria.celentano</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Maria.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Mateo González</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">mateo.gonzalez</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Mateo.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Rocío Castillo</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">rocio.castillo</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Rocio.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Santiago Moreira</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">santiago.moreira</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Santiago.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Teo Raggio</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">teo.raggio</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Teo.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Tomás Genta</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">tomas.genta</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Tomas.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="student-card">
+          <div class="student-card-header">
+            <span class="student-card-school">🏫 Colegio Paulo Freire</span>
+            <span class="student-card-grade">6° Grado "B"</span>
+          </div>
+          <div class="student-card-name">👤 Luana Zayas</div>
+          <div class="student-card-credentials">
+            <div>
+              <span class="sc-item-label">Usuario</span>
+              <span class="sc-item-val">luana.zayas</span>
+            </div>
+            <div>
+              <span class="sc-item-label">Contraseña</span>
+              <span class="sc-item-val">Luana.6B26</span>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div><!-- /#cardsView -->
+
+  </div><!-- /.container -->
+
+  <script>
+    let isCardsView = false;
+    function toggleView() {
+      isCardsView = !isCardsView;
+      const tablesView = document.getElementById('tablesView');
+      const cardsView = document.getElementById('cardsView');
+      const btn = document.getElementById('viewToggleBtn');
+      if (isCardsView) {
+        tablesView.style.display = 'none';
+        cardsView.style.display = 'block';
+        btn.textContent = '📑 Ver Modo Tablas';
+      } else {
+        tablesView.style.display = 'block';
+        cardsView.style.display = 'none';
+        btn.textContent = '✂️ Ver Tarjetas para Recortar';
+      }
+    }
+  </script>
+
+</body>
+</html>
