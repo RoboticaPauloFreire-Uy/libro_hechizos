@@ -323,6 +323,7 @@ function rebuildSpreads() {
 // ── Init ──────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   createParticles();
+  initSoundPreference();
   loadLocalCustomSpells();
   initCloudSync();
   renderSpread(currentSpread);
@@ -792,10 +793,156 @@ function buildEndRight() {
 }
 
 // ══════════════════════════════════════════════════════════
+//  SISTEMA DE SONIDO DE HOJA / PÁGINA (WEB AUDIO API)
+// ══════════════════════════════════════════════════════════
+let audioCtx = null;
+let soundEnabled = true;
+
+function getAudioContext() {
+  if (!audioCtx) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass) {
+      audioCtx = new AudioContextClass();
+    }
+  }
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+function initSoundPreference() {
+  const saved = localStorage.getItem('grimorio_sound_enabled');
+  if (saved !== null) {
+    soundEnabled = saved === 'true';
+  } else {
+    soundEnabled = true;
+  }
+  updateSoundButtonUI();
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  localStorage.setItem('grimorio_sound_enabled', String(soundEnabled));
+  updateSoundButtonUI();
+  if (soundEnabled) {
+    playPageFlipSound();
+  }
+}
+
+function updateSoundButtonUI() {
+  const btn = document.getElementById('soundToggleBtn');
+  if (!btn) return;
+  if (soundEnabled) {
+    btn.innerHTML = '🔊 <span class="sound-label">Sonido: ON</span>';
+    btn.classList.remove('sound-muted');
+    btn.title = 'Efecto de sonido activado (clic para silenciar)';
+  } else {
+    btn.innerHTML = '🔇 <span class="sound-label">Sonido: OFF</span>';
+    btn.classList.add('sound-muted');
+    btn.title = 'Sonido silenciado (clic para activar)';
+  }
+}
+
+function playPageFlipSound() {
+  if (!soundEnabled) return;
+
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    // Variación aleatoria natural para cada giro de hoja
+    const randPitch = 0.88 + Math.random() * 0.24; // 0.88 - 1.12
+    const duration = 0.27 * randPitch;
+
+    // ── 1. RUIDO ROSA FILTRADO: Roce de pergamino antiguo ──
+    const bufferSize = Math.floor(ctx.sampleRate * duration);
+    const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const output = noiseBuffer.getChannelData(0);
+    let b0 = 0, b1 = 0, b2 = 0;
+    for (let i = 0; i < bufferSize; i++) {
+      const white = Math.random() * 2 - 1;
+      b0 = 0.99886 * b0 + white * 0.0555179;
+      b1 = 0.99332 * b1 + white * 0.0750759;
+      b2 = 0.96900 * b2 + white * 0.1538520;
+      output[i] = (b0 + b1 + b2 + white * 0.5362) * 0.15;
+    }
+
+    const noiseSource = ctx.createBufferSource();
+    noiseSource.buffer = noiseBuffer;
+
+    // Filtro pasa banda para darle el timbre característico del papel
+    const bandpass = ctx.createBiquadFilter();
+    bandpass.type = 'bandpass';
+    bandpass.Q.setValueAtTime(2.0, now);
+    bandpass.frequency.setValueAtTime(750 * randPitch, now);
+    bandpass.frequency.exponentialRampToValueAtTime(2200 * randPitch, now + duration * 0.4);
+    bandpass.frequency.exponentialRampToValueAtTime(650 * randPitch, now + duration);
+
+    // Envolvente de ganancia
+    const noiseGain = ctx.createGain();
+    noiseGain.gain.setValueAtTime(0.001, now);
+    noiseGain.gain.linearRampToValueAtTime(0.42, now + 0.02);
+    noiseGain.gain.exponentialRampToValueAtTime(0.2, now + duration * 0.45);
+    noiseGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+    noiseSource.connect(bandpass);
+    bandpass.connect(noiseGain);
+    noiseGain.connect(ctx.destination);
+
+    noiseSource.start(now);
+    noiseSource.stop(now + duration);
+
+    // ── 2. IMPACTO GRAVE: Acomodo del lomo y peso de la página ──
+    const flopDuration = 0.11;
+    const osc = ctx.createOscillator();
+    const oscGain = ctx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(145 * randPitch, now + duration * 0.3);
+    osc.frequency.exponentialRampToValueAtTime(50, now + duration * 0.3 + flopDuration);
+
+    oscGain.gain.setValueAtTime(0.001, now);
+    oscGain.gain.setValueAtTime(0.001, now + duration * 0.3);
+    oscGain.gain.linearRampToValueAtTime(0.18, now + duration * 0.3 + 0.015);
+    oscGain.gain.exponentialRampToValueAtTime(0.001, now + duration * 0.3 + flopDuration);
+
+    osc.connect(oscGain);
+    oscGain.connect(ctx.destination);
+
+    osc.start(now + duration * 0.3);
+    osc.stop(now + duration * 0.3 + flopDuration);
+
+    // ── 3. SUSURRO MÁGICO SUTIL (Campanilla suave de grimorio) ──
+    const chime = ctx.createOscillator();
+    const chimeGain = ctx.createGain();
+
+    chime.type = 'sine';
+    chime.frequency.setValueAtTime(1800 * randPitch, now + 0.03);
+    chime.frequency.exponentialRampToValueAtTime(2400 * randPitch, now + 0.16);
+
+    chimeGain.gain.setValueAtTime(0.001, now);
+    chimeGain.gain.linearRampToValueAtTime(0.03, now + 0.05);
+    chimeGain.gain.exponentialRampToValueAtTime(0.0005, now + 0.22);
+
+    chime.connect(chimeGain);
+    chimeGain.connect(ctx.destination);
+
+    chime.start(now + 0.03);
+    chime.stop(now + 0.23);
+
+  } catch (err) {
+    // Si el navegador bloquea audio antes del primer clic, continuar sin error
+  }
+}
+
+// ══════════════════════════════════════════════════════════
 //  ANIMACIÓN DE VOLTEO
 // ══════════════════════════════════════════════════════════
 function nextPage() {
   if (isAnimating || currentSpread >= TOTAL_SPREADS - 1) return;
+  playPageFlipSound();
   isAnimating = true;
 
   const nextIndex = currentSpread + 1;
@@ -833,6 +980,7 @@ function nextPage() {
 
 function prevPage() {
   if (isAnimating || currentSpread <= 0) return;
+  playPageFlipSound();
   isAnimating = true;
 
   const prevIndex = currentSpread - 1;
@@ -891,6 +1039,7 @@ function updateNav() {
 
 function jumpToSpread(target) {
   if (isAnimating || target === currentSpread) return;
+  playPageFlipSound();
   currentSpread = target;
   renderSpread(currentSpread);
   updateNav();
@@ -970,8 +1119,49 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeSpell();
     closeImageZoom();
+    closeSyncModal();
+    closeNewSpellModal();
+    closePromptResultModal();
+    return;
+  }
+
+  // Navegación de páginas con teclado (flechas o espacio) si no hay modales abiertos ni se escribe
+  const isInputActive = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName);
+  const isAnyModalOpen = document.querySelector('.modal-overlay.active');
+  if (!isInputActive && !isAnyModalOpen) {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+      e.preventDefault();
+      nextPage();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      prevPage();
+    }
   }
 });
+
+// Soporte gestual táctil para pasar páginas en pantallas táctiles y tablets escolares
+let touchStartX = 0;
+let touchStartY = 0;
+document.addEventListener('touchstart', e => {
+  if (e.changedTouches && e.changedTouches[0]) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  if (!e.changedTouches || !e.changedTouches[0]) return;
+  const diffX = e.changedTouches[0].screenX - touchStartX;
+  const diffY = e.changedTouches[0].screenY - touchStartY;
+  // Solo activar si es un swipe horizontal claro (> 50px) y no un scroll vertical
+  if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY) * 1.4) {
+    const isAnyModalOpen = document.querySelector('.modal-overlay.active');
+    if (!isAnyModalOpen) {
+      if (diffX < 0) nextPage();
+      else prevPage();
+    }
+  }
+}, { passive: true });
 
 // ── Copiar ────────────────────────────────────────────────
 async function copyPrompt() {

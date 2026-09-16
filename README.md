@@ -26,6 +26,9 @@ Grimorio interactivo en 3D para estudiantes de 5to y 6to año. Permite explorar 
    - Compatible con sincronización opcional en la nube (Firebase Realtime Database) y respaldo local (`localStorage` + importación/exportación JSON).
 5. **Descarga Directa de Foto Base**:
    - Permite descargar la foto del profesor para utilizarla directamente en generadores de imágenes (Bing Image Creator, Google Gemini, ChatGPT, etc.).
+6. **Efectos de Sonido Acústicos (Web Audio API)**:
+   - Sonido realista de paso de página de pergamino con sutileza mágica generado de forma procedural sin dependencias ni archivos pesados.
+   - Incluye botón de activación/silencio (Mute/Unmute) en la barra superior y navegación por teclado (flechas/espacio) y gestos táctiles.
 
 ---
 
