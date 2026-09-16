@@ -2058,12 +2058,7 @@ body {
 }
 
 .btn-sync {
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-.btn-sync:hover {
-  background: rgba(255, 255, 255, 0.12);
+  display: none !important;
 }
 
 .sync-dot {
