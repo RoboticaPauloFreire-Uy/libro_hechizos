@@ -1,4 +1,4 @@
-﻿# 📖 Libro de Hechizos — Grimorio Mágico de Transformaciones
+# 📖 Libro de Hechizos — Grimorio Mágico de Transformaciones
 ### Colegio Paulo Freire · Robótica y Arte Digital
 
 Grimorio interactivo en 3D para estudiantes de 5to y 6to año. Permite explorar transformaciones de personajes mediante Inteligencia Artificial, aprender a estructurar prompts profesionales utilizando **Las 5 Capas Didácticas**, descargar la foto base de práctica y forjar nuevas páginas de hechizos creadas por los alumnos.
@@ -25,7 +25,7 @@ Grimorio interactivo en 3D para estudiantes de 5to y 6to año. Permite explorar 
    - No requiere servidor ni Node.js.
    - Compatible con sincronización opcional en la nube (Firebase Realtime Database) y respaldo local (`localStorage` + importación/exportación JSON).
 5. **Descarga Directa de Foto Base**:
-   - Permite descargar la foto del profesor para utilizarla directamente en generadores de imágenes (Nano Banana, Bing Image Creator, etc.).
+   - Permite descargar la foto del profesor para utilizarla directamente en generadores de imágenes (Bing Image Creator, Google Gemini, ChatGPT, etc.).
 
 ---
 

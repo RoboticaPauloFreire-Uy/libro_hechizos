@@ -467,11 +467,11 @@ function buildIntroLeft() {
     <div class="page-heading"><span class="orn">⚗️</span>Instrucciones<span class="orn">⚗️</span></div>
     <p class="page-intro-text">Este grimorio contiene <strong>${SPELLS.length} hechizos</strong> que transforman tu rostro en un monstruo usando Inteligencia Artificial.</p>
     ${['Pasá las páginas hasta el hechizo que querés usar.',
-       'Copiá el hechizo con el botón <strong>Copiar Hechizo</strong>.',
-       'Abrí <strong>Nano Banana</strong> o <strong>Bing Image Creator</strong>.',
-       'Subí tu foto de cara (fondo claro, cara de frente).',
-       'Pegá el hechizo copiado en el campo de texto.',
-       '¡Presioná Generar y observá la transformación! 🪄',
+       'Copiás el hechizo con el botón <strong>Copiar Hechizo</strong>.',
+       'Abrís <strong>Bing Image</strong>, <strong>Gemini</strong> o <strong>ChatGPT</strong>.',
+       'Subís tu foto de cara (fondo claro, cara de frente).',
+       'Pegás el hechizo copiado en el campo de texto.',
+       '¡Presionás Generar y observás la transformación! 🪄',
     ].map((t, i) => `
       <div class="intro-step">
         <div class="intro-step-num">${['I','II','III','IV','V','VI'][i]}.</div>
@@ -484,29 +484,45 @@ function buildIntroLeft() {
 function buildIntroRight() {
   return `<div class="text-page">
     <div class="page-heading"><span class="orn">🔧</span>Herramientas<span class="orn">🔧</span></div>
-    <p class="page-intro-text">Usá estas herramientas gratuitas de IA para invocar la transformación:</p>
-    <a href="https://www.nanobananai.app/" target="_blank" rel="noopener" class="tool-card">
-      <span class="tool-card-icon">🍌</span>
-      <span class="tool-card-name">Nano Banana</span>
-      <span class="tool-card-desc">nanobananai.app — Subí tu foto, pegá el hechizo y generá</span>
-    </a>
-    <a href="https://www.bing.com/images/create" target="_blank" rel="noopener" class="tool-card">
-      <span class="tool-card-icon">🎨</span>
-      <span class="tool-card-name">Bing Image Creator</span>
-      <span class="tool-card-desc">bing.com/images/create — Gratuito con cuenta Microsoft</span>
-    </a>
+    <p class="page-intro-text" style="margin-bottom:6px;">Usá estas herramientas de IA para invocar la transformación:</p>
+    
+    <div class="tool-cards-list">
+      <a href="https://www.bing.com/images/create" target="_blank" rel="noopener" class="tool-card">
+        <span class="tool-card-icon">🎨</span>
+        <div class="tool-card-info">
+          <span class="tool-card-name">Bing Image Creator</span>
+          <span class="tool-card-desc">bing.com/images/create — DALL·E 3 (cuenta Microsoft)</span>
+        </div>
+      </a>
 
-    <div style="margin-top:6px;background:rgba(41,128,185,0.08);border:1px solid rgba(41,128,185,0.3);border-radius:6px;padding:8px 10px;text-align:center;">
-      <span style="font-family:var(--font-heading);font-size:.68rem;color:#1a5276;font-weight:700;display:block;margin-bottom:3px;">
+      <a href="https://gemini.google.com/" target="_blank" rel="noopener" class="tool-card">
+        <span class="tool-card-icon">✨</span>
+        <div class="tool-card-info">
+          <span class="tool-card-name">Google Gemini</span>
+          <span class="tool-card-desc">gemini.google.com — Adjuntá la foto y pegá el prompt</span>
+        </div>
+      </a>
+
+      <a href="https://chatgpt.com/" target="_blank" rel="noopener" class="tool-card">
+        <span class="tool-card-icon">🤖</span>
+        <div class="tool-card-info">
+          <span class="tool-card-name">ChatGPT</span>
+          <span class="tool-card-desc">chatgpt.com — Adjuntá la foto y pegá el hechizo</span>
+        </div>
+      </a>
+    </div>
+
+    <div style="margin-top:6px;background:rgba(41,128,185,0.08);border:1px solid rgba(41,128,185,0.3);border-radius:6px;padding:6px 10px;text-align:center;">
+      <span style="font-family:var(--font-heading);font-size:.68rem;color:#1a5276;font-weight:700;display:block;margin-bottom:2px;">
         📸 ¿Querés practicar? Usá la foto del profe:
       </span>
-      <button class="topbar-btn btn-download-profe" onclick="downloadBasePhoto()" style="font-size:.72rem;padding:4px 10px;margin:2px auto 0;">
+      <button class="topbar-btn btn-download-profe" onclick="downloadBasePhoto()" style="font-size:.70rem;padding:3px 10px;margin:2px auto 0;">
         📥 Descargar Foto Base de Ejemplo
       </button>
     </div>
 
-    <div style="text-align:center;margin-top:auto;padding:6px 0;">
-      <div style="font-size:1.6rem;margin-bottom:2px;">🧙‍♀️</div>
+    <div style="text-align:center;margin-top:auto;padding:4px 0;">
+      <div style="font-size:1.4rem;margin-bottom:2px;">🧙‍♀️</div>
       <div style="font-family:var(--font-heading);font-size:.68rem;color:var(--ink-faded);letter-spacing:.08em;text-transform:uppercase;">
         Pasá la página para entender los hechizos →
       </div>
@@ -523,23 +539,21 @@ function buildPromptGuideLeft() {
     <div class="spell-section-label" style="margin-top:2px;">🎯 Los 3 Objetivos de este Prompt</div>
 
     <div class="intro-step" style="padding:4px 0;">
-      <div class="intro-step-num" style="color:#27ae60;">1.</div>
-      <div class="intro-step-text"><strong>Conservar tu rostro:</strong> Que el alumno siga siendo reconocible debajo de las escamas o el pelaje.</div>
+      <div class="intro-step-num" style="color:#2980b9;">1.</div>
+      <div class="intro-step-text"><strong>Conservar la identidad:</strong> Mantener los rasgos principales de tu cara reconocibles.</div>
     </div>
 
     <div class="intro-step" style="padding:4px 0;">
-      <div class="intro-step-num" style="color:#e67e22;">2.</div>
-      <div class="intro-step-text"><strong>Detallar la mutación:</strong> Describir con exactitud ojos brillantes, colmillos, cuernos, humo o texturas.</div>
+      <div class="intro-step-num" style="color:#8e44ad;">2.</div>
+      <div class="intro-step-text"><strong>Transformación monstruosa:</strong> Textura, colmillos, ojos o cuernos según el conjuro.</div>
     </div>
 
     <div class="intro-step" style="padding:4px 0;">
-      <div class="intro-step-num" style="color:#8e44ad;">3.</div>
-      <div class="intro-step-text"><strong>Crear atmósfera cinematográfica:</strong> Iluminación dramática, fuego, sombras y estética de fantasía.</div>
+      <div class="intro-step-num" style="color:#d35400;">3.</div>
+      <div class="intro-step-text"><strong>Atmósfera épica:</strong> Fondos oscuros, niebla, fuego y luces cinematográficas.</div>
     </div>
 
-    <p class="page-tip" style="margin-top:auto;font-size:.7rem;">
-      💡 <em>"La IA no adivina: cuanto más clara y detallada sea tu descripción, más impresionante será la transformación."</em>
-    </p>
+    <p class="page-intro-text" style="margin-top:auto;font-size:.73rem;opacity:.6;">✦ La IA sigue instrucciones claras: mientras más específico el hechizo, mejor la magia ✦</p>
   </div>`;
 }
 
@@ -550,7 +564,7 @@ function buildPromptGuideRight() {
     <div style="background:rgba(192,57,43,0.08);border-left:3px solid #c0392b;padding:6px 10px;border-radius:0 6px 6px 0;margin-top:2px;">
       <strong style="font-family:var(--font-heading);font-size:.76rem;color:#8b1a2a;display:block;">❌ ¿Por qué NO usar un Rol largo?</strong>
       <p style="font-family:var(--font-ui);font-size:.73rem;color:var(--ink-mid);margin:0;line-height:1.4;">
-        En IAs de imágenes como <em>Nano Banana</em> o <em>Bing</em>, decirle <em>"Actúa como un pintor digital..."</em> confunde al generador: ¡podría dibujar a una persona pintando en un caballete en vez de transformar tu rostro!
+        En IAs generativas como <em>Bing Image</em>, <em>Gemini</em> o <em>ChatGPT</em>, decirle <em>"Actúa como un pintor digital..."</em> confunde al generador: ¡podría dibujar a una persona pintando en un caballete en vez de transformar tu rostro!
       </p>
     </div>
 
