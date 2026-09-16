@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📖 Libro de Hechizos — Grimorio Mágico</title>
+  <meta name="description" content="Grimorio digital interactivo. Pasá las páginas y elegí tu hechizo de transformación." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
+  <!-- Firebase Compat CDN para sincronización en tiempo real sin servidor Node en GitHub Pages -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+</head>
+<body>
+
+  <!-- Partículas flotantes -->
+  <div id="particles" class="particles" aria-hidden="true"></div>
+
+  <!-- Barra de Herramientas Mágica Superior -->
+  <header class="magic-topbar">
+    <div class="topbar-brand">
+      <span class="topbar-logo">✨</span>
+      <span class="topbar-title">Grimorio Mágico</span>
+      <span class="topbar-school">Colegio Paulo Freire</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="topbar-btn btn-download-profe" onclick="downloadBasePhoto()" title="Descargar la foto original del profesor para usar en Nano Banana o Bing">
+        📥 Descargar Foto Profe
+      </button>
+      <button class="topbar-btn btn-new-spell" onclick="openNewSpellModal()" title="Crear un nuevo hechizo completando las 5 capas">
+        ✨ Forjar Hechizo (Alumnos)
+      </button>
+      <button class="topbar-btn btn-sync" id="syncStatusBtn" onclick="openSyncModal()" title="Estado de sincronización en red / nube">
+        <span class="sync-dot" id="syncDot"></span> <span id="syncStatusLabel">Sincronización</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Escena principal -->
+  <div class="scene">
+
+    <!-- Wrapper del libro -->
+    <div class="book-wrapper">
+
+      <!-- El libro -->
+      <div class="book-scene-3d">
+        <div class="book" id="book">
+
+          <!-- Cubierta decorativa exterior izquierda -->
+          <div class="book-outer-cover book-outer-left"></div>
+
+          <!-- Profundidad de páginas lado izquierdo -->
+          <div class="pages-depth pages-depth-left"></div>
+
+          <!-- PÁGINA IZQUIERDA (visible estática) -->
+          <div class="book-page left-page" onclick="handlePageClick(event,'prev')" title="Página anterior">
+            <div class="page-top-ornament left"></div>
+            <div class="page-inner" id="pageLeft"></div>
+            <div class="page-footer">
+              <div class="page-footer-line"></div>
+              <span class="page-num" id="pageNumL"></span>
+              <div class="page-footer-line"></div>
+            </div>
+            <!-- Logo escolar en esquina inferior izquierda -->
+            <img src="img/logo-colegio.png" alt="Colegio Paulo Freire" class="page-corner-logo corner-logo-left" />
+          </div>
+
+          <!-- LOMO DEL LIBRO -->
+          <div class="book-spine">
+            <div class="spine-ornament">✦</div>
+          </div>
+
+          <!-- PÁGINA DERECHA (visible estática) -->
+          <div class="book-page right-page" onclick="handlePageClick(event,'next')" title="Página siguiente">
+            <div class="page-top-ornament right"></div>
+            <div class="page-inner" id="pageRight"></div>
+            <div class="page-footer">
+              <div class="page-footer-line"></div>
+              <span class="page-num" id="pageNumR"></span>
+              <div class="page-footer-line"></div>
+            </div>
+            <!-- Logo escolar en esquina inferior derecha -->
+            <img src="img/logo-colegio.png" alt="Colegio Paulo Freire" class="page-corner-logo corner-logo-right" />
+          </div>
+
+          <!-- Profundidad de páginas lado derecho -->
+          <div class="pages-depth pages-depth-right"></div>
+
+          <!-- Cubierta decorativa exterior derecha -->
+          <div class="book-outer-cover book-outer-right"></div>
+
+          <!-- CAPA DE ANIMACIÓN DE VOLTEO -->
+          <div class="flip-layer" id="flipLayer">
+            <div class="flip-face flip-front" id="flipFront"></div>
+            <div class="flip-face flip-back" id="flipBack"></div>
+          </div>
+
+          <!-- Zona de click: esquina derecha inferior (siguiente) -->
+          <button
+            class="page-corner-btn corner-next"
+            id="cornerNext"
+            onclick="nextPage()"
+            aria-label="Página siguiente"
+            title="Siguiente página"
+          >
+            <span class="corner-triangle"></span>
+            <span class="corner-label">▶</span>
+          </button>
+
+          <!-- Zona de click: esquina izquierda inferior (anterior) -->
+          <button
+            class="page-corner-btn corner-prev"
+            id="cornerPrev"
+            onclick="prevPage()"
+            aria-label="Página anterior"
+            title="Página anterior"
+          >
+            <span class="corner-triangle left"></span>
+            <span class="corner-label">◀</span>
+          </button>
+
+        </div><!-- /.book -->
+      </div><!-- /.book-scene-3d -->
+
+      <!-- Navegación: solo puntos -->
+      <nav class="book-nav" aria-label="Navegación del libro">
+        <div class="nav-center" style="width:100%;">
+          <span class="nav-info" id="navInfo"></span>
+          <div class="nav-dots" id="navDots"></div>
+        </div>
+      </nav>
+
+    </div><!-- /.book-wrapper -->
+  </div><!-- /.scene -->
+
+
+  <!-- ══════════════════════════════════════════════════════
+       ADVERTENCIA MÁGICA ESCOLAR (Pacto de Respeto)
+  ══════════════════════════════════════════════════════ -->
+  <div
+    id="warningModal"
+    class="warning-overlay active"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="warningTitle"
+  >
+    <div class="parchment-scroll">
+      <div class="scroll-seal">📜</div>
+      
+      <div class="scroll-header">
+        <span class="scroll-badge">✦ PROYECTO ESCOLAR · ARTE DIGITAL ✦</span>
+        <h2 id="warningTitle" class="scroll-title">Pacto del Aprendiz de Mago</h2>
+        <div class="scroll-divider">◆ ✦ ◆</div>
+      </div>
+
+      <div class="scroll-body">
+        <p class="scroll-intro">
+          Antes de abrir las páginas de este grimorio secreto, todo aprendiz debe realizar una solemne promesa:
+        </p>
+
+        <div class="rule-box">
+          <span class="rule-icon">🛡️</span>
+          <div>
+            <strong>Regla de Oro:</strong>
+            <p>La magia y la inteligencia artificial de este libro fueron creadas <em>exclusivamente para aprender, crear y divertirse</em>.</p>
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <span class="rule-icon">✨</span>
+          <div>
+            <strong>Cuidado y Respeto:</strong>
+            <p><strong>Bajo ningún motivo</strong> se utilizarán estos hechizos para burlarse, ofender o hacer sentir mal a ningún compañero o compañera.</p>
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <span class="rule-icon">🤝</span>
+          <div>
+            <strong>El Verdadero Poder:</strong>
+            <p>La verdadera magia de la tecnología consiste en divertirnos juntos y compartir nuestras creaciones con respeto y compañerismo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-footer">
+        <button id="acceptWarningBtn" class="scroll-btn" onclick="acceptPact()">
+          🪄 Acepto el Juramento y Entro al Grimorio
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════
+       MODAL DEL HECHIZO
+  ══════════════════════════════════════════════════════ -->
+  <div
+    id="spellModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <div class="modal-box">
+
+      <!-- Cabecera -->
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeSpell()" aria-label="Cerrar">✕</button>
+        <span class="modal-icon-large" id="modalIcon">🔮</span>
+        <h2 class="modal-title" id="modalTitle">Hechizo</h2>
+        <p class="modal-subtitle-latin" id="modalSubtitle"></p>
+      </div>
+
+      <!-- Cuerpo -->
+      <div class="modal-body">
+
+        <!-- Conjuro -->
+        <div class="incantation-box" id="modalIncantation"></div>
+
+        <!-- Prompt -->
+        <div class="prompt-block">
+          <div class="prompt-header">
+            <span class="prompt-label">🔮 Prompt — pegalo en la IA</span>
+          </div>
+          <div class="prompt-text" id="modalPrompt"></div>
+        </div>
+
+        <!-- Botón COPIAR (grande y principal) -->
+        <button id="copyBtn" class="copy-btn" onclick="copyPrompt()">
+          📋 Copiar Prompt
+        </button>
+
+
+        <!-- Consejo pequeño -->
+        <div class="tip-box">
+          <span class="tip-icon">💡 </span><span id="modalTips"></span>
+        </div>
+
+      </div><!-- /.modal-body -->
+    </div><!-- /.modal-box -->
+  </div><!-- /#spellModal -->
+
+
+  <!-- ══════════════════════════════════════════════════════
+       MODAL DE VISTA AMPLIADA DE LA IMAGEN (ZOOM)
+  ══════════════════════════════════════════════════════ -->
+  <div
+    id="imageZoomModal"
+    class="image-zoom-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Vista ampliada de la transformación"
+    onclick="closeImageZoom()"
+  >
+    <div class="image-zoom-container" onclick="event.stopPropagation()">
+      <button class="image-zoom-close" onclick="closeImageZoom()" aria-label="Cerrar vista ampliada">✕</button>
+      <div class="image-zoom-badge" id="zoomBadge">✨ Transformación Mágica ✨</div>
+      <img id="zoomedImg" src="" alt="Transformación ampliada" class="zoomed-image" />
+      <div class="image-zoom-caption" id="zoomCaption"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       MODAL DE FORJAR NUEVO HECHIZO POR EQUIPOS (5 CAPAS)
+  ══════════════════════════════════════════════════════ -->
+  <div
+    id="newSpellModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="newSpellTitle"
+    onclick="closeNewSpellModal(event)"
+  >
+    <div class="modal-box new-spell-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeNewSpellModal()" aria-label="Cerrar modal">✕</button>
+
+      <!-- Cabecera del modal -->
+      <div class="modal-header">
+        <div class="modal-badge">✦ PROYECTO ESCOLAR · CREACIÓN DEL ALUMNO/A ✦</div>
+        <h2 class="modal-title" id="newSpellTitle">✨ Forjar Nueva Hoja de Hechizo</h2>
+        <div class="modal-subtitle-latin">Las 5 Capas del Prompt y Transformación con IA</div>
+      </div>
+
+      <!-- Cuerpo con formulario -->
+      <form id="newSpellForm" class="modal-body new-spell-body" onsubmit="handleCreateSpell(event)">
+        
+        <!-- Fila 1: Datos del Alumno y Criatura -->
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="nsStudentName">👤 Nombre del Alumno/a:</label>
+            <input type="text" id="nsStudentName" class="form-input" placeholder="Ej: Juan Pérez (o Juan y Sofía)" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="nsMonsterName">👹 Nombre del Monstruo / Hechizo:</label>
+            <input type="text" id="nsMonsterName" class="form-input" placeholder="Ej: Gárgola de Obsidiana" required />
+          </div>
+        </div>
+
+        <div class="form-grid-3">
+          <div class="form-group">
+            <label class="form-label" for="nsIcon">🔮 Ícono (Emoji):</label>
+            <input type="text" id="nsIcon" class="form-input" value="🗿" maxlength="2" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="nsColor">🎨 Color Mágico:</label>
+            <input type="color" id="nsColor" class="form-input-color" value="#8e44ad" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="nsDiff">⭐ Dificultad:</label>
+            <select id="nsDiff" class="form-input">
+              <option value="⭐">⭐ Fácil</option>
+              <option value="⭐⭐">⭐⭐ Intermedio</option>
+              <option value="⭐⭐⭐" selected>⭐⭐⭐ Avanzado</option>
+              <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ Maestro</option>
+              <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ Legendario</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="nsIncantation">🗣️ Conjuro Mágico (en latín o frase de poder):</label>
+          <input type="text" id="nsIncantation" class="form-input" placeholder="Ej: ¡Saxum Alatum Vivificatum! ¡Que la piedra cobre vida!" required />
+        </div>
+
+        <div class="form-divider-title">
+          <span>📐 LAS 5 CAPAS DEL PROMPT (DIDÁCTICA)</span>
+        </div>
+
+        <!-- Las 5 Capas -->
+        <div class="layers-form-container">
+          
+          <!-- Capa 1 -->
+          <div class="layer-field-card layer-1-card">
+            <div class="layer-field-header">
+              <span class="layer-tag layer-tag-1">Capa 1 · Estilo y Técnica</span>
+              <span class="layer-hint">¿Qué tipo de arte es? Iluminación, lente de cine, calidad.</span>
+            </div>
+            <textarea id="nsLayer1" class="form-textarea" rows="2" placeholder="Ej: Una ilustración cinematográfica de fantasía oscura y terror, muy detallada, iluminación dramática con sombras profundas..." required oninput="updatePromptLivePreview()"></textarea>
+          </div>
+
+          <!-- Capa 2 -->
+          <div class="layer-field-card layer-2-card">
+            <div class="layer-field-header">
+              <span class="layer-tag layer-tag-2">Capa 2 · Ancla de Identidad</span>
+              <span class="layer-hint">Regla de oro: mantener reconocible al profe o alumno.</span>
+            </div>
+            <textarea id="nsLayer2" class="form-textarea" rows="2" placeholder="Ej: preservando estrictamente su rostro natural, su edad y sus facciones faciales reconocibles bajo la transformación..." required oninput="updatePromptLivePreview()"></textarea>
+          </div>
+
+          <!-- Capa 3 -->
+          <div class="layer-field-card layer-3-card">
+            <div class="layer-field-header">
+              <span class="layer-tag layer-tag-3">Capa 3 · Zonas de Mutación</span>
+              <span class="layer-hint">Piel, ojos, dientes, cuernos, alas, orejas, cabello.</span>
+            </div>
+            <textarea id="nsLayer3" class="form-textarea" rows="2" placeholder="Ej: Su piel se vuelve de piedra agrietada grisácea con sutiles vetas de fuego, sus ojos brillan con luz ámbar ardiente y pequeños cuernos curvados emergen en su frente..." required oninput="updatePromptLivePreview()"></textarea>
+          </div>
+
+          <!-- Capa 4 -->
+          <div class="layer-field-card layer-4-card">
+            <div class="layer-field-header">
+              <span class="layer-tag layer-tag-4">Capa 4 · Vestuario y Postura</span>
+              <span class="layer-hint">Atuendo adaptado y pose corporal original.</span>
+            </div>
+            <textarea id="nsLayer4" class="form-textarea" rows="2" placeholder="Ej: Viste una túnica rústica y oscura desgastada con polvo de roca sobre los hombros, manteniendo su postura original de frente..." required oninput="updatePromptLivePreview()"></textarea>
+          </div>
+
+          <!-- Capa 5 -->
+          <div class="layer-field-card layer-5-card">
+            <div class="layer-field-header">
+              <span class="layer-tag layer-tag-5">Capa 5 · Iluminación y Entorno</span>
+              <span class="layer-hint">Fondo, clima, hora del día, luces de la escena.</span>
+            </div>
+            <textarea id="nsLayer5" class="form-textarea" rows="2" placeholder="Ej: Fondo de un antiguo templo gótico en ruinas bajo una noche tormentosa de luna llena, con relámpagos lejanos y niebla baja..." required oninput="updatePromptLivePreview()"></textarea>
+          </div>
+
+        </div>
+
+        <!-- Botón para generar y mostrar el modal del prompt -->
+        <div class="generate-prompt-action-box">
+          <button type="button" class="btn-generate-prompt-modal" onclick="generateAndShowPromptModal()">
+            🪄 Ensamblar las 5 Capas y Generar Prompt
+          </button>
+        </div>
+
+        <!-- Vista previa en vivo del prompt ensamblado -->
+        <div class="prompt-live-box">
+          <div class="prompt-live-header">
+            <span class="prompt-live-title">🔮 Vista Rápida del Prompt Ensamblado</span>
+            <button type="button" class="btn-copy-live" onclick="copyLivePrompt()">📋 Copiar</button>
+          </div>
+          <div class="prompt-live-text" id="nsLivePromptPreview">Completá las 5 capas arriba para ver tu conjuro ensamblado...</div>
+        </div>
+
+        <div class="form-divider-title">
+          <span>📸 FOTO BASE Y RESULTADO GENERADO</span>
+        </div>
+
+        <!-- Descargar foto del profe y subir resultado -->
+        <div class="upload-comparison-grid">
+          
+          <div class="upload-col before-col">
+            <span class="upload-col-label">1. FOTO BASE DEL PROFE</span>
+            <img src="img/foto-antes.png" alt="Foto Base" class="upload-sample-thumb" />
+            <button type="button" class="btn-download-thumb" onclick="downloadBasePhoto()">
+              📥 Descargar Foto Base
+            </button>
+            <p class="upload-thumb-note">Subí esta foto a Nano Banana o Bing junto con tu prompt ensamblado.</p>
+          </div>
+
+          <div class="upload-arrow-col">➜</div>
+
+          <div class="upload-col after-col">
+            <span class="upload-col-label">2. SUBIR RESULTADO DE LA IA</span>
+            <div class="file-dropzone" id="dropzone" onclick="document.getElementById('nsImageFile').click()">
+              <input type="file" id="nsImageFile" accept="image/*" style="display:none;" onchange="handleImageSelected(event)" required />
+              <div id="dropzoneContent">
+                <div class="dropzone-icon">🖼️</div>
+                <div class="dropzone-text">Hacé clic o arrastrá aquí la imagen generada</div>
+                <div class="dropzone-hint">(JPG, PNG, WebP)</div>
+              </div>
+              <img id="imagePreviewThumb" src="" alt="Vista previa" class="preview-uploaded-img" style="display:none;" />
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Botón de guardar -->
+        <div class="modal-submit-row">
+          <button type="submit" class="btn-inscribe-spell" id="btnSubmitSpell">
+            ✨ Inscribir Hechizo en el Grimorio y Publicar Hoja
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       MODAL DE SINCRONIZACIÓN Y RESPALDO (FIREBASE / JSON)
+  ══════════════════════════════════════════════════════ -->
+  <div
+    id="syncModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="syncModalTitle"
+    onclick="closeSyncModal(event)"
+  >
+    <div class="modal-box sync-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeSyncModal()" aria-label="Cerrar modal">✕</button>
+
+      <div class="modal-header">
+        <div class="modal-badge">✦ CONECTIVIDAD MULTI-MÁQUINA ✦</div>
+        <h2 class="modal-title" id="syncModalTitle">🌐 Sincronización en Tiempo Real</h2>
+        <div class="modal-subtitle-latin">Para que todas las máquinas vean los nuevos monstruos</div>
+      </div>
+
+      <div class="modal-body sync-modal-body">
+        
+        <div class="sync-status-card" id="syncCardStatus">
+          <div class="sync-status-icon" id="syncStatusIcon">🟢</div>
+          <div class="sync-status-info">
+            <strong id="syncStatusHeading">Modo Nube: Activo</strong>
+            <p id="syncStatusDesc">Cada monstruo nuevo que cree cualquier equipo se sincronizará automáticamente con todas las computadoras.</p>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:12px;">
+          <label class="form-label" for="fbDbUrl">URL de Firebase Realtime Database (opcional / personalizable):</label>
+          <div style="display:flex;gap:8px;">
+            <input type="text" id="fbDbUrl" class="form-input" style="flex:1;" placeholder="https://tu-proyecto-default-rtdb.firebaseio.com" />
+            <button type="button" class="btn-save-config" onclick="saveFirebaseConfig()">💾 Guardar</button>
+          </div>
+          <small style="color:rgba(255,255,255,0.45);font-size:.72rem;display:block;margin-top:4px;">
+            Dejar vacío para usar la base de datos comunitaria de la clase, o pegar la URL de tu proyecto de Firebase.
+          </small>
+        </div>
+
+        <div class="sync-tools-grid">
+          <div class="sync-tool-card">
+            <h4>📥 Respaldar / Exportar</h4>
+            <p>Descargá un archivo JSON con todos los hechizos creados por los equipos para subirlos a GitHub.</p>
+            <button type="button" class="btn-export-json" onclick="exportSpellsJSON()">📤 Descargar Hechizos (JSON)</button>
+          </div>
+
+          <div class="sync-tool-card">
+            <h4>📤 Cargar / Importar</h4>
+            <p>Cargá un archivo JSON de hechizos previamente guardado en cualquier máquina.</p>
+            <input type="file" id="importJsonInput" accept=".json" style="display:none;" onchange="importSpellsJSON(event)" />
+            <button type="button" class="btn-import-json" onclick="document.getElementById('importJsonInput').click()">📥 Cargar Archivo JSON</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+       MODAL DE PROMPT GENERADO A PARTIR DE LAS 5 CAPAS
+  ══════════════════════════════════════════════════════ -->
+  <div
+    id="promptResultModal"
+    class="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="promptResultTitle"
+    onclick="closePromptResultModal(event)"
+    style="z-index: 2800;"
+  >
+    <div class="modal-box prompt-result-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closePromptResultModal()" aria-label="Cerrar modal">✕</button>
+
+      <div class="modal-header">
+        <div class="modal-badge">✦ LAS 5 CAPAS ENSAMBLADAS CON ÉXITO ✦</div>
+        <span class="modal-icon-large">🔮</span>
+        <h2 class="modal-title" id="promptResultTitle">Tu Prompt Mágico Generado</h2>
+        <p class="modal-subtitle-latin" id="promptResultAuthor">Listo para copiar y usar en la Inteligencia Artificial</p>
+      </div>
+
+      <div class="modal-body">
+        
+        <div class="prompt-block">
+          <div class="prompt-header">
+            <span class="prompt-label">📜 Fórmula del Conjuro (5 Capas Unidas)</span>
+          </div>
+          <div class="prompt-text" id="promptResultContent"></div>
+        </div>
+
+        <!-- Botón grande para copiar prompt -->
+        <button id="btnCopyGeneratedPrompt" class="copy-btn copy-btn-magic" onclick="copyGeneratedPrompt()">
+          📋 Copiar Prompt al Portapapeles
+        </button>
+
+        <div class="tip-box">
+          <span class="tip-icon">💡 </span>
+          <span><strong>Pasos siguientes:</strong> 1) Copiá este prompt. 2) Descargá la foto del profe. 3) Andá a <em>Nano Banana</em> o <em>Bing</em>, subí la foto y pegá este prompt. 4) Descargá el resultado y subilo a la hoja.</span>
+        </div>
+
+        <button type="button" class="btn-ready-continue" onclick="closePromptResultModal()">
+          ✔️ Ya lo copié, volver al formulario para subir mi imagen →
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="spells.js"></script>
+</body>
+</html>
