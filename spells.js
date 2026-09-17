@@ -1772,21 +1772,26 @@ function loadLocalCustomSpells() {
   rebuildSpreads();
 }
 
-// ── Sincronización en la Nube (Firebase Realtime DB) ───────
-let firebaseDb = null;
+// ── Sincronización en la Nube (Firebase Cloud Firestore) ───
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyDn2KHTQyEXs-RQgcdoZ4UqPFl9wVAhUBU",
+  authDomain: "halloween-76ac1.firebaseapp.com",
+  projectId: "halloween-76ac1",
+  storageBucket: "halloween-76ac1.firebasestorage.app",
+  messagingSenderId: "944917058303",
+  appId: "1:944917058303:web:2f134057bd12b4afb3b2ca"
+};
+
+let firestoreDb = null;
 
 function initCloudSync() {
-  const customUrl = localStorage.getItem('grimorio_fb_url') || 'https://grimorio-hechizos-freire-default-rtdb.firebaseio.com';
-  const urlInput = document.getElementById('fbDbUrl');
-  if (urlInput) urlInput.value = customUrl;
-
   try {
     if (typeof firebase !== 'undefined') {
       if (!firebase.apps.length) {
-        firebase.initializeApp({ databaseURL: customUrl });
+        firebase.initializeApp(FIREBASE_CONFIG);
       }
-      firebaseDb = firebase.database();
-      updateSyncUI(true, 'Nube Activa');
+      firestoreDb = firebase.firestore();
+      updateSyncUI(true, 'Nube Activa (Firestore)');
       listenToFirebase();
     } else {
       updateSyncUI(false, 'Modo Local');
@@ -1798,30 +1803,37 @@ function initCloudSync() {
 }
 
 function listenToFirebase() {
-  if (!firebaseDb) return;
+  if (!firestoreDb) return;
   try {
-    const spellsRef = firebaseDb.ref('custom_spells');
-    spellsRef.on('child_added', (snapshot) => {
-      const spell = snapshot.val();
-      if (spell && spell.id) {
-        saveSpellLocal(spell);
-        addNewSpellToBook(spell, false);
-      }
+    firestoreDb.collection('custom_spells').onSnapshot((snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+        if (change.type === 'added' || change.type === 'modified') {
+          const spell = change.doc.data();
+          if (spell && spell.id) {
+            saveSpellLocal(spell);
+            addNewSpellToBook(spell, false);
+          }
+        }
+      });
+      updateSyncUI(true, 'Nube Activa (En Vivo)');
     }, (err) => {
-      console.warn('Aviso de conexión Firebase:', err);
+      console.warn('Aviso de conexión Firestore:', err);
       updateSyncUI(false, 'Modo Local');
     });
   } catch (e) {
-    console.warn('Error escuchando Firebase:', e);
+    console.warn('Error escuchando Firestore:', e);
   }
 }
 
 function saveSpellToCloud(spell) {
-  if (!firebaseDb) return;
+  if (!firestoreDb) return;
   try {
-    firebaseDb.ref('custom_spells/' + spell.id).set(spell);
+    const cleanSpell = JSON.parse(JSON.stringify(spell));
+    firestoreDb.collection('custom_spells').doc(String(spell.id)).set(cleanSpell)
+      .then(() => console.log('✨ Hechizo sincronizado en Firestore exitosamente'))
+      .catch((err) => console.warn('Error guardando en Firestore:', err));
   } catch (e) {
-    console.warn('No se pudo enviar a Firebase:', e);
+    console.warn('No se pudo enviar a Firestore:', e);
   }
 }
 
@@ -1835,11 +1847,11 @@ function updateSyncUI(isConnected, text) {
   if (dot) dot.style.background = isConnected ? '#2ecc71' : '#e67e22';
   if (label) label.textContent = text;
   if (cardIcon) cardIcon.textContent = isConnected ? '🟢' : '🟡';
-  if (cardHeading) cardHeading.textContent = isConnected ? 'Sincronización en la Nube Activa' : 'Modo Local (Respaldo en esta máquina)';
+  if (cardHeading) cardHeading.textContent = isConnected ? 'Sincronización en la Nube Activa (halloween-76ac1)' : 'Modo Local (Respaldo en esta máquina)';
   if (cardDesc) {
     cardDesc.textContent = isConnected
-      ? 'Los nuevos monstruos que agregue cualquier equipo se sincronizan automáticamente entre todas las computadoras en tiempo real.'
-      : 'Tus hechizos se guardan de forma segura en esta máquina. Podés exportar el archivo JSON o ingresar la URL de tu Firebase.';
+      ? 'Los nuevos hechizos que agregue cualquier alumno se sincronizan automáticamente entre todas las computadoras en tiempo real.'
+      : 'Tus hechizos se guardan de forma segura en esta máquina. Podés exportar el archivo JSON o verificar tu conexión a internet.';
   }
 }
 
@@ -1857,17 +1869,6 @@ function closeSyncModal(e) {
   if (modal) {
     modal.classList.remove('active');
     document.body.style.overflow = '';
-  }
-}
-
-function saveFirebaseConfig() {
-  const input = document.getElementById('fbDbUrl');
-  if (!input) return;
-  const url = input.value.trim();
-  if (url) {
-    localStorage.setItem('grimorio_fb_url', url);
-    alert('Configuración guardada. Recargando para conectar a la nueva base de datos...');
-    location.reload();
   }
 }
 

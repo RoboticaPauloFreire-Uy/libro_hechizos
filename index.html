@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=UnifrakturMaguntia&display=swap" rel="stylesheet" />
   <!-- Firebase Compat CDN para sincronización en tiempo real sin servidor Node en GitHub Pages -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -480,14 +480,11 @@
           </div>
         </div>
 
-        <div class="form-group" style="margin-top:12px;">
-          <label class="form-label" for="fbDbUrl">URL de Firebase Realtime Database (opcional / personalizable):</label>
-          <div style="display:flex;gap:8px;">
-            <input type="text" id="fbDbUrl" class="form-input" style="flex:1;" placeholder="https://tu-proyecto-default-rtdb.firebaseio.com" />
-            <button type="button" class="btn-save-config" onclick="saveFirebaseConfig()">💾 Guardar</button>
-          </div>
-          <small style="color:rgba(255,255,255,0.45);font-size:.72rem;display:block;margin-top:4px;">
-            Dejar vacío para usar la base de datos comunitaria de la clase, o pegar la URL de tu proyecto de Firebase.
+        <div class="form-group" style="margin-top:12px;background:rgba(201,168,76,0.1);padding:10px 14px;border-radius:6px;border:1px solid rgba(201,168,76,0.3);">
+          <div style="font-family:var(--font-heading);font-size:0.75rem;color:#e8c97a;font-weight:700;">🔥 PROYECTO FIREBASE CONECTADO</div>
+          <div style="font-size:0.8rem;color:#fff;margin-top:2px;"><strong>halloween-76ac1</strong> · Cloud Firestore</div>
+          <small style="color:rgba(255,255,255,0.6);font-size:.72rem;display:block;margin-top:4px;">
+            Sincronización comunitaria activa para todos los alumnos del Colegio Paulo Freire en tiempo real.
           </small>
         </div>
 
