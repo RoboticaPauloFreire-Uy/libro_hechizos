@@ -527,17 +527,17 @@ function buildIntroRight() {
     </div>
 
     <div style="margin-top:6px;background:rgba(41,128,185,0.08);border:1px solid rgba(41,128,185,0.3);border-radius:6px;padding:6px 10px;text-align:center;">
-      <span style="font-family:var(--font-heading);font-size:.68rem;color:#1a5276;font-weight:700;display:block;margin-bottom:2px;">
+      <span style="font-family:var(--font-heading);font-size:.78rem;color:#1a5276;font-weight:700;display:block;margin-bottom:3px;">
         📸 ¿Querés practicar? Usá la foto del profe:
       </span>
-      <button class="topbar-btn btn-download-profe" onclick="downloadBasePhoto()" style="font-size:.70rem;padding:3px 10px;margin:2px auto 0;">
+      <button class="topbar-btn btn-download-profe" onclick="downloadBasePhoto()" style="font-size:.78rem;padding:4px 12px;margin:2px auto 0;">
         📥 Descargar Foto Base de Ejemplo
       </button>
     </div>
 
     <div style="text-align:center;margin-top:auto;padding:4px 0;">
-      <div style="font-size:1.4rem;margin-bottom:2px;">🧙‍♀️</div>
-      <div style="font-family:var(--font-heading);font-size:.68rem;color:var(--ink-faded);letter-spacing:.08em;text-transform:uppercase;">
+      <div style="font-size:1.5rem;margin-bottom:2px;">🧙‍♀️</div>
+      <div style="font-family:var(--font-heading);font-size:.78rem;color:var(--ink-faded);letter-spacing:.08em;text-transform:uppercase;">
         Pasá la página para entender los hechizos →
       </div>
     </div>
@@ -546,52 +546,54 @@ function buildIntroRight() {
 
 // ── GUÍA DIDÁCTICA: ¿QUÉ ES UN PROMPT Y OBJETIVOS? ───────
 function buildPromptGuideLeft() {
-  return `<div class="text-page">
+  return `<div class="text-page layers-guide-page">
     <div class="page-heading"><span class="orn">🧠</span>¿Qué es un Prompt?<span class="orn">🧠</span></div>
-    <p class="page-intro-text">Un <strong>prompt</strong> es la <em>fórmula mágica</em>: la instrucción escrita que le dice a la Inteligencia Artificial exactamente qué transformar.</p>
+    <p class="page-intro-text">Un <strong>prompt</strong> es la <strong>fórmula mágica</strong>: la instrucción escrita que le dice a la Inteligencia Artificial exactamente qué transformar.</p>
 
-    <div class="spell-section-label" style="margin-top:2px;">🎯 Los 3 Objetivos de este Prompt</div>
+    <div class="spell-section-label" style="margin-top:6px;font-size:0.86rem;">🎯 Los 3 Objetivos de este Prompt</div>
 
-    <div class="intro-step" style="padding:4px 0;">
+    <div class="intro-step" style="padding:6px 0;">
       <div class="intro-step-num" style="color:#2980b9;">1.</div>
       <div class="intro-step-text"><strong>Conservar la identidad:</strong> Mantener los rasgos principales de tu cara reconocibles.</div>
     </div>
 
-    <div class="intro-step" style="padding:4px 0;">
+    <div class="intro-step" style="padding:6px 0;">
       <div class="intro-step-num" style="color:#8e44ad;">2.</div>
       <div class="intro-step-text"><strong>Transformación monstruosa:</strong> Textura, colmillos, ojos o cuernos según el conjuro.</div>
     </div>
 
-    <div class="intro-step" style="padding:4px 0;">
+    <div class="intro-step" style="padding:6px 0;">
       <div class="intro-step-num" style="color:#d35400;">3.</div>
       <div class="intro-step-text"><strong>Atmósfera épica:</strong> Fondos oscuros, niebla, fuego y luces cinematográficas.</div>
     </div>
 
-    <p class="page-intro-text" style="margin-top:auto;font-size:.73rem;opacity:.6;">✦ La IA sigue instrucciones claras: mientras más específico el hechizo, mejor la magia ✦</p>
+    <div class="layers-bottom-tip" style="margin-top:auto;">
+      ✦ <strong>Recuerda:</strong> La IA sigue instrucciones claras: mientras más específico el hechizo, mejor la magia. ✦
+    </div>
   </div>`;
 }
 
 function buildPromptGuideRight() {
-  return `<div class="text-page">
+  return `<div class="text-page layers-guide-page">
     <div class="page-heading"><span class="orn">🎭</span>¿Lleva Rol o No?<span class="orn">🎭</span></div>
     
-    <div style="background:rgba(192,57,43,0.08);border-left:3px solid #c0392b;padding:6px 10px;border-radius:0 6px 6px 0;margin-top:2px;">
-      <strong style="font-family:var(--font-heading);font-size:.76rem;color:#8b1a2a;display:block;">❌ ¿Por qué NO usar un Rol largo?</strong>
-      <p style="font-family:var(--font-ui);font-size:.73rem;color:var(--ink-mid);margin:0;line-height:1.4;">
-        En IAs generativas como <em>Bing Image</em>, <em>Gemini</em> o <em>ChatGPT</em>, decirle <em>"Actúa como un pintor digital..."</em> confunde al generador: ¡podría dibujar a una persona pintando en un caballete en vez de transformar tu rostro!
+    <div style="background:rgba(192,57,43,0.1);border-left:4px solid #c0392b;padding:8px 12px;border-radius:0 8px 8px 0;margin-top:6px;">
+      <strong style="font-family:var(--font-heading);font-size:0.86rem;color:#8b1a2a;display:block;margin-bottom:3px;">❌ ¿Por qué NO usar un Rol largo?</strong>
+      <p style="font-family:var(--font-ui), system-ui, sans-serif;font-size:0.84rem;color:#2e1508;margin:0;line-height:1.42;">
+        En IAs generativas de imágenes (Bing, Gemini, ChatGPT), decirle <em>"Actúa como un pintor digital..."</em> confunde al generador: ¡podría dibujar a una persona pintando en un caballete en vez de transformar tu rostro!
       </p>
     </div>
 
-    <div style="background:rgba(39,174,96,0.08);border-left:3px solid #27ae60;padding:6px 10px;border-radius:0 6px 6px 0;margin-top:6px;">
-      <strong style="font-family:var(--font-heading);font-size:.76rem;color:#1e7e43;display:block;">✔️ Lo que SÍ conviene (Estilo Directo):</strong>
-      <p style="font-family:var(--font-ui);font-size:.73rem;color:var(--ink-mid);margin:0;line-height:1.4;">
-        Ir directo a la acción y usar <strong>palabras clave de estilo visual</strong>: <em>"Arte conceptual digital", "iluminación cinematográfica dramática" y "muy detallado"</em>.
+    <div style="background:rgba(39,174,96,0.1);border-left:4px solid #27ae60;padding:8px 12px;border-radius:0 8px 8px 0;margin-top:10px;">
+      <strong style="font-family:var(--font-heading);font-size:0.86rem;color:#1e7e43;display:block;margin-bottom:3px;">✔️ Lo que SÍ conviene (Estilo Directo):</strong>
+      <p style="font-family:var(--font-ui), system-ui, sans-serif;font-size:0.84rem;color:#2e1508;margin:0;line-height:1.42;">
+        Ir directo a la acción y usar <strong>palabras clave de estilo visual</strong>: <strong>"Arte conceptual digital"</strong>, <strong>"iluminación cinematográfica dramática"</strong> y <strong>"muy detallado"</strong>.
       </p>
     </div>
 
     <div style="text-align:center;margin-top:auto;padding:8px 0;">
-      <div style="font-size:1.4rem;margin-bottom:2px;">🧱</div>
-      <div style="font-family:var(--font-heading);font-size:.68rem;color:var(--ink-faded);letter-spacing:.08em;text-transform:uppercase;">
+      <div style="font-size:1.6rem;margin-bottom:2px;">🧱</div>
+      <div style="font-family:var(--font-heading);font-size:0.82rem;color:#7a4a1a;font-weight:700;letter-spacing:.08em;text-transform:uppercase;">
         Pasá la página: La Estructura en 5 Capas →
       </div>
     </div>
@@ -600,86 +602,90 @@ function buildPromptGuideRight() {
 
 // ── GUÍA DIDÁCTICA: LAS 5 CAPAS DE UN PROMPT (5TO Y 6TO) ──
 function buildPromptLayersLeft() {
-  return `<div class="text-page">
+  return `<div class="text-page layers-guide-page">
     <div class="page-heading"><span class="orn">📐</span>Las 5 Capas del Prompt<span class="orn">📐</span></div>
-    <p class="page-intro-text" style="font-size:.74rem;margin-bottom:4px;line-height:1.3;">
-      Un prompt profesional no se escribe al azar: se estructura en <strong>5 módulos clave</strong>:
+    <p class="layers-intro-subtitle">
+      Un prompt profesional se estructura en <strong>5 módulos clave</strong>:
     </p>
 
-    <div class="intro-step" style="padding:2px 0;">
-      <div class="intro-step-num" style="color:#2980b9;">1.</div>
-      <div class="intro-step-text" style="font-size:.78rem;line-height:1.25;">
-        <strong style="color:#1a5276;">Estilo y Técnica:</strong> El acabado visual (<em>"Ilustración cinematográfica", "Arte conceptual de fantasía oscura"</em>).
+    <div class="layers-list">
+      <div class="layer-step-card" style="--lcolor:#2980b9;">
+        <span class="lsc-num">1</span>
+        <div class="lsc-content">
+          <strong class="lsc-title" style="color:#1a5276;">Estilo y Técnica:</strong>
+          <span class="lsc-desc">El acabado visual ("Ilustración cinematográfica", "Arte conceptual").</span>
+        </div>
+      </div>
+
+      <div class="layer-step-card" style="--lcolor:#27ae60;">
+        <span class="lsc-num">2</span>
+        <div class="lsc-content">
+          <strong class="lsc-title" style="color:#196f3d;">Ancla de Identidad:</strong>
+          <span class="lsc-desc">Regla de oro: "Preservando estrictamente sus rasgos faciales, edad y fisonomía".</span>
+        </div>
+      </div>
+
+      <div class="layer-step-card" style="--lcolor:#c0392b;">
+        <span class="lsc-num">3</span>
+        <div class="lsc-content">
+          <strong class="lsc-title" style="color:#922b21;">Zonas de Mutación:</strong>
+          <span class="lsc-desc">Ojos (color/pupilas), piel (escamas/roca), boca (colmillos) y cabeza (cuernos).</span>
+        </div>
+      </div>
+
+      <div class="layer-step-card" style="--lcolor:#8e44ad;">
+        <span class="lsc-num">4</span>
+        <div class="lsc-content">
+          <strong class="lsc-title" style="color:#6c3483;">Vestuario y Postura:</strong>
+          <span class="lsc-desc">Adapta la ropa al monstruo ("túnica desgastada", "capa gótica") manteniendo la pose.</span>
+        </div>
+      </div>
+
+      <div class="layer-step-card" style="--lcolor:#d35400;">
+        <span class="lsc-num">5</span>
+        <div class="lsc-content">
+          <strong class="lsc-title" style="color:#a04000;">Iluminación y Entorno:</strong>
+          <span class="lsc-desc">"Luz de luna plateada", "niebla roja", "fuego". Aporta dramatismo y atmósfera.</span>
+        </div>
       </div>
     </div>
 
-    <div class="intro-step" style="padding:2px 0;">
-      <div class="intro-step-num" style="color:#27ae60;">2.</div>
-      <div class="intro-step-text" style="font-size:.78rem;line-height:1.25;">
-        <strong style="color:#196f3d;">Ancla de Identidad:</strong> Regla de oro: <em>"Preservando estrictamente sus rasgos faciales, edad y fisonomía"</em>.
-      </div>
+    <div class="layers-bottom-tip">
+      💡 <strong>Regla de oro:</strong> Si falta una capa, la IA inventa lo que falta. Sé específico.
     </div>
-
-    <div class="intro-step" style="padding:2px 0;">
-      <div class="intro-step-num" style="color:#c0392b;">3.</div>
-      <div class="intro-step-text" style="font-size:.78rem;line-height:1.25;">
-        <strong style="color:#922b21;">Zonas de Mutación:</strong> Ojos (color/pupilas), piel (escamas/roca), boca (colmillos) y cabeza (cuernos/orejas).
-      </div>
-    </div>
-
-    <div class="intro-step" style="padding:2px 0;">
-      <div class="intro-step-num" style="color:#8e44ad;">4.</div>
-      <div class="intro-step-text" style="font-size:.78rem;line-height:1.25;">
-        <strong style="color:#6c3483;">Vestuario y Postura:</strong> Adapta la ropa al monstruo (<em>"túnica desgastada", "capa gótica"</em>) manteniendo la pose original.
-      </div>
-    </div>
-
-    <div class="intro-step" style="padding:2px 0;">
-      <div class="intro-step-num" style="color:#d35400;">5.</div>
-      <div class="intro-step-text" style="font-size:.78rem;line-height:1.25;">
-        <strong style="color:#a04000;">Iluminación y Entorno:</strong> <em>"Luz de luna plateada", "niebla roja", "fuego de lava"</em>. Aporta dramatismo y atmósfera.
-      </div>
-    </div>
-
-    <p class="page-tip" style="margin-top:auto;font-size:.66rem;padding:3px 6px;">
-      💡 <em>"Si falta una capa, la IA completará los huecos con lo que imagine. Sé específico."</em>
-    </p>
   </div>`;
 }
 
 function buildPromptLayersRight() {
-  return `<div class="text-page">
+  return `<div class="text-page layers-guide-page">
     <div class="page-heading"><span class="orn">🧪</span>Ejemplo en Acción<span class="orn">🧪</span></div>
 
-    <div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);border-radius:6px;padding:6px 8px;font-size:.73rem;line-height:1.35;color:#2b1408;">
-      <div style="font-family:var(--font-heading);font-size:.65rem;color:#7a5214;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px;">
-        Análisis de un Hechizo Real (Hombre Lobo):
-      </div>
-      <p style="margin:2px 0;"><span style="color:#2980b9;font-weight:700;">[1. Estilo]</span> <em>"Arte digital cinematográfico de fantasía oscura..."</em></p>
-      <p style="margin:2px 0;"><span style="color:#27ae60;font-weight:700;">[2. Identidad]</span> <em>"...transforma al sujeto preservando su fisonomía y expresión..."</em></p>
-      <p style="margin:2px 0;"><span style="color:#c0392b;font-weight:700;">[3. Mutación]</span> <em>"...pelaje gris áspero, hocico canino, ojos ámbar y colmillos..."</em></p>
-      <p style="margin:2px 0;"><span style="color:#8e44ad;font-weight:700;">[4. Ropa]</span> <em>"...camisa oscura rasgada por la transformación..."</em></p>
-      <p style="margin:2px 0;"><span style="color:#d35400;font-weight:700;">[5. Entorno]</span> <em>"...bosque tormentoso bajo luna llena y lluvia torrencial."</em></p>
-    </div>
-
-    <!-- Mini muestra antes y después del ejemplo -->
-    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;">
-      <div style="text-align:center;width:45%;">
-        <span style="font-family:var(--font-ui);font-size:.58rem;font-weight:700;color:#3060b0;display:block;">FOTO BASE</span>
-        <img src="img/foto-antes.png" alt="Antes" style="width:100%;height:68px;object-fit:contain;border-radius:4px;border:1px solid rgba(139,90,43,0.25);background:rgba(0,0,0,0.04);" />
-      </div>
-      <div style="font-size:1rem;color:#8a652a;">➜</div>
-      <div style="text-align:center;width:45%;">
-        <span style="font-family:var(--font-ui);font-size:.58rem;font-weight:700;color:#901520;display:block;">CON LAS 5 CAPAS</span>
-        <img src="img/lobo-resultado.jpg" alt="Lobo" style="width:100%;height:68px;object-fit:contain;border-radius:4px;border:1px solid rgba(139,90,43,0.25);box-shadow:0 2px 6px rgba(0,0,0,0.15);" />
+    <div class="example-breakdown-card">
+      <div class="ebc-header">ANÁLISIS DE UN HECHIZO REAL: HOMBRE LOBO</div>
+      <div class="ebc-rows">
+        <div class="ebc-row"><span class="ebc-tag" style="color:#2980b9;">[1. Estilo]</span> <span class="ebc-text">"Arte digital cinematográfico de fantasía oscura..."</span></div>
+        <div class="ebc-row"><span class="ebc-tag" style="color:#27ae60;">[2. Identidad]</span> <span class="ebc-text">"...transforma al sujeto preservando su fisonomía y expresión..."</span></div>
+        <div class="ebc-row"><span class="ebc-tag" style="color:#c0392b;">[3. Mutación]</span> <span class="ebc-text">"...pelaje gris áspero, hocico canino, ojos ámbar y colmillos..."</span></div>
+        <div class="ebc-row"><span class="ebc-tag" style="color:#8e44ad;">[4. Ropa]</span> <span class="ebc-text">"...camisa oscura rasgada por la transformación..."</span></div>
+        <div class="ebc-row"><span class="ebc-tag" style="color:#d35400;">[5. Entorno]</span> <span class="ebc-text">"...bosque tormentoso bajo luna llena y lluvia torrencial."</span></div>
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:auto;padding:4px 0;">
-      <div style="font-size:1.2rem;margin-bottom:1px;">🪄</div>
-      <div style="font-family:var(--font-heading);font-size:.65rem;color:var(--ink-faded);letter-spacing:.08em;text-transform:uppercase;">
-        ¡Pasá la página y elegí tu hechizo! →
+    <!-- Muestra antes y después del ejemplo -->
+    <div class="example-visual-comparison">
+      <div class="evc-col">
+        <span class="evc-label evc-label-before">FOTO BASE</span>
+        <img src="img/foto-antes.png" alt="Antes" class="evc-img" />
       </div>
+      <div class="evc-arrow">➔</div>
+      <div class="evc-col">
+        <span class="evc-label evc-label-after">CON LAS 5 CAPAS</span>
+        <img src="img/lobo-resultado.jpg" alt="Lobo" class="evc-img" />
+      </div>
+    </div>
+
+    <div class="layers-next-hint">
+      🪄 ¡Pasá la página y elegí tu hechizo! ➔
     </div>
   </div>`;
 }
