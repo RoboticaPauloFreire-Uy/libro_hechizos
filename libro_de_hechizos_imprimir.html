@@ -527,6 +527,22 @@
       text-align: justify;
       white-space: pre-wrap;
     }
+    .pdf-layers-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+    }
+    .pdf-layer-item {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 7.0pt;
+      line-height: 1.28;
+      color: #201006;
+      background: rgba(250, 246, 238, 0.6);
+      padding: 1.2mm 2.2mm;
+      border-radius: 3px;
+      border-left-width: 3.5px !important;
+      border-left-style: solid !important;
+    }
 
     /* Comparación de imágenes antes y después */
     .comparison-section {
@@ -886,13 +902,19 @@
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Transforma la cara de este hombre en una criatura dragón aterradora. Los rasgos faciales deben cambiar así: ojos reptilianos brillantes con pupilas verticales en ámbar y oro, escamas verdes y rojas iridiscentes cubriendo toda la cara, pequeños cuernos curvados emergiendo de la frente, mandíbula con colmillos visibles, fuego ardiendo dentro de la boca, humo saliendo de las fosas nasales. Mantené la forma original de la cara reconocible. Estilo arte digital de fantasía, iluminación dramática, fondo oscuro con brillo de fuego naranja. Muy detallado, cinematográfico.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una obra de arte digital de fantasía épica y acabado cinematográfico...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma el rostro de la persona de la imagen preservando estrictamente sus rasgos faciales reconocibles, su edad y su fisonomía auténtica.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> La persona conserva su estructura facial natural mientras su piel se cubre de escamas de dragón iridiscentes en tonos rojo fuego y verde oscuro. Sus ojos se vuelven reptilianos y brillantes con pupilas verticales en ámbar y oro, dos pequeños cuernos curvados emergen de la frente, y su mandíbula revela colmillos afilados con fuego y humo sutil saliendo de su boca.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste su prenda oscura original adaptada como una túnica de guerrero desgastada con detalles de cuero rústico sobre los hombros, manteniendo su postura frontal original.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo oscuro de una caverna volcánica iluminada por el resplandor naranja de lava y brasas ardientes, con iluminación lateral dramática y niebla de cenizas. Muy detallado, primer plano.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -975,19 +997,19 @@
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una obra de arte digital de terror y fantasía cinematográfica que transforma a la persona de la imagen en un hombre lobo, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible bajo la transformación.
-
-La persona conserva su estructura facial natural, su contextura y la expresión de su mirada, mientras su cabello se vuelve mucho más denso y salvaje, mezclándose con un pelaje áspero de tonos grisáceos y marrones que se extiende por toda la cara, las mejillas, el cuello y la frente, sin ocultar por completo sus facciones originales. Su rostro se adapta a una fisonomía híbrida: un hocico alargado de aspecto canino o lobuno con una nariz negra y húmeda, pero que mantiene la base y el ancho natural de su nariz original. Sus ojos conservan su forma y posición natural, pero ahora brillan con un intenso color ámbar y dorado salvaje bajo unas cejas pobladas y expresivas. Su boca, levemente abierta en un gesto de tensión o gruñido, revela colmillos afilados, manteniendo la forma de su mandíbula y labios. En la parte superior de la cabeza, se asoman orejas puntiagudas, peludas y naturales de lobo.
-
-Lleva su misma ropa oscura desabrochada, que ahora se ve ligeramente desgastada o rasgada por la transformación. En la parte inferior, se alcanzan a ver sus manos, ásperas y cubiertas de pelo oscuro, con garras afiladas y oscuras que comienzan a emerger de sus dedos, manteniendo la postura de la toma.
-
-El fondo es un bosque oscuro en una noche tormentosa de gran dramatismo, con una luna llena visible entre nubes densas y cargadas de lluvia. La iluminación es nocturna y cinematográfica, con una intensa luz plateada de luna que destaca los bordes de su pelaje y la lluvia que cae, complementada con sombras profundas y una atmósfera cargada de neblina y misterio. Rico en texturas, estilo de ilustración de fantasía y terror, primer plano, muy detallado.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una obra de arte digital de terror y fantasía cinematográfica...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona de la imagen en un hombre lobo, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible bajo la transformación.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> La persona conserva su estructura facial natural, contextura y expresión mientras su cabello se vuelve salvaje, mezclándose con un pelaje áspero grisáceo y marrón que cubre mejillas y frente. Su rostro se adapta a una fisonomía híbrida con hocico canino, nariz húmeda, ojos ámbar salvajes bajo cejas pobladas, boca con colmillos afilados y orejas puntiagudas de lobo en la cabeza.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Lleva su misma ropa oscura desabrochada, ligeramente desgastada y rasgada por la transformación, con manos de garras afiladas en su postura original.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo de bosque oscuro en una noche tormentosa de gran dramatismo bajo una luna llena entre nubes densas de lluvia, con intensa luz plateada cinematográfica, sombras profundas y niebla.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1070,13 +1092,19 @@ El fondo es un bosque oscuro en una noche tormentosa de gran dramatismo, con una
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Transforma la cara de la persona de la imagen en un zombie de terror realista. La cara debe mostrar: piel pálida verdosa en descomposición con heridas y manchas de tierra, ojos verdes sobrenaturales brillantes, dientes oscurecidos, cabello despeinado con hojas secas, ropa oscura rasgada y sucia de tierra de cementerio. Mantené la forma del rostro reconocible. Fondo oscuro de cementerio antiguo con lápidas de piedra y árboles secos en noche de niebla. Estilo cine de horror cinemático, iluminación verde espeluznante, hiperdetallado.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una ilustración cinematográfica de horror gótico y terror realista...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona de la imagen en un no-muerto resucitado, preservando estrictamente su fisonomía facial, su edad y sus facciones reconocibles.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> La persona conserva su estructura facial bajo una piel pálida verdosa en descomposición con sutiles marcas de tierra y venas oscuras. Sus ojos brillan con un resplandor verde sobrenatural, sus labios resecos muestran dientes oscurecidos y su cabello despeinado lleva pequeñas hojas secas adheridas.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste su ropa oscura original rasgada y manchada con polvo de camposanto y jirones envejecidos, manteniendo su postura natural.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo oscuro de un cementerio antiguo con lápidas de piedra agrietadas entre niebla espesa y árboles secos, con iluminación verde espeluznante y sombras lúgubres. Primer plano, hiperdetallado.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1159,19 +1187,19 @@ El fondo es un bosque oscuro en una noche tormentosa de gran dramatismo, con una
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una obra de arte digital de terror y fantasía cinematográfica que transforma a la persona de la imagen en un vampiro, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible.
-
-La persona conserva su estructura facial auténtica, su mirada natural y su cabello característico, sutilmente peinado hacia atrás pero manteniendo su textura y tono originales. Su piel se vuelve muy pálida y fría, como la porcelana, pero conserva sus líneas y textura natural sin hacerlo parecer más joven o idealizado. Sus ojos ahora son de un brillante color rojo carmesí con sombras oscuras y hundidas debajo, pero mantienen la forma de sus ojos originales. Sus cejas están ligeramente más oscuras y arqueadas de manera dramática. Un fino y brillante hilo de sangre corre por la comisura de su boca, donde se alcanzan a ver colmillos de vampiro afilados detrás de los labios.
-
-Lleva una capa de vampiro oscura y de cuello alto con intrincados patrones visibles en el cuello, colocada sobre la forma de su cuello original.
-
-El fondo es el interior de un castillo gótico oscuro y tenuemente iluminado con pilares de piedra desmoronados, murciélagos volando a lo lejos y el cálido y parpadeante brillo de las velas. La iluminación atmosférica es una mezcla dramática de púrpura profundo, sombras y rojo sangre, con la luz de la luna capturando los bordes de su figura, creando una transformación altamente detallada y espeluznante, pero profundamente personal. Rico en texturas, estilo de ilustración de fantasía y terror, primer plano.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una obra de arte digital de terror gótico y fantasía cinematográfica...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona de la imagen en un vampiro de la noche, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> La persona conserva su estructura facial auténtica y mirada natural con cabello peinado hacia atrás. Su piel se vuelve muy pálida y fría como porcelana, sus ojos brillan en rojo carmesí con sombras oscuras debajo, cejas arqueadas dramáticas y colmillos afilados con un fino hilo de sangre en la comisura.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Lleva una elegante capa oscura de cuello alto con intrincados bordados góticos sobre su cuello original, manteniendo su porte y postura natural.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo del interior de un castillo gótico con pilares de piedra, velas parpadeantes, murciélagos lejanos y luz de luna plateada mezclada con sombras púrpuras dramáticas. Primer plano, muy detallado.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1254,19 +1282,19 @@ El fondo es el interior de un castillo gótico oscuro y tenuemente iluminado con
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una obra de arte digital de fantasía y mitología de gran escala, que transforma a la persona en un Cíclope gigante de la mitología griega, preservando de manera estricta su rostro reconocible, su edad y su identidad bajo la monstruosa transformación.
-
-La persona conserva su estructura facial natural, su fisonomía y su cabello, extendiéndose por una mandíbula que se ha vuelto más masiva, ancha y cuadrada, pero con la misma forma y base. Su piel se transforma en una textura gris-azulada, áspera, gruesa y agrietada como la piedra o la roca antigua, conservando de forma muy visible sus facciones y marcas naturales de expresión, especialmente alrededor de la boca y las mejillas. En el centro exacto de la frente y de su rostro, sus dos ojos originales se han fusionado en un único y enorme ojo central, de mirada intensa y profunda, con un iris que brilla en tonos amarillos y dorados, bajo una única y gruesa ceja salvaje que une sus rasgos. Su nariz, ubicada justo debajo del ojo único, es ahora más ancha, aplastada y ruda, pero conserva la base y la esencia de su nariz original. En la frente y en las sienes se aprecian pequeñas protuberancias rocosas o pequeños cuernos que se funden con su piel. Su cuello se vuelve sumamente musculoso, ancho y colosal, propio de un gigante.
-
-Viste ropa rústica de aspecto antiguo o una túnica de cuero y tela desgastada y rasgada sobre los hombros, manteniendo la postura natural de la toma original en primer plano, con el cuerpo ligeramente inclinado de frente.
-
-El fondo muestra un paisaje épico y dramático de ruinas griegas antiguas y derruidas en lo alto de una montaña, bajo un cielo tormentoso de noche, con nubes oscuras, relámpagos lejanos y la luz de la tormenta que resalta las texturas rocosas de su piel y los bordes de su figura. Iluminación cinematográfica, rica en texturas de piedra, estilo de ilustración de fantasía histórica y de terror, primer plano, muy detallado.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una obra de arte digital de fantasía y mitología clásica a gran escala...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona en un Cíclope gigante de la mitología griega, preservando de manera estricta su rostro reconocible, su edad y su identidad.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> La persona conserva su estructura facial natural sobre una mandíbula más ancha y masiva. Su piel se vuelve gris-azulada, gruesa y agrietada como piedra antigua. En el centro de la frente sus ojos se funden en un único y colosal ojo dorado brillante bajo una ceja salvaje, con nariz ancha y pequeñas protuberancias rocosas en sienes.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste una túnica rústica de cuero y tela desgastada sobre sus anchos hombros, manteniendo la postura natural en primer plano.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo épico de ruinas griegas en lo alto de una montaña bajo cielo tormentoso nocturno con relámpagos lejanos, e iluminación que resalta la textura rocosa. Primer plano, muy detallado.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1349,17 +1377,19 @@ El fondo muestra un paisaje épico y dramático de ruinas griegas antiguas y der
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una ilustración cinematográfica de fantasía y terror que transforma a la persona de la imagen en una imponente bestia oscura, conservando estrictamente su rostro natural, su edad y su fisonomía auténtica. 
-
-Su piel se vuelve de cuero áspero rojizo-marrón oscuro con escamas y protuberancias, manteniendo todas sus facciones reales. Tiene ojos naranja demoníacos y brillantes, dos cuernos cortos y oscuros en la frente, nariz ancha y orejas puntiagudas. Su boca, levemente abierta en un gruñido, muestra dientes afilados y pequeños colmillos en la mandíbula inferior. 
-
-Viste su ropa oscura o atuendo rústico desgastado en su postura original, con un cuello muy musculoso. Fondo oscuro de bosque tormentoso con densa niebla roja brillante y luz de luna. Muy detallado, primer plano, preservando su identidad reconocible.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una ilustración cinematográfica de fantasía oscura y terror...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona de la imagen en una imponente bestia feroz, conservando estrictamente su rostro natural, su edad y su fisonomía auténtica.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> Su piel se vuelve de cuero áspero rojizo-marrón con escamas y protuberancias manteniendo sus facciones reales. Tiene ojos naranja demoníacos brillantes, dos cuernos cortos en la frente, orejas puntiagudas y boca abierta en un leve gruñido que muestra colmillos en la mandíbula.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste su ropa oscura o atuendo rústico desgastado en su postura original, con cuello musculoso y hombros firmes.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo oscuro de bosque salvaje tormentoso con densa niebla roja brillante y luz de luna filtrada entre ramas. Muy detallado, primer plano.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1442,17 +1472,19 @@ Viste su ropa oscura o atuendo rústico desgastado en su postura original, con u
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una ilustración cinematográfica de fantasía y terror que transforma a la persona de la imagen en una versión de Medusa de la mitología griega, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.
-
-Su cabello se transforma por completo en docenas de serpientes vivas, ondulantes y furiosas de tonos verdes, dorados y grises que se agitan en todas direcciones. Su piel se vuelve ligeramente verde-grisácea con sutiles escamas de serpiente visibles en las mejillas y el cuello, pero conservando sus arrugas y facciones reales. Sus ojos brillan con una intensa y sobrenatural luz dorada-verde capaz de petrificar, bajo sus cejas naturales. Su boca, levemente abierta, muestra una lengua bífida visible.
-
-Viste un ropaje antiguo o túnica rústica deshilachada en su postura original. Fondo oscuro de ruinas griegas antiguas bajo un cielo tormentoso de noche, con relámpagos lejanos y luz de luna. Muy detallado, primer plano, preservando su identidad reconocible.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una ilustración cinematográfica de fantasía mitológica y terror clásico...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona de la imagen en una versión de Medusa, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> Su cabello se transforma en docenas de serpientes vivas ondulantes de tonos verdes, dorados y grises. Su piel adquiere un tono verde-grisáceo con sutiles escamas en mejillas manteniendo sus arrugas reales, con ojos de intensa luz dorada-verde petrificante y lengua bífida visible.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste un ropaje antiguo o túnica griega rústica deshilachada sobre los hombros, en su postura original.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo oscuro de ruinas de un templo griego bajo cielo tormentoso nocturno con relámpagos lejanos y luz de luna fría. Muy detallado, primer plano.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1535,17 +1567,19 @@ Viste un ropaje antiguo o túnica rústica deshilachada en su postura original. 
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una ilustración cinematográfica de fantasía y terror que transforma a la persona de la imagen en el monstruo de Frankenstein, conservando estrictamente su rostro natural, su edad y su fisonomía auténtica.
-
-Su estructura facial y expresión real se mantienen bajo una piel gris-verde enfermiza, con suturas, grapas y cicatrices visibles en toda la cara y el cuello. Su frente se vuelve plana y cuadrada en la parte superior con una cicatriz cosida, y de los lados de su cuello sobresalen dos grandes pernos de metal oxidados. Conserva sus ojos tristes y caídos con párpados pesados y ojeras oscuras. Su mandíbula es más cuadrada y pesada, al igual que su cabello despeinado y oscurecido.
-
-Viste un abrigo oscuro y desgastado de época sobre su prenda original. Fondo de un laboratorio gótico de piedra con equipos eléctricos que chispean, bobinas, ventanas y rayos en una noche de tormenta. Muy detallado, primer plano, de estilo cinematográfico, preservando su identidad.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una ilustración cinematográfica de terror gótico clásico...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona de la imagen en la criatura de Frankenstein, conservando estrictamente su rostro natural, su edad y su fisonomía auténtica.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> Su estructura facial se mantiene bajo una piel gris-verde enfermiza con suturas, grapas y cicatrices visibles. Su frente se aplana con una cicatriz cosida horizontal, dos pernos de metal oxidados sobresalen a los lados de su cuello, mandíbula cuadrada y párpados pesados con ojeras oscuras.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste un abrigo oscuro y desgastado de época sobre su prenda original, manteniendo su posición y postura frontal.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo de un laboratorio gótico de piedra con bobinas eléctricas que chispean, altas ventanas y relámpagos en una noche de tormenta eléctrica. Primer plano, hiperdetallado.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1628,17 +1662,19 @@ Viste un abrigo oscuro y desgastado de época sobre su prenda original. Fondo de
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una ilustración cinematográfica de fantasía y ciencia ficción que transforma a la persona de la imagen en una criatura alienígena, conservando estrictamente su rostro natural, su edad y su identidad reconocible.
-
-Su cabeza se vuelve más alargada y grande, manteniendo su fisonomía y expresión real. Su piel se vuelve suave, de un tono gris o azul claro y ligeramente translúcida con venas sutiles y un tenue brillo bioluminiscente. Tiene enormes ojos almendrados, completamente negros y brillantes, su nariz se reduce a pequeñas ranuras sutiles, y su boca se vuelve fina y pequeña. Las orejas desaparecen bajo su cabeza.
-
-Viste su prenda oscura original o un atuendo futurista sencillo en su postura original, con el cuello ligeramente alargado. Fondo del espacio profundo con nebulosas de colores y estrellas lejanas. Muy detallado, primer plano, de estilo cinematográfico, preservando su identidad reconocible.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una ilustración cinematográfica de ciencia ficción y fantasía cósmica...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona de la imagen en una criatura alienígena, conservando estrictamente su rostro natural, su edad y su identidad reconocible.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> Su cabeza se vuelve sutilmente más alargada hacia atrás manteniendo su fisonomía. Su piel es suave, azul-grisácea y translúcida con venas tenues y sutil brillo bioluminiscente, enormes ojos almendrados completamente negros y brillantes, nariz reducida a sutiles ranuras y boca fina.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste su prenda oscura original combinada con un traje espacial orgánico de cuello estilizado, manteniendo su postura frontal.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo del espacio profundo con nebulosas cósmicas en tonos turquesa y violeta, estrellas lejanas y suave iluminación extraterrestre. Muy detallado, primer plano.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1721,21 +1757,19 @@ Viste su prenda oscura original o un atuendo futurista sencillo en su postura or
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una ilustración cinematográfica de fantasía oscura y terror, en plano medio, que transforma a la persona de la imagen en un poderoso demonio del inframundo, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible bajo la monstruosa transformación.
-
-La persona conserva su estructura facial natural, su fisonomía y la expresión profunda de su mirada. Su piel se transforma en un color rojo y carmesí oscuro, con textura rugosa, venas oscuras muy visibles y sutiles patrones de fuego bajo la piel, pero conservando de forma muy visible sus arrugas y líneas naturales de expresión.
-
-De su frente y sienes crecen dos grandes cuernos negros, curvados, ásperos y prominentes, que se funden de manera natural con su piel y su cabello. Sus ojos conservan su forma y posición natural, pero ahora brillan con un intenso color amarillo ardiente y pupilas de ranura vertical negra, bajo unas cejas en ángulo pronunciado. Sus orejas, ahora puntiagudas y de aspecto demoníaco, se asoman a los lados de la cabeza. Su boca, abierta en una sonrisa amplia y maliciosa, revela colmillos afilados, mientras que su mentón se ve levemente más alargado y puntiagudo.
-
-Lleva su misma ropa oscura deshilachada y rasgada por la transformación. Su cuello se vuelve musculoso y ancho, con el cuerpo ligeramente inclinado de frente. Pequeñas llamas, chispas y brasas flotan cerca de su rostro y sus hombros.
-
-El fondo muestra un abismo infernal con fuego ardiente y un portal oscuro y antiguo del que emana lava y un brillo anaranjado y rojizo, con nubes de ceniza y humo que se filtran entre las rocas. La iluminación es nocturna y cinematográfica, con una intensa luz de fuego y lava que resalta las texturas ásperas de su piel roja y las venas oscuras. Rico en texturas, estilo de ilustración de fantasía y terror, primer plano, muy detallado.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una ilustración cinematográfica de fantasía oscura y terror en plano medio...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que transforma a la persona de la imagen en un poderoso demonio del inframundo, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> La persona conserva su fisonomía bajo una piel rojo carmesí oscuro rugosa con venas marcadas. De su frente crecen dos grandes cuernos negros curvados y ásperos, sus ojos brillan en amarillo ardiente con pupilas de ranura vertical, orejas puntiagudas y sonrisa con colmillos afilados.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Lleva su misma ropa oscura rasgada por la transformación, con cuello musculoso y pequeñas brasas y chispas flotando sobre los hombros en su postura original.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo de un abismo infernal con un portal antiguo de roca negra del que emana lava ardiente, humo denso y cenizas flotantes, con iluminación de fuego lateral. Primer plano, muy detallado.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1818,17 +1852,19 @@ El fondo muestra un abismo infernal con fuego ardiente y un portal oscuro y anti
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una fotografía cinematográfica y fotorrealista (un fotograma de película) que captura a la persona de la imagen con un detallado maquillaje de esqueleto para Halloween, conservando estrictamente su rostro natural, su edad y sus facciones faciales reconocibles. 
-
-Su fisonomía, expresión y arrugas reales se mantienen visibles bajo un elaborado maquillaje artístico (SFX) de calavera: cuencas de los ojos y la punta de la nariz pintadas de negro mate profundo, y sombreado oscuro en pómulos y mandíbula que resalta su estructura ósea, enmarcando su rostro con naturalidad. Tiene líneas de dientes de esqueleto pintadas sobre los labios, y el cuello maquillado con vértebras y clavículas en tonos óseos y sombras teatrales. Su cabello luce algo despeinado y con sutil polvo escénico.
-
-Viste un saco o chaqueta oscura, desgastada y rústica con cuello levantado. El fondo muestra un cementerio antiguo y oscuro con lápidas de piedra, árboles retorcidos, niebla baja iluminada por calabazas de Halloween a lo lejos y una gran luna llena brillante. Iluminación nocturna cinematográfica, grano de película de 35mm, fotorrealista y muy detallado, preservando su identidad sin parecer ilustración ni dibujo animado.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una fotografía cinematográfica y fotorrealista (fotograma de película de misterio de 35mm)...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que captura a la persona de la imagen con maquillaje artístico de esqueleto, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> Su fisonomía y arrugas se mantienen bajo un elaborado maquillaje SFX de calavera: cuencas de los ojos y punta de nariz en negro mate profundo, pómulos y mandíbula sombreados para acentuar el hueso, y líneas de dientes pintadas con precisión sobre los labios.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste un saco o chaqueta oscura, desgastada y rústica con cuello levantado, manteniendo su postura natural.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo de un cementerio antiguo bajo niebla baja iluminada por calabazas de Halloween a lo lejos y una gran luna llena brillante. Grano cinematográfico de 35mm, fotorrealista.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -1911,21 +1947,19 @@ Viste un saco o chaqueta oscura, desgastada y rústica con cuello levantado. El 
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Una fotografía cinematográfica y fotorrealista de plano medio (un fotograma de película de misterio y terror de Halloween) que captura la aparición espectral y fantasmal de la persona de la imagen, preservando de manera estricta su rostro natural, su edad y su fisonomía reconocible.
-
-La persona conserva su estructura facial, su fisonomía y su expresión natural, ahora con un aspecto etéreo, flotante y desordenado. Todo su cuerpo y su vestimenta son semitransparentes, revelando sutilmente el fondo a través de su forma translúcida. Su figura entera, incluyendo su rostro, se percibe de un tono frío, pálido y gélido (azul-grisáceo o blanco espectral), desvaneciéndose en los bordes y desprendiendo un leve brillo bioluminiscente natural y jirones de neblina o humo espectral que flotan desde sus hombros y ropa.
-
-Sus ojos, que conservan su forma y mirada natural, brillan con una tenue, misteriosa y fría luz sobrenatural (blanco-azulada) que parece emanar desde el interior. Tiene una expresión misteriosa, profunda y contemplativa, con la boca cerrada y sus facciones fundiéndose con el aspecto translúcido y fantasmal.
-
-Viste una versión fantasmal, deshilachada y desvaída de su atuendo oscuro, que se desintegra en una niebla flotante hacia la parte inferior, sugiriendo que está suspendido o levitando.
-
-El escenario, de noche y con el desenfoque natural de una lente de cine, muestra el exterior de una casa abandonada y derruida, con maderas gastadas, ventanas rotas y vegetación que invade la estructura. El entorno está cubierto por una densa niebla baja iluminada por una fría luz de luna que se filtra entre nubes y árboles secos, creando un ambiente tenebroso. Imagen de 35mm, grano de película sutil, fotorrealista y de apariencia real, sin rastro de ilustración digital, logrando que el espectro sea una presencia natural en el espacio.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Una fotografía cinematográfica y fotorrealista (fotograma de película de misterio)...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que captura la aparición espectral y fantasmal de la persona, preservando de manera estricta su rostro natural, su edad y su fisonomía reconocible.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> Todo su cuerpo es semitransparente y etéreo en tono azul-grisáceo espectral, desvaneciéndose en los bordes con un tenue brillo bioluminiscente. Sus ojos brillan con una fría luz sobrenatural blanco-azulada desde el interior con expresión contemplativa y serena.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste una versión fantasmal y desvaída de su ropa oscura que se desintegra en niebla hacia abajo, levitando suavemente en su postura original.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo nocturno de una casa abandonada de madera entre árboles retorcidos y niebla baja, iluminada por una fría luz de luna. Grano sutil de 35mm, fotorrealista.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -2008,17 +2042,19 @@ El escenario, de noche y con el desenfoque natural de una lente de cine, muestra
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Un fotograma de película, fotorrealista y de primer plano, que captura a la persona de la imagen como una antigua momia para Halloween, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.
-
-Su cabeza, cuello y hombros están envueltos en múltiples capas de vendas de lino antiguas, deshilachadas y desgastadas en tonos de beige a marrón oscuro, cubiertas de polvo y arena del desierto. Las vendas dejan visible de manera natural el centro de su rostro: sus propios ojos (conservando su forma y mirada natural), su nariz, boca y líneas de expresión, integrándose suavemente con los vendajes deshechos. Sus ojos muestran un sutil y misterioso brillo dorado entre las sombras y el polvo, con una expresión tensa y misteriosa. Viste los vendajes deshechos combinados con jirones de ropa rústica oscura de época.
-
-El fondo nocturno, desenfocado con lente de cine (bokeh), muestra la base de una antigua pirámide egipcia de piedra entre dunas de arena, iluminada por la luz trémula y anaranjada de antorchas y fogatas encendidas, con humo, chispas y la fría luz de la luna en una noche de tormenta de arena. Toma natural de 35mm, grano sutil de película, rico en texturas, preservando fielmente la identidad de la imagen sin parecer una ilustración.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Un fotograma cinematográfico fotorrealista de primer plano de Halloween...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que captura a la persona de la imagen como una antigua momia egipcia, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> Vendas de lino antiguas y deshilachadas envuelven cabeza y cuello, dejando al descubierto el centro de su rostro: ojos, nariz y boca con sus líneas de expresión intactas, con sutil brillo dorado en la mirada entre polvo y sombras.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste las vendas centenarias deshechas combinadas con jirones de tela rústica oscura de época sobre los hombros, en su postura original.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo nocturno desenfocado de la base de una pirámide egipcia entre dunas, iluminada por antorchas parpadeantes, humo y fría luz de luna en tormenta de arena. Grano de 35mm.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->
@@ -2101,17 +2137,19 @@ El fondo nocturno, desenfocado con lente de cine (bokeh), muestra la base de una
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">Un fotograma de película, fotorrealista y de primer plano, que captura a la persona de la imagen transformada en un misterioso personaje de calabaza de Halloween, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.
-
-Su piel adquiere una textura de corteza de calabaza, rugosa, con relieves y de tonos anaranjados y terrosos, pero manteniendo visibles todas sus líneas de expresión, gestos y fisonomía real. Sus ojos (con sus párpados y mirada natural) y el interior de su boca (que se asoma sutilmente entre los labios) brillan con una cálida y ardiente luz interior de tono naranja-amarillento, como un jack-o'-lantern encendido en la noche. De su cuello, hombros y entre su cabello brotan pequeñas ramas secas, enredaderas oscuras y hojas marchitas de calabaza que se entrelazan de manera orgánica en su rostro y vestimenta. Viste un atuendo rústico, oscuro y desgastado, cubierto de hojarasca y enredaderas.
-
-El fondo nocturno, desenfocado con lente de cine (bokeh), muestra un campo de calabazas (pumpkin patch) cubierto por una densa niebla baja, bajo la fría luz de una gran luna llena, con el sutil brillo de calabazas encendidas a lo lejos y árboles secos retorcidos. Toma natural de 35mm, grano sutil de película, rico en texturas, de apariencia real y cinematográfica sin parecer una ilustración, preservando fielmente la identidad con un fuerte parecido físico.</div>
+      <div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> Un fotograma cinematográfico fotorrealista y de primer plano...</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> ...que captura a la persona de la imagen transformada en un misterioso guardián de calabaza, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> Su piel adquiere textura estriada de corteza de calabaza en tonos terrosos y anaranjados, manteniendo su fisonomía. Sus ojos y boca brillan desde el interior con una cálida y ardiente luz de Jack-o'-Lantern, con ramas secas y enredaderas brotando entre su cabello.</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> Viste un atuendo rústico y oscuro cubierto de hojas marchitas de calabaza y enredaderas entrelazadas en su postura original.</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> Fondo de un campo de calabazas nocturno cubierto por densa niebla baja, bajo la luz de una gran luna llena y calabazas encendidas a lo lejos. Grano de 35mm, fotorrealista.</div>
+        </div>
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->

@@ -578,6 +578,22 @@ def generate_html(spells):
       text-align: justify;
       white-space: pre-wrap;
     }}
+    .pdf-layers-grid {{
+      display: flex;
+      flex-direction: column;
+      gap: 1.2mm;
+    }}
+    .pdf-layer-item {{
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 7.0pt;
+      line-height: 1.28;
+      color: #201006;
+      background: rgba(250, 246, 238, 0.6);
+      padding: 1.2mm 2.2mm;
+      border-radius: 3px;
+      border-left-width: 3.5px !important;
+      border-left-style: solid !important;
+    }}
 
     /* Comparación de imágenes antes y después */
     .comparison-section {{
@@ -905,7 +921,20 @@ def generate_html(spells):
                 ing_name = str(ing)
             ing_items_html += f'<div class="ing-pill"><span>{ing_icon}</span><span>{ing_name}</span></div>'
 
-        page_num = idx + 2  # Portada (0), Instrucciones (1), Capas (2), Hechizo 1 (3)...
+        # Desglose en 5 capas para el PDF
+        layers = spell.get("layers", {})
+        if layers and layers.get("style"):
+            prompt_content_html = f"""<div class="pdf-layers-grid">
+          <div class="pdf-layer-item" style="border-left-color: #2980b9;"><strong style="color:#2980b9;">[1. Estilo]</strong> {layers.get('style','')}</div>
+          <div class="pdf-layer-item" style="border-left-color: #27ae60;"><strong style="color:#27ae60;">[2. Identidad]</strong> {layers.get('identity','')}</div>
+          <div class="pdf-layer-item" style="border-left-color: #c0392b;"><strong style="color:#c0392b;">[3. Mutación]</strong> {layers.get('mutation','')}</div>
+          <div class="pdf-layer-item" style="border-left-color: #8e44ad;"><strong style="color:#8e44ad;">[4. Vestuario]</strong> {layers.get('outfit','')}</div>
+          <div class="pdf-layer-item" style="border-left-color: #d35400;"><strong style="color:#d35400;">[5. Entorno]</strong> {layers.get('environment','')}</div>
+        </div>"""
+        else:
+            prompt_content_html = f'<div class="prompt-text">{spell.get("prompt", "")}</div>'
+
+        page_num = idx + 2
 
         html += f"""
   <!-- ============================================================
@@ -960,13 +989,13 @@ def generate_html(spells):
       </div>
     </div>
 
-    <!-- Prompt Completo -->
+    <!-- Prompt Completo en 5 Capas -->
     <div class="prompt-container">
       <div class="prompt-header">
-        <div class="prompt-title">📜 Prompt de Invocación (Copiar en Bing, Gemini o ChatGPT)</div>
+        <div class="prompt-title">📜 Prompt en 5 Capas (Copiar en Bing, Gemini o ChatGPT)</div>
         <div class="prompt-badge-copy">5 Capas Listas</div>
       </div>
-      <div class="prompt-text">{spell.get('prompt', '')}</div>
+      {prompt_content_html}
     </div>
 
     <!-- Comparación de Imágenes Antes y Después -->

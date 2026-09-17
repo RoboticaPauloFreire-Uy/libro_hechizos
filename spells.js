@@ -13,7 +13,25 @@ const SPELLS = [
       { name: "Ojos de reptil ancestral", icon: "🦎" }
     ],
     incantation: "¡Draconitus Metamorphus! ¡Que las escamas cubran tu piel!",
-    prompt: `Transforma la cara de este hombre en una criatura dragón aterradora. Los rasgos faciales deben cambiar así: ojos reptilianos brillantes con pupilas verticales en ámbar y oro, escamas verdes y rojas iridiscentes cubriendo toda la cara, pequeños cuernos curvados emergiendo de la frente, mandíbula con colmillos visibles, fuego ardiendo dentro de la boca, humo saliendo de las fosas nasales. Mantené la forma original de la cara reconocible. Estilo arte digital de fantasía, iluminación dramática, fondo oscuro con brillo de fuego naranja. Muy detallado, cinematográfico.`,
+    layers: {
+      style: "Una obra de arte digital de fantasía épica y acabado cinematográfico...",
+      identity: "...que transforma el rostro de la persona de la imagen preservando estrictamente sus rasgos faciales reconocibles, su edad y su fisonomía auténtica.",
+      mutation: "La persona conserva su estructura facial natural mientras su piel se cubre de escamas de dragón iridiscentes en tonos rojo fuego y verde oscuro. Sus ojos se vuelven reptilianos y brillantes con pupilas verticales en ámbar y oro, dos pequeños cuernos curvados emergen de la frente, y su mandíbula revela colmillos afilados con fuego y humo sutil saliendo de su boca.",
+      outfit: "Viste su prenda oscura original adaptada como una túnica de guerrero desgastada con detalles de cuero rústico sobre los hombros, manteniendo su postura frontal original.",
+      environment: "Fondo oscuro de una caverna volcánica iluminada por el resplandor naranja de lava y brasas ardientes, con iluminación lateral dramática y niebla de cenizas. Muy detallado, primer plano.",
+      styleShort: "Arte digital de fantasía épica y cine",
+      identityShort: "Rasgos, fisonomía y edad reconocibles",
+      mutationShort: "Escamas rojizas, ojos de reptil, cuernos y colmillos",
+      outfitShort: "Túnica oscura de guerrero en postura original",
+      environmentShort: "Caverna volcánica con lava, fuego y humo"
+    },
+    prompt: `Una obra de arte digital de fantasía épica y acabado cinematográfico que transforma el rostro de la persona de la imagen preservando estrictamente sus rasgos faciales reconocibles, su edad y su fisonomía auténtica.
+
+La persona conserva su estructura facial natural mientras su piel se cubre de escamas de dragón iridiscentes en tonos rojo fuego y verde oscuro. Sus ojos se vuelven reptilianos y brillantes con pupilas verticales en ámbar y oro, dos pequeños cuernos curvados emergen de la frente, y su mandíbula revela colmillos afilados con fuego y humo sutil saliendo de su boca.
+
+Viste su prenda oscura original adaptada como una túnica de guerrero desgastada con detalles de cuero rústico sobre los hombros, manteniendo su postura frontal original.
+
+Fondo oscuro de una caverna volcánica iluminada por el resplandor naranja de lava y brasas ardientes, con iluminación lateral dramática y niebla de cenizas. Muy detallado, primer plano.`,
     tips: "Usá una foto con buena iluminación y fondo claro. ¡Funciona mejor con la cara mirando de frente!",
     beforeImg: "img/foto-antes.png",
     afterImg:  "img/dragon-resultado.jpg",
@@ -29,6 +47,18 @@ const SPELLS = [
       { name: "Garra del bosque oscuro", icon: "🐾" }
     ],
     incantation: "¡Lupinus Transformatum! ¡La luna llena te reclama!",
+    layers: {
+      style: "Una obra de arte digital de terror y fantasía cinematográfica...",
+      identity: "...que transforma a la persona de la imagen en un hombre lobo, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible bajo la transformación.",
+      mutation: "La persona conserva su estructura facial natural, contextura y expresión mientras su cabello se vuelve salvaje, mezclándose con un pelaje áspero grisáceo y marrón que cubre mejillas y frente. Su rostro se adapta a una fisonomía híbrida con hocico canino, nariz húmeda, ojos ámbar salvajes bajo cejas pobladas, boca con colmillos afilados y orejas puntiagudas de lobo en la cabeza.",
+      outfit: "Lleva su misma ropa oscura desabrochada, ligeramente desgastada y rasgada por la transformación, con manos de garras afiladas en su postura original.",
+      environment: "Fondo de bosque oscuro en una noche tormentosa de gran dramatismo bajo una luna llena entre nubes densas de lluvia, con intensa luz plateada cinematográfica, sombras profundas y niebla.",
+      styleShort: "Arte digital cinematográfico de fantasía oscura",
+      identityShort: "Estructura facial y edad preservadas al detalle",
+      mutationShort: "Pelaje áspero, hocico canino, ojos ámbar y colmillos",
+      outfitShort: "Ropa oscura rasgada y garras afiladas",
+      environmentShort: "Bosque tormentoso bajo luna llena y niebla"
+    },
     prompt: `Una obra de arte digital de terror y fantasía cinematográfica que transforma a la persona de la imagen en un hombre lobo, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible bajo la transformación.
 
 La persona conserva su estructura facial natural, su contextura y la expresión de su mirada, mientras su cabello se vuelve mucho más denso y salvaje, mezclándose con un pelaje áspero de tonos grisáceos y marrones que se extiende por toda la cara, las mejillas, el cuello y la frente, sin ocultar por completo sus facciones originales. Su rostro se adapta a una fisonomía híbrida: un hocico alargado de aspecto canino o lobuno con una nariz negra y húmeda, pero que mantiene la base y el ancho natural de su nariz original. Sus ojos conservan su forma y posición natural, pero ahora brillan con un intenso color ámbar y dorado salvaje bajo unas cejas pobladas y expresivas. Su boca, levemente abierta en un gesto de tensión o gruñido, revela colmillos afilados, manteniendo la forma de su mandíbula y labios. En la parte superior de la cabeza, se asoman orejas puntiagudas, peludas y naturales de lobo.
@@ -51,7 +81,25 @@ El fondo es un bosque oscuro en una noche tormentosa de gran dramatismo, con una
       { name: "Suspiro del más allá", icon: "👻" }
     ],
     incantation: "¡Mortuus Vivificatum! ¡Despierta entre los muertos!",
-    prompt: `Transforma la cara de la persona de la imagen en un zombie de terror realista. La cara debe mostrar: piel pálida verdosa en descomposición con heridas y manchas de tierra, ojos verdes sobrenaturales brillantes, dientes oscurecidos, cabello despeinado con hojas secas, ropa oscura rasgada y sucia de tierra de cementerio. Mantené la forma del rostro reconocible. Fondo oscuro de cementerio antiguo con lápidas de piedra y árboles secos en noche de niebla. Estilo cine de horror cinemático, iluminación verde espeluznante, hiperdetallado.`,
+    layers: {
+      style: "Una ilustración cinematográfica de horror gótico y terror realista...",
+      identity: "...que transforma a la persona de la imagen en un no-muerto resucitado, preservando estrictamente su fisonomía facial, su edad y sus facciones reconocibles.",
+      mutation: "La persona conserva su estructura facial bajo una piel pálida verdosa en descomposición con sutiles marcas de tierra y venas oscuras. Sus ojos brillan con un resplandor verde sobrenatural, sus labios resecos muestran dientes oscurecidos y su cabello despeinado lleva pequeñas hojas secas adheridas.",
+      outfit: "Viste su ropa oscura original rasgada y manchada con polvo de camposanto y jirones envejecidos, manteniendo su postura natural.",
+      environment: "Fondo oscuro de un cementerio antiguo con lápidas de piedra agrietadas entre niebla espesa y árboles secos, con iluminación verde espeluznante y sombras lúgubres. Primer plano, hiperdetallado.",
+      styleShort: "Ilustración cinematográfica de terror gótico",
+      identityShort: "Fisonomía facial y edad reconocibles",
+      mutationShort: "Piel verdosa, ojos verdes brillantes y grietas",
+      outfitShort: "Ropa oscura rasgada con tierra de cementerio",
+      environmentShort: "Cementerio antiguo con lápidas, niebla y luz verde"
+    },
+    prompt: `Una ilustración cinematográfica de horror gótico y terror realista que transforma a la persona de la imagen en un no-muerto resucitado, preservando estrictamente su fisonomía facial, su edad y sus facciones reconocibles.
+
+La persona conserva su estructura facial bajo una piel pálida verdosa en descomposición con sutiles marcas de tierra y venas oscuras. Sus ojos brillan con un resplandor verde sobrenatural, sus labios resecos muestran dientes oscurecidos y su cabello despeinado lleva pequeñas hojas secas adheridas.
+
+Viste su ropa oscura original rasgada y manchada con polvo de camposanto y jirones envejecidos, manteniendo su postura natural.
+
+Fondo oscuro de un cementerio antiguo con lápidas de piedra agrietadas entre niebla espesa y árboles secos, con iluminación verde espeluznante y sombras lúgubres. Primer plano, hiperdetallado.`,
     tips: "¡Cuidado! Este hechizo es muy poderoso. Mantené la mirada fija al frente.",
     beforeImg: "img/foto-antes.png",
     afterImg:  "img/zombi-resultado.jpg",
@@ -67,6 +115,18 @@ El fondo es un bosque oscuro en una noche tormentosa de gran dramatismo, con una
       { name: "Gota de sangre carmesí", icon: "🩸" }
     ],
     incantation: "¡Vampirus Metamorphus! ¡La oscuridad te adopta por siempre!",
+    layers: {
+      style: "Una obra de arte digital de terror gótico y fantasía cinematográfica...",
+      identity: "...que transforma a la persona de la imagen en un vampiro de la noche, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible.",
+      mutation: "La persona conserva su estructura facial auténtica y mirada natural con cabello peinado hacia atrás. Su piel se vuelve muy pálida y fría como porcelana, sus ojos brillan en rojo carmesí con sombras oscuras debajo, cejas arqueadas dramáticas y colmillos afilados con un fino hilo de sangre en la comisura.",
+      outfit: "Lleva una elegante capa oscura de cuello alto con intrincados bordados góticos sobre su cuello original, manteniendo su porte y postura natural.",
+      environment: "Fondo del interior de un castillo gótico con pilares de piedra, velas parpadeantes, murciélagos lejanos y luz de luna plateada mezclada con sombras púrpuras dramáticas. Primer plano, muy detallado.",
+      styleShort: "Arte digital de terror gótico y cinematográfico",
+      identityShort: "Rasgos exactos, mirada natural y edad",
+      mutationShort: "Piel de porcelana, ojos carmesí y colmillos afilados",
+      outfitShort: "Capa gótica de cuello alto con bordados",
+      environmentShort: "Castillo con velas, pilares y luz de luna púrpura"
+    },
     prompt: `Una obra de arte digital de terror y fantasía cinematográfica que transforma a la persona de la imagen en un vampiro, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible.
 
 La persona conserva su estructura facial auténtica, su mirada natural y su cabello característico, sutilmente peinado hacia atrás pero manteniendo su textura y tono originales. Su piel se vuelve muy pálida y fría, como la porcelana, pero conserva sus líneas y textura natural sin hacerlo parecer más joven o idealizado. Sus ojos ahora son de un brillante color rojo carmesí con sombras oscuras y hundidas debajo, pero mantienen la forma de sus ojos originales. Sus cejas están ligeramente más oscuras y arqueadas de manera dramática. Un fino y brillante hilo de sangre corre por la comisura de su boca, donde se alcanzan a ver colmillos de vampiro afilados detrás de los labios.
@@ -89,6 +149,18 @@ El fondo es el interior de un castillo gótico oscuro y tenuemente iluminado con
       { name: "Visión dorada de los titanes", icon: "⚡" }
     ],
     incantation: "¡Monocularis Gigantum! ¡Que un solo ojo vea todo el mundo!",
+    layers: {
+      style: "Una obra de arte digital de fantasía y mitología clásica a gran escala...",
+      identity: "...que transforma a la persona en un Cíclope gigante de la mitología griega, preservando de manera estricta su rostro reconocible, su edad y su identidad.",
+      mutation: "La persona conserva su estructura facial natural sobre una mandíbula más ancha y masiva. Su piel se vuelve gris-azulada, gruesa y agrietada como piedra antigua. En el centro de la frente sus ojos se funden en un único y colosal ojo dorado brillante bajo una ceja salvaje, con nariz ancha y pequeñas protuberancias rocosas en sienes.",
+      outfit: "Viste una túnica rústica de cuero y tela desgastada sobre sus anchos hombros, manteniendo la postura natural en primer plano.",
+      environment: "Fondo épico de ruinas griegas en lo alto de una montaña bajo cielo tormentoso nocturno con relámpagos lejanos, e iluminación que resalta la textura rocosa. Primer plano, muy detallado.",
+      styleShort: "Arte digital de fantasía y mitología épica",
+      identityShort: "Estructura facial y edad preservadas",
+      mutationShort: "Ojo único central dorado, piel de roca y mandíbula ancha",
+      outfitShort: "Túnica rústica de cuero sobre hombros colosales",
+      environmentShort: "Ruinas griegas en montaña bajo tormenta y rayos"
+    },
     prompt: `Una obra de arte digital de fantasía y mitología de gran escala, que transforma a la persona en un Cíclope gigante de la mitología griega, preservando de manera estricta su rostro reconocible, su edad y su identidad bajo la monstruosa transformación.
 
 La persona conserva su estructura facial natural, su fisonomía y su cabello, extendiéndose por una mandíbula que se ha vuelto más masiva, ancha y cuadrada, pero con la misma forma y base. Su piel se transforma en una textura gris-azulada, áspera, gruesa y agrietada como la piedra o la roca antigua, conservando de forma muy visible sus facciones y marcas naturales de expresión, especialmente alrededor de la boca y las mejillas. En el centro exacto de la frente y de su rostro, sus dos ojos originales se han fusionado en un único y enorme ojo central, de mirada intensa y profunda, con un iris que brilla en tonos amarillos y dorados, bajo una única y gruesa ceja salvaje que une sus rasgos. Su nariz, ubicada justo debajo del ojo único, es ahora más ancha, aplastada y ruda, pero conserva la base y la esencia de su nariz original. En la frente y en las sienes se aprecian pequeñas protuberancias rocosas o pequeños cuernos que se funden con su piel. Su cuello se vuelve sumamente musculoso, ancho y colosal, propio de un gigante.
@@ -111,6 +183,18 @@ El fondo muestra un paisaje épico y dramático de ruinas griegas antiguas y der
       { name: "Cuerno de bestia ancestral", icon: "🦏" }
     ],
     incantation: "¡Ferox Bestiarium! ¡Que la bestia interior despierte!",
+    layers: {
+      style: "Una ilustración cinematográfica de fantasía oscura y terror...",
+      identity: "...que transforma a la persona de la imagen en una imponente bestia feroz, conservando estrictamente su rostro natural, su edad y su fisonomía auténtica.",
+      mutation: "Su piel se vuelve de cuero áspero rojizo-marrón con escamas y protuberancias manteniendo sus facciones reales. Tiene ojos naranja demoníacos brillantes, dos cuernos cortos en la frente, orejas puntiagudas y boca abierta en un leve gruñido que muestra colmillos en la mandíbula.",
+      outfit: "Viste su ropa oscura o atuendo rústico desgastado en su postura original, con cuello musculoso y hombros firmes.",
+      environment: "Fondo oscuro de bosque salvaje tormentoso con densa niebla roja brillante y luz de luna filtrada entre ramas. Muy detallado, primer plano.",
+      styleShort: "Ilustración cinematográfica de fantasía oscura",
+      identityShort: "Rostro natural, edad y expresión auténtica",
+      mutationShort: "Cuero rojizo con escamas, ojos naranja y cuernos",
+      outfitShort: "Ropa rústica desgastada en postura original",
+      environmentShort: "Bosque tormentoso con niebla roja y luz de luna"
+    },
     prompt: `Una ilustración cinematográfica de fantasía y terror que transforma a la persona de la imagen en una imponente bestia oscura, conservando estrictamente su rostro natural, su edad y su fisonomía auténtica. 
 
 Su piel se vuelve de cuero áspero rojizo-marrón oscuro con escamas y protuberancias, manteniendo todas sus facciones reales. Tiene ojos naranja demoníacos y brillantes, dos cuernos cortos y oscuros en la frente, nariz ancha y orejas puntiagudas. Su boca, levemente abierta en un gruñido, muestra dientes afilados y pequeños colmillos en la mandíbula inferior. 
@@ -131,6 +215,18 @@ Viste su ropa oscura o atuendo rústico desgastado en su postura original, con u
       { name: "Escama dorada de Gorgona", icon: "🐍" }
     ],
     incantation: "¡Gorgonis Metamorphus! ¡Que las serpientes coronen tu cabeza!",
+    layers: {
+      style: "Una ilustración cinematográfica de fantasía mitológica y terror clásico...",
+      identity: "...que transforma a la persona de la imagen en una versión de Medusa, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.",
+      mutation: "Su cabello se transforma en docenas de serpientes vivas ondulantes de tonos verdes, dorados y grises. Su piel adquiere un tono verde-grisáceo con sutiles escamas en mejillas manteniendo sus arrugas reales, con ojos de intensa luz dorada-verde petrificante y lengua bífida visible.",
+      outfit: "Viste un ropaje antiguo o túnica griega rústica deshilachada sobre los hombros, en su postura original.",
+      environment: "Fondo oscuro de ruinas de un templo griego bajo cielo tormentoso nocturno con relámpagos lejanos y luz de luna fría. Muy detallado, primer plano.",
+      styleShort: "Ilustración de fantasía mitológica cinematográfica",
+      identityShort: "Facciones faciales y edad estrictamente intactas",
+      mutationShort: "Cabello de serpientes vivas, ojos dorados y escamas",
+      outfitShort: "Túnica griega rústica deshilachada sobre hombros",
+      environmentShort: "Ruinas de templo griego bajo tormenta nocturna"
+    },
     prompt: `Una ilustración cinematográfica de fantasía y terror que transforma a la persona de la imagen en una versión de Medusa de la mitología griega, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.
 
 Su cabello se transforma por completo en docenas de serpientes vivas, ondulantes y furiosas de tonos verdes, dorados y grises que se agitan en todas direcciones. Su piel se vuelve ligeramente verde-grisácea con sutiles escamas de serpiente visibles en las mejillas y el cuello, pero conservando sus arrugas y facciones reales. Sus ojos brillan con una intensa y sobrenatural luz dorada-verde capaz de petrificar, bajo sus cejas naturales. Su boca, levemente abierta, muestra una lengua bífida visible.
@@ -151,6 +247,18 @@ Viste un ropaje antiguo o túnica rústica deshilachada en su postura original. 
       { name: "Hilo quirúrgico centenario", icon: "🧵" }
     ],
     incantation: "¡Electrus Reanimatum! ¡Que la electricidad te dé vida!",
+    layers: {
+      style: "Una ilustración cinematográfica de terror gótico clásico...",
+      identity: "...que transforma a la persona de la imagen en la criatura de Frankenstein, conservando estrictamente su rostro natural, su edad y su fisonomía auténtica.",
+      mutation: "Su estructura facial se mantiene bajo una piel gris-verde enfermiza con suturas, grapas y cicatrices visibles. Su frente se aplana con una cicatriz cosida horizontal, dos pernos de metal oxidados sobresalen a los lados de su cuello, mandíbula cuadrada y párpados pesados con ojeras oscuras.",
+      outfit: "Viste un abrigo oscuro y desgastado de época sobre su prenda original, manteniendo su posición y postura frontal.",
+      environment: "Fondo de un laboratorio gótico de piedra con bobinas eléctricas que chispean, altas ventanas y relámpagos en una noche de tormenta eléctrica. Primer plano, hiperdetallado.",
+      styleShort: "Ilustración cinematográfica de terror gótico clásico",
+      identityShort: "Rostro natural, mirada y expresión preservadas",
+      mutationShort: "Piel gris-verde, cicatrices cosidas y pernos en el cuello",
+      outfitShort: "Abrigo oscuro de época desgastado en postura original",
+      environmentShort: "Laboratorio gótico con relámpagos y bobinas eléctricas"
+    },
     prompt: `Una ilustración cinematográfica de fantasía y terror que transforma a la persona de la imagen en el monstruo de Frankenstein, conservando estrictamente su rostro natural, su edad y su fisonomía auténtica.
 
 Su estructura facial y expresión real se mantienen bajo una piel gris-verde enfermiza, con suturas, grapas y cicatrices visibles en toda la cara y el cuello. Su frente se vuelve plana y cuadrada en la parte superior con una cicatriz cosida, y de los lados de su cuello sobresalen dos grandes pernos de metal oxidados. Conserva sus ojos tristes y caídos con párpados pesados y ojeras oscuras. Su mandíbula es más cuadrada y pesada, al igual que su cabello despeinado y oscurecido.
@@ -171,6 +279,18 @@ Viste un abrigo oscuro y desgastado de época sobre su prenda original. Fondo de
       { name: "Frecuencia del espacio profundo", icon: "📡" }
     ],
     incantation: "¡Alienigena Transformum! ¡Las estrellas te reclaman!",
+    layers: {
+      style: "Una ilustración cinematográfica de ciencia ficción y fantasía cósmica...",
+      identity: "...que transforma a la persona de la imagen en una criatura alienígena, conservando estrictamente su rostro natural, su edad y su identidad reconocible.",
+      mutation: "Su cabeza se vuelve sutilmente más alargada hacia atrás manteniendo su fisonomía. Su piel es suave, azul-grisácea y translúcida con venas tenues y sutil brillo bioluminiscente, enormes ojos almendrados completamente negros y brillantes, nariz reducida a sutiles ranuras y boca fina.",
+      outfit: "Viste su prenda oscura original combinada con un traje espacial orgánico de cuello estilizado, manteniendo su postura frontal.",
+      environment: "Fondo del espacio profundo con nebulosas cósmicas en tonos turquesa y violeta, estrellas lejanas y suave iluminación extraterrestre. Muy detallado, primer plano.",
+      styleShort: "Ilustración de ciencia ficción y fantasía cósmica",
+      identityShort: "Fisonomía real e identidad reconocible",
+      mutationShort: "Piel azulada bioluminiscente y ojos negros almendrados",
+      outfitShort: "Traje cósmico orgánico en postura original",
+      environmentShort: "Espacio profundo con nebulosas violetas y estrellas"
+    },
     prompt: `Una ilustración cinematográfica de fantasía y ciencia ficción que transforma a la persona de la imagen en una criatura alienígena, conservando estrictamente su rostro natural, su edad y su identidad reconocible.
 
 Su cabeza se vuelve más alargada y grande, manteniendo su fisonomía y expresión real. Su piel se vuelve suave, de un tono gris o azul claro y ligeramente translúcida con venas sutiles y un tenue brillo bioluminiscente. Tiene enormes ojos almendrados, completamente negros y brillantes, su nariz se reduce a pequeñas ranuras sutiles, y su boca se vuelve fina y pequeña. Las orejas desaparecen bajo su cabeza.
@@ -191,6 +311,18 @@ Viste su prenda oscura original o un atuendo futurista sencillo en su postura or
       { name: "Ceniza de azufre y piedra", icon: "🌋" }
     ],
     incantation: "¡Daemonicus Maximus! ¡Las llamas del inframundo te transforman!",
+    layers: {
+      style: "Una ilustración cinematográfica de fantasía oscura y terror en plano medio...",
+      identity: "...que transforma a la persona de la imagen en un poderoso demonio del inframundo, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible.",
+      mutation: "La persona conserva su fisonomía bajo una piel rojo carmesí oscuro rugosa con venas marcadas. De su frente crecen dos grandes cuernos negros curvados y ásperos, sus ojos brillan en amarillo ardiente con pupilas de ranura vertical, orejas puntiagudas y sonrisa con colmillos afilados.",
+      outfit: "Lleva su misma ropa oscura rasgada por la transformación, con cuello musculoso y pequeñas brasas y chispas flotando sobre los hombros en su postura original.",
+      environment: "Fondo de un abismo infernal con un portal antiguo de roca negra del que emana lava ardiente, humo denso y cenizas flotantes, con iluminación de fuego lateral. Primer plano, muy detallado.",
+      styleShort: "Ilustración de fantasía oscura y terror cinematográfico",
+      identityShort: "Rasgos faciales exactos y edad preservados",
+      mutationShort: "Piel roja carmesí, cuernos curvados y ojos de fuego",
+      outfitShort: "Ropa oscura rasgada con brasas flotantes",
+      environmentShort: "Portal infernal de roca con ríos de lava y ceniza"
+    },
     prompt: `Una ilustración cinematográfica de fantasía oscura y terror, en plano medio, que transforma a la persona de la imagen en un poderoso demonio del inframundo, preservando de manera estricta sus rasgos faciales exactos, su edad y su identidad reconocible bajo la monstruosa transformación.
 
 La persona conserva su estructura facial natural, su fisonomía y la expresión profunda de su mirada. Su piel se transforma en un color rojo y carmesí oscuro, con textura rugosa, venas oscuras muy visibles y sutiles patrones de fuego bajo la piel, pero conservando de forma muy visible sus arrugas y líneas naturales de expresión.
@@ -215,6 +347,18 @@ El fondo muestra un abismo infernal con fuego ardiente y un portal oscuro y anti
       { name: "Niebla de camposanto", icon: "🌫️" }
     ],
     incantation: "¡Ossium Cinematographicus! ¡La calavera de ultratumba despierta!",
+    layers: {
+      style: "Una fotografía cinematográfica y fotorrealista (fotograma de película de misterio de 35mm)...",
+      identity: "...que captura a la persona de la imagen con maquillaje artístico de esqueleto, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.",
+      mutation: "Su fisonomía y arrugas se mantienen bajo un elaborado maquillaje SFX de calavera: cuencas de los ojos y punta de nariz en negro mate profundo, pómulos y mandíbula sombreados para acentuar el hueso, y líneas de dientes pintadas con precisión sobre los labios.",
+      outfit: "Viste un saco o chaqueta oscura, desgastada y rústica con cuello levantado, manteniendo su postura natural.",
+      environment: "Fondo de un cementerio antiguo bajo niebla baja iluminada por calabazas de Halloween a lo lejos y una gran luna llena brillante. Grano cinematográfico de 35mm, fotorrealista.",
+      styleShort: "Fotografía cinematográfica fotorrealista de 35mm",
+      identityShort: "Rostro natural, edad y líneas de expresión intactas",
+      mutationShort: "Maquillaje SFX de calavera, cuencas negras y pómulos",
+      outfitShort: "Chaqueta oscura rústica con cuello levantado",
+      environmentShort: "Cementerio con niebla, calabazas lejanas y luna llena"
+    },
     prompt: `Una fotografía cinematográfica y fotorrealista (un fotograma de película) que captura a la persona de la imagen con un detallado maquillaje de esqueleto para Halloween, conservando estrictamente su rostro natural, su edad y sus facciones faciales reconocibles. 
 
 Su fisonomía, expresión y arrugas reales se mantienen visibles bajo un elaborado maquillaje artístico (SFX) de calavera: cuencas de los ojos y la punta de la nariz pintadas de negro mate profundo, y sombreado oscuro en pómulos y mandíbula que resalta su estructura ósea, enmarcando su rostro con naturalidad. Tiene líneas de dientes de esqueleto pintadas sobre los labios, y el cuello maquillado con vértebras y clavículas en tonos óseos y sombras teatrales. Su cabello luce algo despeinado y con sutil polvo escénico.
@@ -235,6 +379,18 @@ Viste un saco o chaqueta oscura, desgastada y rústica con cuello levantado. El 
       { name: "Suspiro del más allá", icon: "💨" }
     ],
     incantation: "¡Phantasma Aeternum! ¡Que tu cuerpo se vuelva etéreo y luminoso!",
+    layers: {
+      style: "Una fotografía cinematográfica y fotorrealista (fotograma de película de misterio)...",
+      identity: "...que captura la aparición espectral y fantasmal de la persona, preservando de manera estricta su rostro natural, su edad y su fisonomía reconocible.",
+      mutation: "Todo su cuerpo es semitransparente y etéreo en tono azul-grisáceo espectral, desvaneciéndose en los bordes con un tenue brillo bioluminiscente. Sus ojos brillan con una fría luz sobrenatural blanco-azulada desde el interior con expresión contemplativa y serena.",
+      outfit: "Viste una versión fantasmal y desvaída de su ropa oscura que se desintegra en niebla hacia abajo, levitando suavemente en su postura original.",
+      environment: "Fondo nocturno de una casa abandonada de madera entre árboles retorcidos y niebla baja, iluminada por una fría luz de luna. Grano sutil de 35mm, fotorrealista.",
+      styleShort: "Fotografía cinematográfica y fotorrealista de cine",
+      identityShort: "Fisonomía real y edad reconocible en transparencia",
+      mutationShort: "Figura etérea translúcida con ojos de luz espectral",
+      outfitShort: "Ropaje fantasmal que se desintegra en niebla",
+      environmentShort: "Mansión abandonada con árboles secos y luz de luna"
+    },
     prompt: `Una fotografía cinematográfica y fotorrealista de plano medio (un fotograma de película de misterio y terror de Halloween) que captura la aparición espectral y fantasmal de la persona de la imagen, preservando de manera estricta su rostro natural, su edad y su fisonomía reconocible.
 
 La persona conserva su estructura facial, su fisonomía y su expresión natural, ahora con un aspecto etéreo, flotante y desordenado. Todo su cuerpo y su vestimenta son semitransparentes, revelando sutilmente el fondo a través de su forma translúcida. Su figura entera, incluyendo su rostro, se percibe de un tono frío, pálido y gélido (azul-grisáceo o blanco espectral), desvaneciéndose en los bordes y desprendiendo un leve brillo bioluminiscente natural y jirones de neblina o humo espectral que flotan desde sus hombros y ropa.
@@ -259,6 +415,18 @@ El escenario, de noche y con el desenfoque natural de una lente de cine, muestra
       { name: "Fuego sagrado de antorcha", icon: "🔥" }
     ],
     incantation: "¡Mumia Exsurgat! ¡Las arenas del tiempo te envuelven!",
+    layers: {
+      style: "Un fotograma cinematográfico fotorrealista de primer plano de Halloween...",
+      identity: "...que captura a la persona de la imagen como una antigua momia egipcia, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.",
+      mutation: "Vendas de lino antiguas y deshilachadas envuelven cabeza y cuello, dejando al descubierto el centro de su rostro: ojos, nariz y boca con sus líneas de expresión intactas, con sutil brillo dorado en la mirada entre polvo y sombras.",
+      outfit: "Viste las vendas centenarias deshechas combinadas con jirones de tela rústica oscura de época sobre los hombros, en su postura original.",
+      environment: "Fondo nocturno desenfocado de la base de una pirámide egipcia entre dunas, iluminada por antorchas parpadeantes, humo y fría luz de luna en tormenta de arena. Grano de 35mm.",
+      styleShort: "Fotograma cinematográfico fotorrealista de 35mm",
+      identityShort: "Centro del rostro, mirada y edad intactas",
+      mutationShort: "Vendajes de lino milenario y mirada con brillo dorado",
+      outfitShort: "Vendas deshechas y tela rústica oscura sobre hombros",
+      environmentShort: "Pirámide entre dunas iluminada por antorchas y arena"
+    },
     prompt: `Un fotograma de película, fotorrealista y de primer plano, que captura a la persona de la imagen como una antigua momia para Halloween, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.
 
 Su cabeza, cuello y hombros están envueltos en múltiples capas de vendas de lino antiguas, deshilachadas y desgastadas en tonos de beige a marrón oscuro, cubiertas de polvo y arena del desierto. Las vendas dejan visible de manera natural el centro de su rostro: sus propios ojos (conservando su forma y mirada natural), su nariz, boca y líneas de expresión, integrándose suavemente con los vendajes deshechos. Sus ojos muestran un sutil y misterioso brillo dorado entre las sombras y el polvo, con una expresión tensa y misteriosa. Viste los vendajes deshechos combinados con jirones de ropa rústica oscura de época.
@@ -279,6 +447,18 @@ El fondo nocturno, desenfocado con lente de cine (bokeh), muestra la base de una
       { name: "Enredaderas del huerto oscuro", icon: "🌿" }
     ],
     incantation: "¡Cucurbita Vivificatum! ¡El fuego del huerto arde en tu interior!",
+    layers: {
+      style: "Un fotograma cinematográfico fotorrealista y de primer plano...",
+      identity: "...que captura a la persona de la imagen transformada en un misterioso guardián de calabaza, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.",
+      mutation: "Su piel adquiere textura estriada de corteza de calabaza en tonos terrosos y anaranjados, manteniendo su fisonomía. Sus ojos y boca brillan desde el interior con una cálida y ardiente luz de Jack-o'-Lantern, con ramas secas y enredaderas brotando entre su cabello.",
+      outfit: "Viste un atuendo rústico y oscuro cubierto de hojas marchitas de calabaza y enredaderas entrelazadas en su postura original.",
+      environment: "Fondo de un campo de calabazas nocturno cubierto por densa niebla baja, bajo la luz de una gran luna llena y calabazas encendidas a lo lejos. Grano de 35mm, fotorrealista.",
+      styleShort: "Fotograma cinematográfico fotorrealista de película",
+      identityShort: "Fisonomía real y líneas de expresión intactas",
+      mutationShort: "Piel de calabaza estriada, ojos ardientes y enredaderas",
+      outfitShort: "Atuendo rústico con hojas marchitas de calabaza",
+      environmentShort: "Huerto nocturno con niebla, luna llena y faroles"
+    },
     prompt: `Un fotograma de película, fotorrealista y de primer plano, que captura a la persona de la imagen transformada en un misterioso personaje de calabaza de Halloween, conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.
 
 Su piel adquiere una textura de corteza de calabaza, rugosa, con relieves y de tonos anaranjados y terrosos, pero manteniendo visibles todas sus líneas de expresión, gestos y fisonomía real. Sus ojos (con sus párpados y mirada natural) y el interior de su boca (que se asoma sutilmente entre los labios) brillan con una cálida y ardiente luz interior de tono naranja-amarillento, como un jack-o'-lantern encendido en la noche. De su cuello, hombros y entre su cabello brotan pequeñas ramas secas, enredaderas oscuras y hojas marchitas de calabaza que se entrelazan de manera orgánica en su rostro y vestimenta. Viste un atuendo rústico, oscuro y desgastado, cubierto de hojarasca y enredaderas.
@@ -692,6 +872,7 @@ function buildPromptLayersRight() {
 
 // ── PÁGINA IZQUIERDA DE UN HECHIZO (info) ─────────────────
 function buildSpellLeft(spell) {
+  const l = spell.layers || ensureSpellLayers(spell);
   return `<div class="text-page spell-left-page">
 
     <!-- Número y encabezado -->
@@ -706,27 +887,51 @@ function buildSpellLeft(spell) {
       </div>
     </div>
 
-    <div class="page-divider"></div>
-
-    <!-- Ingredientes Visuales -->
-    <div class="spell-section-label">🧪 Ingredientes del Caldero</div>
-    <div class="page-ingredients-grid">
+    <!-- Ingredientes Visuales (fila compacta) -->
+    <div class="page-ingredients-row">
       ${spell.ingredients.map(i => {
         const icon = typeof i === 'object' ? i.icon : '🧪';
         const name = typeof i === 'object' ? i.name : i;
         return `
-          <div class="ingredient-card">
-            <span class="ingredient-icon">${icon}</span>
-            <span class="ingredient-name">${name}</span>
+          <div class="ingredient-chip" title="${name}">
+            <span class="ingredient-chip-icon">${icon}</span>
+            <span class="ingredient-chip-name">${name}</span>
           </div>
         `;
       }).join('')}
     </div>
 
-    <div class="page-divider"></div>
+    <!-- Estructura en 5 Capas del Hechizo con colores -->
+    <div class="spell-layers-card">
+      <div class="slc-header">
+        <span class="slc-title">📐 LAS 5 CAPAS DEL PROMPT</span>
+        <span class="slc-guide-hint">Reflejo en este Hechizo</span>
+      </div>
+      <div class="slc-list">
+        <div class="slc-item slc-1" style="--lc:#2980b9;" title="1. Estilo y Técnica">
+          <span class="slc-badge">1. Estilo</span>
+          <span class="slc-text">${l.styleShort || l.style}</span>
+        </div>
+        <div class="slc-item slc-2" style="--lc:#27ae60;" title="2. Ancla de Identidad">
+          <span class="slc-badge">2. Identidad</span>
+          <span class="slc-text">${l.identityShort || l.identity}</span>
+        </div>
+        <div class="slc-item slc-3" style="--lc:#c0392b;" title="3. Zonas de Mutación">
+          <span class="slc-badge">3. Mutación</span>
+          <span class="slc-text">${l.mutationShort || l.mutation}</span>
+        </div>
+        <div class="slc-item slc-4" style="--lc:#8e44ad;" title="4. Vestuario y Postura">
+          <span class="slc-badge">4. Vestuario</span>
+          <span class="slc-text">${l.outfitShort || l.outfit}</span>
+        </div>
+        <div class="slc-item slc-5" style="--lc:#d35400;" title="5. Iluminación y Entorno">
+          <span class="slc-badge">5. Entorno</span>
+          <span class="slc-text">${l.environmentShort || l.environment}</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Conjuro -->
-    <div class="spell-section-label">🗣️ Conjuro</div>
     <div class="page-incantation">${spell.incantation}</div>
 
     <!-- Botón abrir hechizo -->
@@ -1137,6 +1342,64 @@ function closeImageZoom() {
 // ══════════════════════════════════════════════════════════
 //  MODAL DEL HECHIZO
 // ══════════════════════════════════════════════════════════
+function ensureSpellLayers(spell) {
+  if (spell.layers) return spell.layers;
+  return {
+    style: "Ilustración cinematográfica y arte digital de fantasía oscura...",
+    identity: "conservando estrictamente su rostro natural, su edad y sus facciones reconocibles.",
+    mutation: spell.prompt || "Transformación con rasgos monstruosos y detalles fantásticos.",
+    outfit: "Vestuario adaptado a la criatura manteniendo su postura original.",
+    environment: "Atmósfera dramática con iluminación cinematográfica y sombras profundas.",
+    styleShort: "Arte digital y cinematográfico",
+    identityShort: "Rostro y edad preservados",
+    mutationShort: "Transformación en criatura fantástica",
+    outfitShort: "Vestuario adaptado en su postura",
+    environmentShort: "Fondo e iluminación dramática"
+  };
+}
+
+function renderPromptWithLayers(spell) {
+  const l = spell.layers || ensureSpellLayers(spell);
+  return `
+    <div class="prompt-layers-container">
+      <div class="plc-item plc-style">
+        <div class="plc-badge">
+          <span class="plc-dot">1</span> [1. ESTILO Y TÉCNICA]
+        </div>
+        <div class="plc-content">${l.style}</div>
+      </div>
+
+      <div class="plc-item plc-identity">
+        <div class="plc-badge">
+          <span class="plc-dot">2</span> [2. ANCLA DE IDENTIDAD]
+        </div>
+        <div class="plc-content">${l.identity}</div>
+      </div>
+
+      <div class="plc-item plc-mutation">
+        <div class="plc-badge">
+          <span class="plc-dot">3</span> [3. ZONAS DE MUTACIÓN]
+        </div>
+        <div class="plc-content">${l.mutation}</div>
+      </div>
+
+      <div class="plc-item plc-outfit">
+        <div class="plc-badge">
+          <span class="plc-dot">4</span> [4. VESTUARIO Y POSTURA]
+        </div>
+        <div class="plc-content">${l.outfit}</div>
+      </div>
+
+      <div class="plc-item plc-environment">
+        <div class="plc-badge">
+          <span class="plc-dot">5</span> [5. ILUMINACIÓN Y ENTORNO]
+        </div>
+        <div class="plc-content">${l.environment}</div>
+      </div>
+    </div>
+  `;
+}
+
 function openSpell(spell) {
   currentSpell = spell;
   const modal = document.getElementById('spellModal');
@@ -1145,8 +1408,10 @@ function openSpell(spell) {
   document.getElementById('modalTitle').textContent      = spell.name;
   document.getElementById('modalSubtitle').textContent   = spell.subtitle;
   document.getElementById('modalIncantation').textContent= spell.incantation;
-  document.getElementById('modalPrompt').textContent     = spell.prompt;
   document.getElementById('modalTips').textContent       = spell.tips;
+
+  // Render Prompt con las 5 capas resaltadas en sus colores
+  document.getElementById('modalPrompt').innerHTML = renderPromptWithLayers(spell);
 
   modal.style.setProperty('--modal-color', spell.color);
   modal.style.setProperty('--modal-glow',  hexToRgba(spell.color, 0.5));
@@ -1222,7 +1487,9 @@ document.addEventListener('touchend', e => {
 async function copyPrompt() {
   if (!currentSpell) return;
   const btn  = document.getElementById('copyBtn');
-  const text = currentSpell.prompt;
+  const l = currentSpell.layers || ensureSpellLayers(currentSpell);
+  // Texto limpio completo para la IA (sin etiquetas HTML)
+  const text = (currentSpell.prompt || `${l.style} ${l.identity}\n\n${l.mutation}\n\n${l.outfit}\n\n${l.environment}`).trim();
   try {
     await navigator.clipboard.writeText(text);
     showCopySuccess(btn);
@@ -1678,11 +1945,26 @@ function handleCreateSpell(event) {
   const diff = document.getElementById('nsDiff').value;
   const incantation = document.getElementById('nsIncantation').value.trim();
 
-  const l1 = document.getElementById('nsLayer1').value.trim();
-  const l3 = document.getElementById('nsLayer3').value.trim();
-  const l5 = document.getElementById('nsLayer5').value.trim();
+  const l1 = (document.getElementById('nsLayer1')?.value || '').trim() || 'Una ilustración cinematográfica de fantasía y terror';
+  const l2 = (document.getElementById('nsLayer2')?.value || '').trim() || 'conservando estrictamente su rostro natural, su edad y sus facciones faciales reconocibles';
+  const l3 = (document.getElementById('nsLayer3')?.value || '').trim() || `con rasgos de ${monster}`;
+  const l4 = (document.getElementById('nsLayer4')?.value || '').trim() || 'con vestuario adaptado a la criatura manteniendo su postura original';
+  const l5 = (document.getElementById('nsLayer5')?.value || '').trim() || 'bajo una iluminación dramática y atmósfera de misterio';
 
-  const fullPrompt = document.getElementById('nsLivePromptPreview').textContent;
+  const layersObj = {
+    style: l1,
+    identity: l2,
+    mutation: l3,
+    outfit: l4,
+    environment: l5,
+    styleShort: l1.length > 38 ? l1.slice(0, 35) + '...' : l1,
+    identityShort: l2.length > 38 ? l2.slice(0, 35) + '...' : l2,
+    mutationShort: l3.length > 38 ? l3.slice(0, 35) + '...' : l3,
+    outfitShort: l4.length > 38 ? l4.slice(0, 35) + '...' : l4,
+    environmentShort: l5.length > 38 ? l5.slice(0, 35) + '...' : l5,
+  };
+
+  const fullPrompt = document.getElementById('nsLivePromptPreview')?.textContent || `${l1} que transforma a la persona de la imagen en ${monster}, ${l2}.\n\n${l3}\n\n${l4} ${l5}`;
 
   const newSpell = {
     id: 'custom_' + Date.now(),
@@ -1700,6 +1982,7 @@ function handleCreateSpell(event) {
       { name: 'Capa 5: ' + (l5 ? l5.slice(0, 18) + '...' : 'Entorno'), icon: '🌌' }
     ],
     incantation: incantation,
+    layers: layersObj,
     prompt: fullPrompt,
     tips: `¡Hechizo forjado por ${student}! Preservando la fisonomía y expresión original.`,
     beforeImg: 'img/foto-antes.png',
